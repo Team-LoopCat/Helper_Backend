@@ -1,0 +1,4 @@
+rootProject.name = 'helper'
+include 'helper-core'
+include 'helper-persistence'
+
