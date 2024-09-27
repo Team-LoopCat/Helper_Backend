@@ -9,9 +9,11 @@ import org.example.global.security.exception.InvalidTokenException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
+@Service
 @RequiredArgsConstructor
 public class TeacherDetailService implements UserDetailsService {
     private final QueryTeacherPort queryTeacherPort;
