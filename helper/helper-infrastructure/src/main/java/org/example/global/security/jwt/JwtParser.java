@@ -12,10 +12,12 @@ import org.example.global.security.exception.InvalidTokenException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 import java.util.Objects;
 
+@Component
 @RequiredArgsConstructor
 public class JwtParser {
     private final JwtProperties jwtProperties;
