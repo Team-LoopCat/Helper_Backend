@@ -8,9 +8,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.JoinColumns;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 import org.example.persistence.auth.entity.UserJpaEntity;
 import org.example.persistence.gradeInfo.entity.GradeInfo;
 import org.hibernate.annotations.ColumnDefault;
@@ -19,6 +17,7 @@ import org.hibernate.annotations.ColumnDefault;
 @Getter
 @AllArgsConstructor
 @Entity(name = "student")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class StudentJpaEntity {
     @Id()
     @Column(nullable = false, unique = true, columnDefinition = "char(4)")
@@ -40,12 +39,10 @@ public class StudentJpaEntity {
     @Column(nullable = false, columnDefinition = "varchar(40)")
     private String nickname;
 
-    @ColumnDefault("DEFAULT_IMG_URL") // todo: 기본 이미지 URL 정해지면 그걸로 바꾸기
+    @ColumnDefault("'DEFAULT_IMG_URL'") // todo: 기본 이미지 URL 정해지면 그걸로 바꾸기
     @Column(nullable = false, columnDefinition = "varchar(100)")
     private String profile;
 
     @Column(nullable = false, columnDefinition = "varchar(50)")
     private String email;
-
-    protected StudentJpaEntity() {}
 }

@@ -23,7 +23,7 @@ public class TeacherJpaEntity {
     @Column(nullable = false, columnDefinition = "varchar(5)")
     private String name;
 
-    @ColumnDefault("DEFAULT_IMG_URL") // todo: 기본 이미지 URL 정해지면 그걸로 바꾸기
+    @ColumnDefault("'DEFAULT_IMG_URL'") // todo: 기본 이미지 URL 정해지면 그걸로 바꾸기
     @Column(nullable = false, columnDefinition = "varchar(100)")
     private String profile;
 
