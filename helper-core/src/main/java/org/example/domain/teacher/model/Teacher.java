@@ -16,7 +16,5 @@ public class Teacher {
 
     private final String name;
 
-    private final String profile;
-
     private final Role role;
 }

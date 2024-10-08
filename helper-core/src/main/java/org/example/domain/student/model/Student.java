@@ -22,8 +22,6 @@ public class Student {
 
     private final String nickname;
 
-    private final String profile;
-
     private final String email;
 
     private final Role role;
