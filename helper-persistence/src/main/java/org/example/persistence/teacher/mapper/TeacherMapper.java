@@ -23,7 +23,6 @@ public class TeacherMapper implements GenericMapper<Teacher, TeacherJpaEntity> {
                 entity.getTeacherId(),
                 entity.getUser().getUserId(),
                 entity.getName(),
-                entity.getProfile(),
                 entity.getUser().getRole()
         ));
     }
@@ -35,8 +34,7 @@ public class TeacherMapper implements GenericMapper<Teacher, TeacherJpaEntity> {
         return new TeacherJpaEntity(
                 entity.getTeacherId(),
                 userJpaEntity,
-                entity.getName(),
-                entity.getProfile()
+                entity.getName()
         );
     }
 }
