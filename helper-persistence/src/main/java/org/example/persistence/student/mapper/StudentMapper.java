@@ -29,7 +29,6 @@ public class StudentMapper implements GenericMapper<Student, StudentJpaEntity> {
                 null, // todo: subject 외래키 처리
                 entity.getUser().getUserId(),
                 entity.getNickname(),
-                entity.getProfile(),
                 entity.getEmail(),
                 entity.getUser().getRole()
         ));
@@ -46,7 +45,6 @@ public class StudentMapper implements GenericMapper<Student, StudentJpaEntity> {
                 gradeInfo,
                 userEntity,
                 entity.getNickname(),
-                entity.getProfile(),
                 entity.getEmail()
         );
     }

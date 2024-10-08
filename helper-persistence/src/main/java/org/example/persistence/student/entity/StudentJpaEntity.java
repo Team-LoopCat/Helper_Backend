@@ -39,10 +39,6 @@ public class StudentJpaEntity {
     @Column(nullable = false, columnDefinition = "varchar(40)")
     private String nickname;
 
-    @ColumnDefault("'DEFAULT_IMG_URL'") // todo: 기본 이미지 URL 정해지면 그걸로 바꾸기
-    @Column(nullable = false, columnDefinition = "varchar(100)")
-    private String profile;
-
     @Column(nullable = false, columnDefinition = "varchar(50)")
     private String email;
 }
