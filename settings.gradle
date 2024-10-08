@@ -1,4 +1,4 @@
-rootProject.name = 'helper'
+rootProject.name = 'Helper_Backend'
 include 'helper-core'
 include 'helper-persistence'
 include 'helper-infrastructure'
