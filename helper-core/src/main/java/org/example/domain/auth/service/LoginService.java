@@ -1,10 +1,16 @@
 package org.example.domain.auth.service;
 
+import org.example.domain.auth.dto.response.LoginResponseDto;
+import org.example.domain.auth.model.Role;
 import org.example.domain.auth.model.User;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 public interface LoginService {
-    Optional<User> getUserById(String id);
+    User getUserById(String id);
+
+    void checkPasswordMatches(String rawPassword, String encodedPassword);
+
+    LoginResponseDto makeJwtTokens(String userId, Role role);
 }

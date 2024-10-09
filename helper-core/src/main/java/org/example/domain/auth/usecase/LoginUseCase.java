@@ -16,23 +16,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Objects;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class LoginUseCase {
     private final LoginService loginService;
-    private final BCryptPasswordEncoder bCryptPasswordEncoder;
-    private final JwtPort jwtPort;
 
     public LoginResponseDto execute(LoginRequestDto requestDto) {
-        User user = loginService.getUserById(requestDto.id()).orElseThrow(() -> UserNotFoundException.EXCEPTION);
 
-        if (!bCryptPasswordEncoder.matches(requestDto.password(), user.getPassword())) {
-            throw PasswordMismatchException.EXCEPTION;
-        }
+        User user = loginService.getUserById(requestDto.id());
 
-        String accessToken = jwtPort.GenerateAccess(user.getUserId(), user.getRole());
-        String refreshToken = jwtPort.GenerateRefresh(user.getUserId());
+        loginService.checkPasswordMatches(requestDto.password(), user.getPassword());
 
-        return new LoginResponseDto(accessToken, refreshToken);
+        return loginService.makeJwtTokens(user.getUserId(), user.getRole());
     }
 }
