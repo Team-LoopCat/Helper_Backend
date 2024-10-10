@@ -12,8 +12,6 @@ import org.example.domain.auth.spi.QueryAuthPort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class LoginServiceImpl implements LoginService {

@@ -1,4 +1,4 @@
-package org.example.helper.global.configuration;
+package org.example.global.configratiron;
 
 import lombok.RequiredArgsConstructor;
 import org.example.global.filter.JwtFilter;
