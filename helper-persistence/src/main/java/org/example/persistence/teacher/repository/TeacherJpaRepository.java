@@ -7,5 +7,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface TeacherJpaRepository extends CrudRepository<TeacherJpaEntity, UUID> {
+
     Optional<TeacherJpaEntity> findByTeacherId(UUID teacherId);
 }

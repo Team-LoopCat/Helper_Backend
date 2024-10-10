@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 public interface LoginService {
+
     User getUserById(String id);
 
     void checkPasswordMatches(String rawPassword, String encodedPassword);
