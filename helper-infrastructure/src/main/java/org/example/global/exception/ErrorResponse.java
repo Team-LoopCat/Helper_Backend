@@ -10,10 +10,6 @@ public record ErrorResponse (
         String description,
         LocalDateTime timestamp
 ) {
-    public static ErrorResponse of (ErrorCode errorCode, String description) {
-        return new ErrorResponse(errorCode.getCode(), errorCode.getMessage(), description, LocalDateTime.now());
-    }
-
     public static ErrorResponse of (GlobalErrorCode errorCode, String description) {
         return new ErrorResponse(errorCode.getErrorStatus(), errorCode.getErrorMessage(), description, LocalDateTime.now());
     }

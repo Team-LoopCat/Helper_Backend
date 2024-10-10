@@ -1,9 +1,9 @@
 package org.example.global.security.exception;
 
-import org.example.global.exception.BusinessException;
-import org.example.global.exception.ErrorCode;
+import org.example.common.exception.GlobalBusinessException;
+import org.example.global.security.exception.errorCode.SecurityErrorCode;
 
-public class InvalidTokenException extends BusinessException {
+public class InvalidTokenException extends GlobalBusinessException {
     public static InvalidTokenException Exception = new InvalidTokenException();
-    public InvalidTokenException() { super(ErrorCode.INVALID_TOKEN); }
+    public InvalidTokenException() { super(SecurityErrorCode.INVALID_TOKEN); }
 }
