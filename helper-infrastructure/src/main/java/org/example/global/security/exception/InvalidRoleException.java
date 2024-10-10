@@ -6,7 +6,5 @@ import org.example.global.security.exception.errorCode.SecurityErrorCode;
 public class InvalidRoleException extends GlobalBusinessException {
     public static final InvalidRoleException EXCEPTION = new InvalidRoleException();
 
-    public InvalidRoleException() {
-        super(SecurityErrorCode.INVALID_ROLE);
-    }
+    public InvalidRoleException() { super(SecurityErrorCode.INVALID_ROLE); }
 }
