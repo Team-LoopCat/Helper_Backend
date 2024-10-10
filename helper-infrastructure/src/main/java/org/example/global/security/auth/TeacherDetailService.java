@@ -20,8 +20,8 @@ public class TeacherDetailService implements UserDetailsService {
     
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Teacher teacher = queryTeacherPort.queryUserById(UUID.fromString(username)).orElseThrow(() -> InvalidTokenException.Exception);
-        if (teacher.getRole() != Role.Teacher && teacher.getRole() != Role.Head) throw InvalidRoleException.Exception;
+        Teacher teacher = queryTeacherPort.queryUserById(UUID.fromString(username)).orElseThrow(() -> InvalidTokenException.EXCEPTION);
+        if (teacher.getRole() != Role.Teacher && teacher.getRole() != Role.Head) throw InvalidRoleException.EXCEPTION;
 
         return new TeacherDetail(
                 teacher.getUserId(),

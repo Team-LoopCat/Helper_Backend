@@ -28,7 +28,7 @@ public class JwtParser {
         Claims claims = getClaims(token);
 
         if (claims.get("type") != "access") {
-            throw InvalidTokenException.Exception;
+            throw InvalidTokenException.EXCEPTION;
         }
 
         UserDetails userDetails = getDetail(claims);
@@ -65,7 +65,7 @@ public class JwtParser {
         } else if (Objects.equals(role, Role.Head.name()) || Objects.equals(role, Role.Teacher.name())) {
             return teacherDetailService.loadUserByUsername(body.getSubject());
         } else {
-            throw InvalidRoleException.Exception;
+            throw InvalidRoleException.EXCEPTION;
         }
     }
 }
