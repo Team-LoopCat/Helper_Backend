@@ -12,6 +12,7 @@ public class UserMapper implements GenericMapper<User, UserJpaEntity> {
     @Override
     public Optional<User> toDomain(Optional<UserJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
+
         UserJpaEntity userEntity = entity.get();
 
         return Optional.of(new User(

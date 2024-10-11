@@ -13,7 +13,6 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor
 public class AuthPersistenceAdapter implements QueryAuthPort {
-
     private final UserMapper userMapper;
     private final UserJpaRepository userJpaRepository;
 

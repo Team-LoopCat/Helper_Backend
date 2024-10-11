@@ -12,7 +12,6 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor
 public class StudentPersistenceAdapter implements QueryStudentPort {
-
     private final StudentJpaRepository studentRepository;
     private final StudentMapper studentMapper;
 

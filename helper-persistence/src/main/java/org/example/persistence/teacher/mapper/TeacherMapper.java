@@ -18,6 +18,7 @@ public class TeacherMapper implements GenericMapper<Teacher, TeacherJpaEntity> {
     @Override
     public Optional<Teacher> toDomain(Optional<TeacherJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
+        
         TeacherJpaEntity teacherEntity = entity.get();
 
         return Optional.of(new Teacher(
