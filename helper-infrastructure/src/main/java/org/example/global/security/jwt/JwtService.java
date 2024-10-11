@@ -1,6 +1,7 @@
 package org.example.global.security.jwt;
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.auth.model.Role;
 import org.example.domain.auth.spi.JwtPort;
@@ -23,6 +24,7 @@ public class JwtService implements JwtPort {
                 .claim("type", "access")
                 .claim("role", role)
                 .setExpiration(expireTime)
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.secret())
                 .compact();
     }
 
@@ -35,6 +37,7 @@ public class JwtService implements JwtPort {
                 .setSubject(userId)
                 .claim("type", "refresh")
                 .setExpiration(expireTime)
+                .signWith(SignatureAlgorithm.HS256, jwtProperties.secret())
                 .compact();
     }
 }
