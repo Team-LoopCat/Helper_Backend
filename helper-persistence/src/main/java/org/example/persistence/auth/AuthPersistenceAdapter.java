@@ -13,11 +13,12 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor
 public class AuthPersistenceAdapter implements QueryAuthPort {
+
     private final UserMapper userMapper;
     private final UserJpaRepository userJpaRepository;
 
     @Override
     public Optional<User> getUserById(String id) {
-        return userMapper.toDomain(userJpaRepository.findByUserId(id).orElse(null));
+        return userMapper.toDomain(userJpaRepository.findByUserId(id));
     }
 }

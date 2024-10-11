@@ -10,14 +10,15 @@ import java.util.Optional;
 @Component
 public class UserMapper implements GenericMapper<User, UserJpaEntity> {
     @Override
-    public Optional<User> toDomain(UserJpaEntity entity) {
-        if (entity == null) return Optional.empty();
+    public Optional<User> toDomain(Optional<UserJpaEntity> entity) {
+        if (entity.isEmpty()) return Optional.empty();
+        UserJpaEntity userEntity = entity.get();
 
         return Optional.of(new User(
-                entity.getUserId(),
-                entity.getPassword(),
-                entity.getRole(),
-                entity.getProfile())
+                userEntity.getUserId(),
+                userEntity.getPassword(),
+                userEntity.getRole(),
+                userEntity.getProfile())
         );
     }
 

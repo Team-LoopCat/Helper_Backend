@@ -16,14 +16,15 @@ public class TeacherMapper implements GenericMapper<Teacher, TeacherJpaEntity> {
     private final UserJpaRepository userJpaRepository;
 
     @Override
-    public Optional<Teacher> toDomain(TeacherJpaEntity entity) {
-        if (entity == null) return Optional.empty();
+    public Optional<Teacher> toDomain(Optional<TeacherJpaEntity> entity) {
+        if (entity.isEmpty()) return Optional.empty();
+        TeacherJpaEntity teacherEntity = entity.get();
 
         return Optional.of(new Teacher(
-                entity.getTeacherId(),
-                entity.getUser().getUserId(),
-                entity.getName(),
-                entity.getUser().getRole()
+                teacherEntity.getTeacherId(),
+                teacherEntity.getUser().getUserId(),
+                teacherEntity.getName(),
+                teacherEntity.getUser().getRole()
         ));
     }
 

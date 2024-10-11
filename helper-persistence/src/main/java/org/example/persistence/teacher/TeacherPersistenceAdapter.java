@@ -13,11 +13,12 @@ import java.util.UUID;
 @Component
 @RequiredArgsConstructor
 public class TeacherPersistenceAdapter implements QueryTeacherPort {
+    
     private final TeacherMapper teacherMapper;
     private final TeacherJpaRepository teacherJpaRepository;
 
     @Override
     public Optional<Teacher> queryUserById(UUID teacherId) {
-        return teacherMapper.toDomain(teacherJpaRepository.findByTeacherId(teacherId).orElse(null));
+        return teacherMapper.toDomain(teacherJpaRepository.findByTeacherId(teacherId));
     }
 }

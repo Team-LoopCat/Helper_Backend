@@ -12,11 +12,12 @@ import java.util.Optional;
 @Component
 @RequiredArgsConstructor
 public class StudentPersistenceAdapter implements QueryStudentPort {
+
     private final StudentJpaRepository studentRepository;
     private final StudentMapper studentMapper;
 
     @Override
     public Optional<Student> queryUserById(String userId) {
-        return studentMapper.toDomain(studentRepository.findByStudentId(userId).orElse(null));
+        return studentMapper.toDomain(studentRepository.findByStudentId(userId));
     }
 }
