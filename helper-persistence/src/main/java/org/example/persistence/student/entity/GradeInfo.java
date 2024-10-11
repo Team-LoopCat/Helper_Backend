@@ -1,4 +1,4 @@
-package org.example.persistence.gradeInfo.entity;
+package org.example.persistence.student.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;

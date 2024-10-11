@@ -1,8 +1,10 @@
 package org.example.persistence.teacher.entity;
 
 import jakarta.persistence.*;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.example.persistence.auth.entity.UserJpaEntity;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -10,6 +12,7 @@ import java.util.UUID;
 
 @Getter
 @Entity(name = "teacher")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class TeacherJpaEntity {
     @Id
@@ -22,6 +25,4 @@ public class TeacherJpaEntity {
 
     @Column(nullable = false, columnDefinition = "varchar(5)")
     private String name;
-
-    protected TeacherJpaEntity() {};
 }

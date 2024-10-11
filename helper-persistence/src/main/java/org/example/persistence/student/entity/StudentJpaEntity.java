@@ -10,16 +10,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.*;
 import org.example.persistence.auth.entity.UserJpaEntity;
-import org.example.persistence.gradeInfo.entity.GradeInfo;
-import org.hibernate.annotations.ColumnDefault;
 
 
 @Getter
-@AllArgsConstructor
 @Entity(name = "student")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class StudentJpaEntity {
-    @Id()
+    @Id
     @Column(nullable = false, unique = true, columnDefinition = "char(4)")
     private String studentId;
 

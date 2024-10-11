@@ -1,7 +1,7 @@
-package org.example.persistence.gradeInfo.repository;
+package org.example.persistence.student.repository;
 
-import org.example.persistence.gradeInfo.entity.GradeInfo;
-import org.example.persistence.gradeInfo.entity.GradeInfoId;
+import org.example.persistence.student.entity.GradeInfo;
+import org.example.persistence.student.entity.GradeInfoId;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
