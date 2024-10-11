@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.*;
 public class AuthWebAdapter {
     private final LoginUseCase loginUseCase;
 
-    @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/login")
     public LoginResponseDto login(@RequestBody LoginRequestDto request) {
         return loginUseCase.execute(request);
     }
