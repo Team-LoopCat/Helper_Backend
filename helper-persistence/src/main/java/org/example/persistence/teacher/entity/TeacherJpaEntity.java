@@ -15,6 +15,7 @@ import java.util.UUID;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class TeacherJpaEntity {
+
     @Id
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID teacherId;
@@ -23,6 +24,6 @@ public class TeacherJpaEntity {
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     private UserJpaEntity user;
 
-    @Column(nullable = false, columnDefinition = "varchar(5)")
+    @Column(nullable = false, columnDefinition = "VARCHAR(5)")
     private String name;
 }

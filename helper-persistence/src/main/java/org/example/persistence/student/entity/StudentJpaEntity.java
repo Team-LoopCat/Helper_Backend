@@ -17,16 +17,17 @@ import org.example.persistence.auth.entity.UserJpaEntity;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
 public class StudentJpaEntity {
+
     @Id
-    @Column(nullable = false, unique = true, columnDefinition = "char(4)")
+    @Column(nullable = false, unique = true, columnDefinition = "CHAR(4)")
     private String studentId;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = GradeInfo.class)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = GradeInfoJpaEntity.class)
     @JoinColumns({
             @JoinColumn(name = "grade", referencedColumnName = "grade"),
             @JoinColumn(name = "classroom", referencedColumnName = "classroom")
     })
-    private GradeInfo gradeInfo;
+    private GradeInfoJpaEntity gradeInfoJpaEntity;
 
     // todo: subject 엔티티 추가시 외래키 추가할 것
 
@@ -34,9 +35,9 @@ public class StudentJpaEntity {
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     private UserJpaEntity user;
 
-    @Column(nullable = false, columnDefinition = "varchar(40)")
+    @Column(nullable = false, columnDefinition = "VARCHAR(40)")
     private String nickname;
 
-    @Column(nullable = false, columnDefinition = "varchar(50)")
+    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
     private String email;
 }

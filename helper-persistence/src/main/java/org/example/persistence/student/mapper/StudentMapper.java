@@ -5,7 +5,7 @@ import org.example.domain.student.model.Student;
 import org.example.persistence.GenericMapper;
 import org.example.persistence.auth.entity.UserJpaEntity;
 import org.example.persistence.auth.repository.UserJpaRepository;
-import org.example.persistence.student.entity.GradeInfo;
+import org.example.persistence.student.entity.GradeInfoJpaEntity;
 import org.example.persistence.student.repository.GradeInfoJpaRepository;
 import org.example.persistence.student.entity.StudentJpaEntity;
 import org.springframework.stereotype.Component;
@@ -39,12 +39,12 @@ public class StudentMapper implements GenericMapper<Student, StudentJpaEntity> {
     @Override
     public StudentJpaEntity toEntity(Student entity) {
         UserJpaEntity userEntity = userRepository.findByUserId(entity.getUserId()).orElseThrow();
-        GradeInfo gradeInfo = gradeInfoJpaRepository.findByClassroomAndGrade(entity.getClassroom(), entity.getGrade()).orElseThrow();
+        GradeInfoJpaEntity gradeInfoJpaEntity = gradeInfoJpaRepository.findByClassroomAndGrade(entity.getClassroom(), entity.getGrade()).orElseThrow();
         // todo: subject 관련 로직 추가
 
         return new StudentJpaEntity(
                 entity.getStudentId(),
-                gradeInfo,
+                gradeInfoJpaEntity,
                 userEntity,
                 entity.getNickname(),
                 entity.getEmail()
