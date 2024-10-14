@@ -1,15 +1,16 @@
 package org.example.domain.student.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.example.domain.auth.model.Role;
 
 import java.util.Optional;
 import java.util.UUID;
 
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Student {
+
     private final String studentId;
 
     private final String grade;
