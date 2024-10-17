@@ -8,9 +8,5 @@ import java.util.Optional;
 
 public interface LoginService {
 
-    User getUserById(String id);
-
     void checkPasswordMatches(String rawPassword, String encodedPassword);
-
-    LoginResponseDto makeJwtTokens(String userId, Role role);
 }

@@ -1,4 +1,4 @@
-package org.example.domain.auth;
+package org.example.presentation;
 
 import lombok.RequiredArgsConstructor;
 import org.example.domain.auth.dto.request.LoginRequestDto;

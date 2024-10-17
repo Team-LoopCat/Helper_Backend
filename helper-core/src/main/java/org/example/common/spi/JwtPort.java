@@ -1,4 +1,4 @@
-package org.example.domain.auth.spi;
+package org.example.common.spi;
 
 import org.example.domain.auth.model.Role;
 
