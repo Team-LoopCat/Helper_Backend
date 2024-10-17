@@ -17,6 +17,8 @@ public class StudentPersistenceAdapter implements QueryStudentPort {
 
     @Override
     public Optional<Student> queryUserById(String userId) {
-        return studentMapper.toDomain(studentRepository.findByStudentId(userId).orElse(null));
+        return studentMapper.toDomain(
+                studentRepository.findByStudentId(userId)
+        );
     }
 }

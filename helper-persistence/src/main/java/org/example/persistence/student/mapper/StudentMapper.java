@@ -19,18 +19,20 @@ public class StudentMapper implements GenericMapper<Student, StudentJpaEntity> {
     private final GradeInfoJpaRepository gradeInfoJpaRepository;
 
     @Override
-    public Optional<Student> toDomain(StudentJpaEntity entity) {
-        if (entity == null) return Optional.empty();
+    public Optional<Student> toDomain(Optional<StudentJpaEntity> entity) {
+        if (entity.isEmpty()) return Optional.empty();
+
+        StudentJpaEntity studentEntity = entity.get();
 
         return Optional.of(new Student(
-                entity.getStudentId(),
-                entity.getGradeInfo().getGrade(),
-                entity.getGradeInfo().getClassroom(),
+                studentEntity.getStudentId(),
+                studentEntity.getGradeInfo().getGrade(),
+                studentEntity.getGradeInfo().getClassroom(),
                 null, // todo: subject 외래키 처리
-                entity.getUser().getUserId(),
-                entity.getNickname(),
-                entity.getEmail(),
-                entity.getUser().getRole()
+                studentEntity.getUser().getUserId(),
+                studentEntity.getNickname(),
+                studentEntity.getEmail(),
+                studentEntity.getUser().getRole()
         ));
     }
 
