@@ -4,7 +4,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.auth.model.Role;
-import org.example.domain.auth.spi.JwtPort;
+import org.example.common.spi.JwtPort;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
