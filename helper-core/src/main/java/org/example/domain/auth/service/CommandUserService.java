@@ -2,7 +2,7 @@ package org.example.domain.auth.service;
 
 import org.example.domain.auth.model.User;
 
-public interface SaveUserService {
+public interface CommandUserService {
 
     void saveUser(User user);
 }

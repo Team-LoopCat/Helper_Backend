@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface QueryStudentPort {
 
-    Optional<Student> queryUserByEmail (String email);
+    Boolean checkStudentExistsByEmail(String email);
 
     void saveStudent(Student student);
 }
