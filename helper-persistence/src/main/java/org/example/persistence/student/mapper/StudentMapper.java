@@ -8,6 +8,8 @@ import org.example.persistence.auth.repository.UserJpaRepository;
 import org.example.persistence.gradeInfo.entity.GradeInfo;
 import org.example.persistence.gradeInfo.repository.GradeInfoJpaRepository;
 import org.example.persistence.student.entity.StudentJpaEntity;
+import org.example.persistence.student.exception.GradeOrClassroomNotFoundException;
+import org.example.persistence.student.exception.UserNotExistsException;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
@@ -36,8 +38,12 @@ public class StudentMapper implements GenericMapper<Student, StudentJpaEntity> {
 
     @Override
     public StudentJpaEntity toEntity(Student entity) {
-        UserJpaEntity userEntity = userRepository.findByUserId(entity.getUserId()).orElseThrow();
-        GradeInfo gradeInfo = gradeInfoJpaRepository.findByClassroomAndGrade(entity.getClassroom(), entity.getGrade()).orElseThrow();
+        UserJpaEntity userEntity = userRepository
+                .findByUserId(entity.getUserId())
+                .orElseThrow(() -> UserNotExistsException.EXCEPTION);
+        GradeInfo gradeInfo = gradeInfoJpaRepository
+                .findByClassroomAndGrade(entity.getClassroom(), entity.getGrade())
+                .orElseThrow(() -> GradeOrClassroomNotFoundException.EXCEPTION);
         // todo: subject 관련 로직 추가
 
         return new StudentJpaEntity(
