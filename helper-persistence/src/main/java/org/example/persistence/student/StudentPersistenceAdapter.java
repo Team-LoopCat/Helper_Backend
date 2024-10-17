@@ -7,8 +7,6 @@ import org.example.persistence.student.mapper.StudentMapper;
 import org.example.persistence.student.repository.StudentJpaRepository;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 @RequiredArgsConstructor
 public class StudentPersistenceAdapter implements QueryStudentPort {
@@ -16,10 +14,8 @@ public class StudentPersistenceAdapter implements QueryStudentPort {
     private final StudentMapper studentMapper;
 
     @Override
-    public Optional<Student> queryUserByEmail(String email) {
-        return studentMapper.toDomain(
-                studentRepository.findByEmail(email)
-        );
+    public Boolean checkStudentExistsByEmail(String email) {
+        return studentRepository.existsByEmail(email);
     }
 
     @Override

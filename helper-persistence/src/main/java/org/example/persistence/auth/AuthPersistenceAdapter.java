@@ -28,4 +28,9 @@ public class AuthPersistenceAdapter implements QueryAuthPort {
                 userMapper.toEntity(user)
         );
     }
+
+    @Override
+    public Boolean checkUserById(String id) {
+        return userJpaRepository.existsByUserId(id);
+    }
 }
