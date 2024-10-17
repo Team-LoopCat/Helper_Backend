@@ -16,9 +16,16 @@ public class StudentPersistenceAdapter implements QueryStudentPort {
     private final StudentMapper studentMapper;
 
     @Override
-    public Optional<Student> queryUserById(String userId) {
+    public Optional<Student> queryUserByEmail(String email) {
         return studentMapper.toDomain(
-                studentRepository.findByStudentId(userId)
+                studentRepository.findByEmail(email)
+        );
+    }
+
+    @Override
+    public void saveStudent(Student student) {
+        studentRepository.save(
+                studentMapper.toEntity(student)
         );
     }
 }

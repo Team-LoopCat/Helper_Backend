@@ -9,4 +9,6 @@ import java.util.Optional;
 public interface GradeInfoJpaRepository extends CrudRepository<GradeInfo, GradeInfoId> {
 
     Optional<GradeInfo> findByClassroomAndGrade(String classroom, String grade);
+
+    Boolean existsByGradeAndClassroom(String grade, String classroom);
 }
