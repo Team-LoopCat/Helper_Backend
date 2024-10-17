@@ -17,7 +17,9 @@ public class AuthPersistenceAdapter implements QueryAuthPort {
 
     @Override
     public Optional<User> getUserById(String id) {
-        return userMapper.toDomain(userJpaRepository.findByUserId(id).orElse(null));
+        return userMapper.toDomain(
+                userJpaRepository.findByUserId(id)
+        );
     }
 
     @Override

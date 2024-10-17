@@ -2,7 +2,7 @@ package org.example.persistence.gradeInfo.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import org.example.persistence.student.entity.Major;
+import org.example.domain.student.model.Major;
 
 @Getter
 @Entity(name = "gradeInfo")
