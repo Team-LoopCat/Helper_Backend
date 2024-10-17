@@ -29,10 +29,9 @@ public class StudentMapper implements GenericMapper<Student, StudentJpaEntity> {
                 entity.getGradeInfo().getGrade(),
                 entity.getGradeInfo().getClassroom(),
                 null, // todo: subject 외래키 처리
-                entity.getUser().getUserId(),
-                entity.getNickname(),
-                entity.getEmail(),
-                entity.getUser().getRole()
+                studentEntity.getUser().getUserId(),
+                studentEntity.getNickname(),
+                studentEntity.getEmail()
         ));
     }
 

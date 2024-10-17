@@ -5,8 +5,7 @@ import io.jsonwebtoken.Jwts;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.auth.model.Role;
-import org.example.global.security.auth.StudentDetailService;
-import org.example.global.security.auth.TeacherDetailService;
+import org.example.global.security.auth.CustomUserDetailService;
 import org.example.global.security.exception.InvalidRoleException;
 import org.example.global.security.exception.InvalidTokenException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -15,14 +14,15 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
+import java.util.List;
 import java.util.Objects;
+import java.util.stream.Stream;
 
 @Component
 @RequiredArgsConstructor
 public class JwtParser {
     private final JwtProperties jwtProperties;
-    private final StudentDetailService studentDetailService;
-    private final TeacherDetailService teacherDetailService;
+    private final CustomUserDetailService customUserDetailService;
 
     public Authentication getAuthentication(String token) {
         Claims claims = getClaims(token);
@@ -60,10 +60,8 @@ public class JwtParser {
     public UserDetails getDetail(Claims body) {
         String role = body.get("body").toString();
 
-        if (Objects.equals(role, Role.Student.name())) {
-            return studentDetailService.loadUserByUsername(body.getSubject());
-        } else if (Objects.equals(role, Role.Head.name()) || Objects.equals(role, Role.Teacher.name())) {
-            return teacherDetailService.loadUserByUsername(body.getSubject());
+        if (List.of(Role.Head, Role.Student, Role.Teacher).contains(Role.valueOf(role))) {
+            return customUserDetailService.loadUserByUserId(body.getSubject());
         } else {
             throw InvalidRoleException.EXCEPTION;
         }
