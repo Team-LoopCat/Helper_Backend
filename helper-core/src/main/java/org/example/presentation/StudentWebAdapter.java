@@ -1,4 +1,4 @@
-package org.example.domain.student;
+package org.example.presentation;
 
 import lombok.RequiredArgsConstructor;
 import org.example.domain.student.dto.request.SignupRequestDto;
@@ -14,7 +14,7 @@ public class StudentWebAdapter {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/signup")
-    public void signup (@RequestBody() SignupRequestDto request) {
+    public void signup (@RequestBody SignupRequestDto request) {
         signupUseCase.execute(request);
     }
 }
