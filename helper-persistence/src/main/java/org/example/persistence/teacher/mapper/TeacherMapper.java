@@ -24,8 +24,7 @@ public class TeacherMapper implements GenericMapper<Teacher, TeacherJpaEntity> {
         return Optional.of(new Teacher(
                 teacherEntity.getTeacherId(),
                 teacherEntity.getUser().getUserId(),
-                teacherEntity.getName(),
-                teacherEntity.getUser().getRole()
+                teacherEntity.getName()
         ));
     }
 

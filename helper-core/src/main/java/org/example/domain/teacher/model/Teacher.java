@@ -15,6 +15,4 @@ public class Teacher {
     private final String userId;
 
     private final String name;
-
-    private final Role role;
 }
