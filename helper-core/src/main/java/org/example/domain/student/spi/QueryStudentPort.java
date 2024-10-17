@@ -6,5 +6,7 @@ import java.util.Optional;
 
 public interface QueryStudentPort {
 
-    public Optional<Student> queryUserById(String userId);
+    Optional<Student> queryUserByEmail (String email);
+
+    void saveStudent(Student student);
 }
