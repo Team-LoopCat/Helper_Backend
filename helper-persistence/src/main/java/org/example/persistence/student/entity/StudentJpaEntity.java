@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.*;
 import org.example.persistence.auth.entity.UserJpaEntity;
+import org.example.persistence.subject.entity.SubjectJpaEntity;
 
 
 @Getter
@@ -27,9 +28,11 @@ public class StudentJpaEntity {
             @JoinColumn(name = "grade", referencedColumnName = "grade"),
             @JoinColumn(name = "classroom", referencedColumnName = "classroom")
     })
-    private GradeInfoJpaEntity gradeInfoJpaEntity;
+    private GradeInfoJpaEntity gradeInfo;
 
-    // todo: subject 엔티티 추가시 외래키 추가할 것
+    @ManyToOne(cascade = CascadeType.ALL, optional = true, targetEntity = SubjectJpaEntity.class)
+    @JoinColumn(name = "subjectId", referencedColumnName = "subjectId")
+    private SubjectJpaEntity subject;
 
     @OneToOne(cascade = CascadeType.ALL, optional = false, targetEntity = UserJpaEntity.class)
     @JoinColumn(name = "userId", referencedColumnName = "userId")

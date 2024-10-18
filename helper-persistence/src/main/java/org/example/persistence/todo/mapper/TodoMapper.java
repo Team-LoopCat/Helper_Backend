@@ -31,7 +31,8 @@ public class TodoMapper implements GenericMapper<Todo, TodoJpaEntity> {
 
     @Override
     public TodoJpaEntity toEntity(Todo entity) {
-        StudentJpaEntity studentJpaEntity = studentJpaRepository.findByStudentId(entity.getStudentId()).orElseThrow();
+        StudentJpaEntity studentJpaEntity = studentJpaRepository.findByStudentId
+                (entity.getStudentId()).orElse(null);
 
         return new TodoJpaEntity(
                 entity.getTodoID(),

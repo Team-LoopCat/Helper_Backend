@@ -31,7 +31,8 @@ public class TeacherMapper implements GenericMapper<Teacher, TeacherJpaEntity> {
 
     @Override
     public TeacherJpaEntity toEntity(Teacher entity) {
-        UserJpaEntity userJpaEntity = userJpaRepository.findByUserId(entity.getUserId()).orElseThrow();
+        UserJpaEntity userJpaEntity = userJpaRepository.findByUserId
+                (entity.getUserId()).orElse(null);
 
         return new TeacherJpaEntity(
                 entity.getTeacherId(),
