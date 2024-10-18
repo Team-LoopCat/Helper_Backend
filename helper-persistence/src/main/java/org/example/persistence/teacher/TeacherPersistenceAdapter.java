@@ -1,14 +1,13 @@
 package org.example.persistence.teacher;
 
+import java.util.Optional;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.teacher.model.Teacher;
 import org.example.domain.teacher.spi.QueryTeacherPort;
 import org.example.persistence.teacher.mapper.TeacherMapper;
 import org.example.persistence.teacher.repository.TeacherJpaRepository;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
-import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor

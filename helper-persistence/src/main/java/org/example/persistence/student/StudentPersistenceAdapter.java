@@ -1,13 +1,12 @@
 package org.example.persistence.student;
 
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.student.model.Student;
 import org.example.domain.student.spi.QueryStudentPort;
 import org.example.persistence.student.mapper.StudentMapper;
 import org.example.persistence.student.repository.StudentJpaRepository;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor

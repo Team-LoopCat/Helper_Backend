@@ -1,5 +1,6 @@
 package org.example.persistence.student.mapper;
 
+import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.student.model.Student;
@@ -7,13 +8,11 @@ import org.example.persistence.GenericMapper;
 import org.example.persistence.auth.entity.UserJpaEntity;
 import org.example.persistence.auth.repository.UserJpaRepository;
 import org.example.persistence.student.entity.GradeInfoJpaEntity;
-import org.example.persistence.student.repository.GradeInfoJpaRepository;
 import org.example.persistence.student.entity.StudentJpaEntity;
+import org.example.persistence.student.repository.GradeInfoJpaRepository;
 import org.example.persistence.subject.entity.SubjectJpaEntity;
 import org.example.persistence.subject.repository.SubjectJpaRepository;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
