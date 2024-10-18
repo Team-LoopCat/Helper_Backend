@@ -8,17 +8,7 @@ public class SecurityServiceImpl implements SecurityService {
     private final SecurityPort securityPort;
 
     @Override
-    public Boolean checkUserIsAuthorized() {
-        return securityPort.checkUserIsAuthorized();
-    }
-
-    @Override
     public String getCurrentUserId() {
         return securityPort.getCurrentUserId();
-    }
-
-    @Override
-    public Boolean checkUserIsStudent() {
-        return securityPort.checkUserIsStudent();
     }
 }
