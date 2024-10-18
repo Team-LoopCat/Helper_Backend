@@ -12,8 +12,8 @@ public class CheckGradeInfoServiceImpl implements CheckGradeInfoService {
     private final QueryGradeInfoPort gradeInfoPort;
 
     @Override
-    public void checkGradeInfoExist(String grade, String classroom) {
-        if (gradeInfoPort.checkGradeInfoExist(grade, classroom)) {
+    public void checkGradeInfoNotExist(String grade, String classroom) {
+        if (!gradeInfoPort.checkGradeInfoExist(grade, classroom)) {
             throw GradeInfoNotExistsException.EXCEPTION;
         }
     }

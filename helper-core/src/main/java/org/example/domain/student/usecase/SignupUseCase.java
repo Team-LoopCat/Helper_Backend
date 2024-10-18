@@ -29,7 +29,7 @@ public class SignupUseCase {
 
         checkStudentService.checkStudentExistByEmail(request.email());
 
-        checkGradeInfoService.checkGradeInfoExist(request.grade(), request.classroom());
+        checkGradeInfoService.checkGradeInfoNotExist(request.grade(), request.classroom());
 
         String encryptedPassword = passwordEncoder.encode(request.password());
         commandUserService.saveUser(User.builder()
