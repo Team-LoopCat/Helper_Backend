@@ -21,14 +21,14 @@ public class CommentMapper implements GenericMapper<Comment, CommentJpaEntity> {
     public Optional<Comment> toDomain(Optional<CommentJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
 
-        CommentJpaEntity jpaEntity = entity.get();
+        CommentJpaEntity commentEntity = entity.get();
 
         return Optional.of(new Comment(
-                jpaEntity.getCommentId(),
-                jpaEntity.getStudent().getStudentId(),
-                jpaEntity.getPost().getPostId(),
-                jpaEntity.getContent(),
-                jpaEntity.getCreatedAt()
+                commentEntity.getCommentId(),
+                commentEntity.getStudent().getStudentId(),
+                commentEntity.getPost().getPostId(),
+                commentEntity.getContent(),
+                commentEntity.getCreatedAt()
         ));
     }
 

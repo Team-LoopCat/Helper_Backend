@@ -11,12 +11,12 @@ public class SubjectMapper implements GenericMapper<Subject, SubjectJpaEntity> {
     public Optional<Subject> toDomain(Optional<SubjectJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
 
-        SubjectJpaEntity subjectJpaEntity = entity.get();
+        SubjectJpaEntity subjectEntity = entity.get();
 
         return Optional.of(new Subject(
-                subjectJpaEntity.getSubjectId(),
-                subjectJpaEntity.getName(),
-                subjectJpaEntity.getOptional()
+                subjectEntity.getSubjectId(),
+                subjectEntity.getName(),
+                subjectEntity.getOptional()
         ));
     }
 

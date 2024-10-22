@@ -18,17 +18,17 @@ public class PostMapper implements GenericMapper<Post, PostJpaEntity> {
     public Optional<Post> toDomain(Optional<PostJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
 
-        PostJpaEntity jpaEntity = entity.get();
+        PostJpaEntity postEntity = entity.get();
 
         return Optional.of(new Post(
-                jpaEntity.getPostId(),
-                jpaEntity.getStudent().getStudentId(),
-                jpaEntity.getTitle(),
-                jpaEntity.getContent(),
-                Optional.ofNullable(jpaEntity.getPhoto()),
-                jpaEntity.getTag(),
-                jpaEntity.getCategory(),
-                jpaEntity.getCreatedAt()
+                postEntity.getPostId(),
+                postEntity.getStudent().getStudentId(),
+                postEntity.getTitle(),
+                postEntity.getContent(),
+                Optional.ofNullable(postEntity.getPhoto()),
+                postEntity.getTag(),
+                postEntity.getCategory(),
+                postEntity.getCreatedAt()
         ));
     }
 

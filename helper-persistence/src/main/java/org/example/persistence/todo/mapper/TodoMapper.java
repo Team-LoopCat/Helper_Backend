@@ -18,14 +18,14 @@ public class TodoMapper implements GenericMapper<Todo, TodoJpaEntity> {
     public Optional<Todo> toDomain(Optional<TodoJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
 
-        TodoJpaEntity todoJpaEntity = entity.get();
+        TodoJpaEntity todoEntity = entity.get();
 
         return Optional.of(new Todo(
-                todoJpaEntity.getTodoId(),
-                todoJpaEntity.getStudent().getStudentId(),
-                todoJpaEntity.getContent(),
-                todoJpaEntity.getCompleted(),
-                todoJpaEntity.getDate()
+                todoEntity.getTodoId(),
+                todoEntity.getStudent().getStudentId(),
+                todoEntity.getContent(),
+                todoEntity.getCompleted(),
+                todoEntity.getDate()
         ));
     }
 

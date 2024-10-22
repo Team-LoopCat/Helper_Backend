@@ -21,12 +21,12 @@ public class TestInfoMapper implements GenericMapper<TestInfo, TestInfoJpaEntity
     public Optional<TestInfo> toDomain(Optional<TestInfoJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
 
-        TestInfoJpaEntity testInfoJpaEntity = entity.get();
+        TestInfoJpaEntity testInfoEntity = entity.get();
 
         return Optional.of(new TestInfo(
-                testInfoJpaEntity.getAttend().getAttendId(),
-                testInfoJpaEntity.getTest().getTestId(),
-                testInfoJpaEntity.getEndDate()
+                testInfoEntity.getAttend().getAttendId(),
+                testInfoEntity.getTest().getTestId(),
+                testInfoEntity.getEndDate()
         ));
     }
 

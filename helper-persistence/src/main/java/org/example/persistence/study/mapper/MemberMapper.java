@@ -15,12 +15,12 @@ public class MemberMapper implements GenericMapper<Member, MemberJpaEntity> {
     public Optional<Member> toDomain(Optional<MemberJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
 
-        MemberJpaEntity memberJpaEntity = entity.get();
+        MemberJpaEntity memberEntity = entity.get();
 
         return Optional.of(new Member(
-                memberJpaEntity.getStudentId(),
-                memberJpaEntity.getStudyId(),
-                memberJpaEntity.getIsBanned()
+                memberEntity.getStudentId(),
+                memberEntity.getStudyId(),
+                memberEntity.getIsBanned()
         ));
     }
 

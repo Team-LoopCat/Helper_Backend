@@ -21,17 +21,17 @@ public class ExamDataMapper implements GenericMapper<ExamData, ExamDataJpaEntity
     public Optional<ExamData> toDomain(Optional<ExamDataJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
 
-        ExamDataJpaEntity examDataJpaEntity = entity.get();
+        ExamDataJpaEntity examDataEntity = entity.get();
 
         return Optional.of(new ExamData(
-                examDataJpaEntity.getExamDataId(),
-                examDataJpaEntity.getExam().getExamId(),
-                examDataJpaEntity.getSubject().getSubjectId(),
-                examDataJpaEntity.getDate(),
-                examDataJpaEntity.getPeriod(),
-                examDataJpaEntity.getProblems(),
-                examDataJpaEntity.getPercent(),
-                examDataJpaEntity.getContent()
+                examDataEntity.getExamDataId(),
+                examDataEntity.getExam().getExamId(),
+                examDataEntity.getSubject().getSubjectId(),
+                examDataEntity.getDate(),
+                examDataEntity.getPeriod(),
+                examDataEntity.getProblems(),
+                examDataEntity.getPercent(),
+                examDataEntity.getContent()
         ));
     }
 

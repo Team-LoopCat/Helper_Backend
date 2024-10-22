@@ -20,15 +20,15 @@ public class AttendMapper implements GenericMapper<Attend, AttendJpaEntity> {
 
     @Override
     public Optional<Attend> toDomain(Optional<AttendJpaEntity> entity) {
-        if(entity.isEmpty()) return Optional.empty();
+        if (entity.isEmpty()) return Optional.empty();
 
-        AttendJpaEntity attendJpaEntity = entity.get();
+        AttendJpaEntity attendEntity = entity.get();
 
         return Optional.of(new Attend(
-                attendJpaEntity.getAttendId(),
-                attendJpaEntity.getGradeInfo().getGrade(),
-                attendJpaEntity.getGradeInfo().getClassroom(),
-                attendJpaEntity.getSubject().getSubjectId()
+                attendEntity.getAttendId(),
+                attendEntity.getGradeInfo().getGrade(),
+                attendEntity.getGradeInfo().getClassroom(),
+                attendEntity.getSubject().getSubjectId()
         ));
     }
 

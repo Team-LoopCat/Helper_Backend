@@ -14,12 +14,12 @@ public class GradeInfoMapper implements GenericMapper<GradeInfo, GradeInfoJpaEnt
     public Optional<GradeInfo> toDomain(Optional<GradeInfoJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
 
-        GradeInfoJpaEntity jpaEntity = entity.get();
+        GradeInfoJpaEntity gradeInfoEntity = entity.get();
 
         return Optional.of(new GradeInfo(
-                jpaEntity.getGrade(),
-                jpaEntity.getClassroom(),
-                jpaEntity.getMajor()
+                gradeInfoEntity.getGrade(),
+                gradeInfoEntity.getClassroom(),
+                gradeInfoEntity.getMajor()
         ));
     }
 

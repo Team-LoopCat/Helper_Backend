@@ -15,14 +15,14 @@ public class TestMapper implements GenericMapper<Test, TestJpaEntity> {
     public Optional<Test> toDomain(Optional<TestJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
 
-        TestJpaEntity jpaEntity = entity.get();
+        TestJpaEntity testEntity = entity.get();
 
         return Optional.of(new Test(
-                jpaEntity.getTestId(),
-                jpaEntity.getTitle(),
-                jpaEntity.getContent(),
-                jpaEntity.getPercent(),
-                jpaEntity.getFile()
+                testEntity.getTestId(),
+                testEntity.getTitle(),
+                testEntity.getContent(),
+                testEntity.getPercent(),
+                testEntity.getFile()
         ));
     }
 

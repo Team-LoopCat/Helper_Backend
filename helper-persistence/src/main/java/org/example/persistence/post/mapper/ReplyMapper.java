@@ -21,15 +21,15 @@ public class ReplyMapper implements GenericMapper<Reply, ReplyJpaEntity> {
     public Optional<Reply> toDomain(Optional<ReplyJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
 
-        ReplyJpaEntity jpaEntity = entity.get();
+        ReplyJpaEntity replyEntity = entity.get();
 
         return Optional.of(new Reply(
-                jpaEntity.getReplyId(),
-                jpaEntity.getComment().getCommentId(),
-                jpaEntity.getStudent().getStudentId(),
-                jpaEntity.getContent(),
-                Optional.ofNullable(jpaEntity.getMention()),
-                jpaEntity.getCreatedAt()
+                replyEntity.getReplyId(),
+                replyEntity.getComment().getCommentId(),
+                replyEntity.getStudent().getStudentId(),
+                replyEntity.getContent(),
+                Optional.ofNullable(replyEntity.getMention()),
+                replyEntity.getCreatedAt()
         ));
     }
 

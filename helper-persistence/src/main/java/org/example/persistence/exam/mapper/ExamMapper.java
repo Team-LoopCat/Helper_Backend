@@ -15,14 +15,14 @@ public class ExamMapper implements GenericMapper<Exam, ExamJpaEntity> {
     public Optional<Exam> toDomain(Optional<ExamJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
 
-        ExamJpaEntity examJpaEntity = entity.get();
+        ExamJpaEntity examEntity = entity.get();
 
         return Optional.of(new Exam(
-                examJpaEntity.getExamId(),
-                examJpaEntity.getStart(),
-                examJpaEntity.getEnd(),
-                examJpaEntity.getName(),
-                examJpaEntity.getDeadline()
+                examEntity.getExamId(),
+                examEntity.getStart(),
+                examEntity.getEnd(),
+                examEntity.getName(),
+                examEntity.getDeadline()
         ));
     }
 

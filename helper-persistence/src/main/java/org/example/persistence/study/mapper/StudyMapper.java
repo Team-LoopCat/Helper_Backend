@@ -21,18 +21,18 @@ public class StudyMapper implements GenericMapper<Study, StudyJpaEntity> {
     public Optional<Study> toDomain(Optional<StudyJpaEntity> entity) {
         if (entity.isEmpty()) return Optional.empty();
 
-        StudyJpaEntity studyJpaEntity = entity.get();
+        StudyJpaEntity studyEntity = entity.get();
 
         return Optional.of(new Study(
-                studyJpaEntity.getStudyId(),
-                studyJpaEntity.getStudent().getStudentId(),
-                studyJpaEntity.getSubject().getSubjectId(),
-                studyJpaEntity.getTitle(),
-                studyJpaEntity.getContent(),
-                studyJpaEntity.getLocation(),
-                studyJpaEntity.getDate(),
-                studyJpaEntity.getEnd(),
-                studyJpaEntity.getCategory()
+                studyEntity.getStudyId(),
+                studyEntity.getStudent().getStudentId(),
+                studyEntity.getSubject().getSubjectId(),
+                studyEntity.getTitle(),
+                studyEntity.getContent(),
+                studyEntity.getLocation(),
+                studyEntity.getDate(),
+                studyEntity.getEnd(),
+                studyEntity.getCategory()
         ));
     }
 
