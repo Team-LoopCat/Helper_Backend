@@ -25,7 +25,7 @@ public class UserJpaEntity {
     @Column(nullable = false, columnDefinition = "VARCHAR(225)")
     private String password;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(7)")
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
 
