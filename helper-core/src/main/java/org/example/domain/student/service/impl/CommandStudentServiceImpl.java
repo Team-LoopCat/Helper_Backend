@@ -14,19 +14,7 @@ public class CommandStudentServiceImpl implements CommandStudentService {
     private final QueryStudentPort studentPort;
 
     @Override
-    public void saveStudent(SignupRequestDto request) {
-        String studentNum = StudentNumberUtil.combination(request.grade(), request.classroom(), request.number());
-
-        Student student = new Student(
-                studentNum,
-                request.grade(),
-                request.classroom(),
-                null, // 생성시에는 무조건 subjectId는 empty
-                request.id(),
-                request.nickname(),
-                request.email()
-        );
-
+    public void saveStudent(Student student) {
         studentPort.saveStudent(student);
     }
 }

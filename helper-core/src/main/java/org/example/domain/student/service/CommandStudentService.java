@@ -1,8 +1,8 @@
 package org.example.domain.student.service;
 
-import org.example.domain.student.dto.request.SignupRequestDto;
+import org.example.domain.student.model.Student;
 
 public interface CommandStudentService {
 
-    void saveStudent(SignupRequestDto request);
+    void saveStudent(Student student);
 }
