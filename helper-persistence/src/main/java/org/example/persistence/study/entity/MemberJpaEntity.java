@@ -1,14 +1,18 @@
 package org.example.persistence.study.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.persistence.student.entity.StudentJpaEntity;
 
 @Getter
 @Entity(name = "member")
@@ -18,11 +22,13 @@ import lombok.NoArgsConstructor;
 public class MemberJpaEntity {
 
     @Id
-    @Column(nullable = false, columnDefinition = "CHAR(4)")
+    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudentJpaEntity.class)
+    @JoinColumn(name = "studentId", referencedColumnName = "studentId")
     private String studentId;
 
     @Id
-    @Column(nullable = false, columnDefinition = "BINARY(16)")
+    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudyJpaEntity.class)
+    @JoinColumn(name = "studyId", referencedColumnName = "studyId")
     private UUID studyId;
 
     @Column(nullable = false, columnDefinition = "TINYINT")

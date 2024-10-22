@@ -9,7 +9,7 @@ import lombok.EqualsAndHashCode;
 @AllArgsConstructor
 public class MemberId implements Serializable {
 
-    private UUID studentId;
+    private String studentId;
 
     private UUID studyId;
 }
