@@ -4,11 +4,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
-import java.io.Serializable;
 import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -31,11 +29,3 @@ public class MemberJpaEntity {
     private Boolean isBanned;
 }
 
-@EqualsAndHashCode
-@AllArgsConstructor
-class MemberId implements Serializable {
-
-    private UUID studentId;
-
-    private UUID studyId;
-}
