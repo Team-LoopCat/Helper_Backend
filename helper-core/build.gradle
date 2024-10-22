@@ -15,6 +15,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 }
 
+bootJar {
+    enabled = false
+}
+
 test {
     useJUnitPlatform()
 }
