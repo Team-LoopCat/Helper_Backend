@@ -17,6 +17,10 @@ repositories {
 	mavenCentral()
 }
 
+springBoot {
+	setMainClass 'org.example.HelperApplication'
+}
+
 subprojects {
 	group 'com.example'
 	version '0.0.1-SNAPSHOT'

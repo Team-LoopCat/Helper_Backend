@@ -1,13 +1,6 @@
 package org.example.persistence.student.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Column;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.JoinColumns;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 import org.example.persistence.auth.entity.UserJpaEntity;
 import org.example.persistence.gradeInfo.entity.GradeInfo;

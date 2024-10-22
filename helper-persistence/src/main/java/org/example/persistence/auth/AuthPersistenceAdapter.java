@@ -6,7 +6,6 @@ import org.example.domain.auth.spi.QueryAuthPort;
 import org.example.persistence.auth.mapper.UserMapper;
 import org.example.persistence.auth.repository.UserJpaRepository;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
@@ -22,4 +21,17 @@ public class AuthPersistenceAdapter implements QueryAuthPort {
                 userJpaRepository.findByUserId(id)
         );
     }
+
+    @Override
+    public void saveUser(User user) {
+        userJpaRepository.save(
+                userMapper.toEntity(user)
+        );
+    }
+
+    @Override
+    public Boolean checkUserById(String id) {
+        return userJpaRepository.existsByUserId(id);
+    }
+
 }
