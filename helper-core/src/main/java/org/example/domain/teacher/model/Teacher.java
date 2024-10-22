@@ -1,10 +1,9 @@
 package org.example.domain.teacher.model;
 
+import java.util.UUID;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.auth.model.Role;
-
-import java.util.UUID;
 
 @Getter
 @RequiredArgsConstructor

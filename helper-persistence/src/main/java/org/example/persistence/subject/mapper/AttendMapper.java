@@ -1,7 +1,6 @@
 package org.example.persistence.subject.mapper;
 
 import java.util.Optional;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.subject.model.Attend;
 import org.example.persistence.GenericMapper;
