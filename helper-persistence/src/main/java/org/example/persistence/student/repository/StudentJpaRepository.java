@@ -9,5 +9,7 @@ public interface StudentJpaRepository extends CrudRepository<StudentJpaEntity, S
 
     Optional<StudentJpaEntity> findByStudentId(String studentId);
 
+    Boolean existsByStudentId(String studentNum);
+
     Boolean existsByEmail(String email);
 }

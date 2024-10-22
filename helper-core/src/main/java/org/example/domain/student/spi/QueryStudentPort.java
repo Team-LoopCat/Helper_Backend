@@ -8,5 +8,7 @@ public interface QueryStudentPort {
 
     Boolean checkStudentExistsByEmail(String email);
 
+    Boolean checkStudentExistsByStudentNum(String studentNum);
+
     void saveStudent(Student student);
 }

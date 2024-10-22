@@ -19,6 +19,11 @@ public class StudentPersistenceAdapter implements QueryStudentPort {
     }
 
     @Override
+    public Boolean checkStudentExistsByStudentNum(String studentNum) {
+        return studentRepository.existsByStudentId(studentNum);
+    }
+
+    @Override
     public void saveStudent(Student student) {
         studentRepository.save(
                 studentMapper.toEntity(student)
