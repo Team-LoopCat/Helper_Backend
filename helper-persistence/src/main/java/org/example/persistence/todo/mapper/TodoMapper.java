@@ -25,7 +25,7 @@ public class TodoMapper implements GenericMapper<Todo, TodoJpaEntity> {
                 todoJpaEntity.getStudent().getStudentId(),
                 todoJpaEntity.getContent(),
                 todoJpaEntity.getCompleted(),
-                Optional.ofNullable(todoJpaEntity.getDate())
+                todoJpaEntity.getDate()
         ));
     }
 
@@ -39,7 +39,7 @@ public class TodoMapper implements GenericMapper<Todo, TodoJpaEntity> {
                 studentJpaEntity,
                 entity.getContent(),
                 entity.getCompleted(),
-                entity.getDate().orElse(null)
+                entity.getDate()
         );
     }
 }

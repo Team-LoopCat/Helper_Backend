@@ -1,7 +1,6 @@
 package org.example.domain.todo.model;
 
 import java.time.LocalDate;
-import java.util.Optional;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -18,5 +17,5 @@ public class Todo {
 
     private final Boolean completed;
 
-    private final Optional<LocalDate> date;
+    private final LocalDate date;
 }

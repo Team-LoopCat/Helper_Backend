@@ -44,6 +44,6 @@ public class StudentJpaEntity {
     @Column(nullable = false, columnDefinition = "VARCHAR(40)")
     private String nickname;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
+    @Column(nullable = false, unique = true, columnDefinition = "VARCHAR(50)")
     private String email;
 }
