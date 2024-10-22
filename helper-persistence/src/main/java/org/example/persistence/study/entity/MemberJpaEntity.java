@@ -13,6 +13,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.persistence.student.entity.StudentJpaEntity;
+import org.hibernate.annotations.ColumnDefault;
 
 @Getter
 @Entity(name = "member")
@@ -31,6 +32,7 @@ public class MemberJpaEntity {
     @JoinColumn(name = "studyId", referencedColumnName = "studyId")
     private UUID studyId;
 
+    @ColumnDefault("false")
     @Column(nullable = false, columnDefinition = "TINYINT")
     private Boolean isBanned;
 }
