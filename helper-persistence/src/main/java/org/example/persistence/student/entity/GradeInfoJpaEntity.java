@@ -6,8 +6,10 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import jakarta.persistence.IdClass;
+import java.io.Serializable;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.domain.student.model.Major;
@@ -30,4 +32,13 @@ public class GradeInfoJpaEntity {
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Major major;
+}
+
+@EqualsAndHashCode
+@AllArgsConstructor
+class GradeInfoId implements Serializable {
+
+    private String grade;
+
+    private String classroom;
 }
