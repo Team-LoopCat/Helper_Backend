@@ -1,15 +1,14 @@
 package org.example.domain.teacher.model;
 
-import java.io.Serializable;
 import java.util.UUID;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 
-@EqualsAndHashCode
-@AllArgsConstructor
-public class Teach implements Serializable {
+@Getter
+@RequiredArgsConstructor
+public class Teach {
 
-    private UUID teacherId;
+    private final UUID teacherId;
 
-    private UUID subjectId;
+    private final UUID subjectId;
 }
