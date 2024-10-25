@@ -1,4 +1,4 @@
-package org.example.persistence.post.entity;
+package org.example.persistence.comment.entity;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -12,32 +12,30 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.persistence.post.entity.PostJpaEntity;
 import org.example.persistence.student.entity.StudentJpaEntity;
 import org.hibernate.annotations.ColumnDefault;
 
 @Getter
-@Entity(name = "reply")
+@Entity(name = "comment")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
-public class ReplyJpaEntity {
+public class CommentJpaEntity {
 
     @Id
     @Column(nullable = false, columnDefinition = "BINARY(16)")
-    private UUID replyId;
+    private UUID commentId;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudentJpaEntity.class)
     @JoinColumn(name = "studentId", referencedColumnName = "studentId")
     private StudentJpaEntity student;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = CommentJpaEntity.class)
-    @JoinColumn(name = "commentId", referencedColumnName = "commentId")
-    private CommentJpaEntity comment;
+    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = PostJpaEntity.class)
+    @JoinColumn(name = "postId", referencedColumnName = "postId")
+    private PostJpaEntity post;
 
     @Column(nullable = false, columnDefinition = "TEXT")
     private String content;
-
-    @Column(nullable = true, columnDefinition = "VARCHAR(10)")
-    private String mention;
 
     @ColumnDefault("NOW()")
     @Column(nullable = false, columnDefinition = "DATETIME")

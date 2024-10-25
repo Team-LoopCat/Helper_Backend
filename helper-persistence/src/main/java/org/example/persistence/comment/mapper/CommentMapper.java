@@ -1,10 +1,10 @@
-package org.example.persistence.post.mapper;
+package org.example.persistence.comment.mapper;
 
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import org.example.domain.post.model.Comment;
+import org.example.domain.comment.model.Comment;
 import org.example.persistence.GenericMapper;
-import org.example.persistence.post.entity.CommentJpaEntity;
+import org.example.persistence.comment.entity.CommentJpaEntity;
 import org.example.persistence.post.entity.PostJpaEntity;
 import org.example.persistence.post.repository.PostJpaRepository;
 import org.example.persistence.student.entity.StudentJpaEntity;

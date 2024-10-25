@@ -1,4 +1,4 @@
-package org.example.domain.teacher.model;
+package org.example.domain.subject.model;
 
 import java.util.UUID;
 import lombok.Getter;

@@ -1,4 +1,4 @@
-package org.example.domain.post.model;
+package org.example.domain.comment.model;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
