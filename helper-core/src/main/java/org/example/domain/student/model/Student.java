@@ -2,11 +2,12 @@ package org.example.domain.student.model;
 
 import java.util.Optional;
 import java.util.UUID;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import org.example.domain.auth.model.Role;
 
 @Getter
+@Builder
 @RequiredArgsConstructor
 public class Student {
 
@@ -23,6 +24,4 @@ public class Student {
     private final String nickname;
 
     private final String email;
-
-    private final Role role;
 }

@@ -1,9 +1,12 @@
 package org.example.domain.auth.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 
 @Getter
+@Builder
 @RequiredArgsConstructor
 public class User {
 
@@ -13,5 +16,6 @@ public class User {
 
     private final Role role;
 
-    private final String profile;
+    @Builder.Default
+    private final String profile = "DEFAULT_IMG_URL";
 }

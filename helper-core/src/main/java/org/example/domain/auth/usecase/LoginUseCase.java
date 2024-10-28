@@ -2,10 +2,12 @@ package org.example.domain.auth.usecase;
 
 
 import lombok.RequiredArgsConstructor;
+import org.example.common.service.SecurityService;
+import org.example.common.service.JwtService;
 import org.example.domain.auth.dto.request.LoginRequestDto;
 import org.example.domain.auth.dto.response.LoginResponseDto;
 import org.example.domain.auth.model.User;
-import org.example.domain.auth.service.LoginService;
+import org.example.domain.auth.service.GetUserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,14 +15,16 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class LoginUseCase {
-    private final LoginService loginService;
+    private final GetUserService getUserService;
+    private final SecurityService securityService;
+    private final JwtService jwtService;
 
     public LoginResponseDto execute(LoginRequestDto request) {
 
-        User user = loginService.getUserById(request.id());
+        User user = getUserService.getUserById(request.id());
 
-        loginService.checkPasswordMatches(request.password(), user.getPassword());
+        securityService.checkPasswordMatches(request.password(), user.getPassword());
 
-        return loginService.makeJwtTokens(user.getUserId(), user.getRole());
+        return jwtService.makeJwtTokens(user.getUserId(), user.getRole());
     }
 }

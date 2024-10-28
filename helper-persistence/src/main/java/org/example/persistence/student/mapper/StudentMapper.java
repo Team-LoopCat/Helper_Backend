@@ -34,8 +34,7 @@ public class StudentMapper implements GenericMapper<Student, StudentJpaEntity> {
                 Optional.ofNullable(studentEntity.getSubject().getSubjectId()),
                 studentEntity.getUser().getUserId(),
                 studentEntity.getNickname(),
-                studentEntity.getEmail(),
-                studentEntity.getUser().getRole()
+                studentEntity.getEmail()
         ));
     }
 
