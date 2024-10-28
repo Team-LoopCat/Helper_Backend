@@ -1,4 +1,4 @@
-package org.example.persistence.gradeInfo;
+package org.example.persistence.student;
 
 import lombok.RequiredArgsConstructor;
 import org.example.domain.student.spi.QueryGradeInfoPort;
