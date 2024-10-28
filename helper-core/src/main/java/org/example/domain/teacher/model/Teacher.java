@@ -1,15 +1,14 @@
 package org.example.domain.teacher.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import java.util.UUID;
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.example.domain.auth.model.Role;
 
-import java.util.UUID;
-
 @Getter
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Teacher {
+
     private final UUID teacherId;
 
     private final String userId;

@@ -1,37 +1,49 @@
 package org.example.persistence.student.entity;
 
-import jakarta.persistence.*;
-import lombok.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinColumns;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.example.persistence.auth.entity.UserJpaEntity;
-import org.example.persistence.gradeInfo.entity.GradeInfo;
-import org.hibernate.annotations.ColumnDefault;
+import org.example.persistence.subject.entity.SubjectJpaEntity;
 
 
 @Getter
-@AllArgsConstructor
 @Entity(name = "student")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor
 public class StudentJpaEntity {
-    @Id()
-    @Column(nullable = false, unique = true, columnDefinition = "char(4)")
+
+    @Id
+    @Column(nullable = false, unique = true, columnDefinition = "CHAR(4)")
     private String studentId;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = GradeInfo.class)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = GradeInfoJpaEntity.class)
     @JoinColumns({
             @JoinColumn(name = "grade", referencedColumnName = "grade"),
             @JoinColumn(name = "classroom", referencedColumnName = "classroom")
     })
-    private GradeInfo gradeInfo;
+    private GradeInfoJpaEntity gradeInfo;
 
-    // todo: subject 엔티티 추가시 외래키 추가할 것
+    @ManyToOne(cascade = CascadeType.ALL, optional = true, targetEntity = SubjectJpaEntity.class)
+    @JoinColumn(name = "subjectId", referencedColumnName = "subjectId")
+    private SubjectJpaEntity subject;
 
     @OneToOne(cascade = CascadeType.ALL, optional = false, targetEntity = UserJpaEntity.class)
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     private UserJpaEntity user;
 
-    @Column(nullable = false, columnDefinition = "varchar(40)")
+    @Column(nullable = false, columnDefinition = "VARCHAR(40)")
     private String nickname;
 
-    @Column(nullable = false, columnDefinition = "varchar(50)")
+    @Column(nullable = false, unique = true, columnDefinition = "VARCHAR(50)")
     private String email;
 }

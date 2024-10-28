@@ -1,5 +1,6 @@
 package org.example.persistence.teacher.mapper;
 
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.teacher.model.Teacher;
 import org.example.persistence.GenericMapper;
@@ -7,8 +8,6 @@ import org.example.persistence.auth.entity.UserJpaEntity;
 import org.example.persistence.auth.repository.UserJpaRepository;
 import org.example.persistence.teacher.entity.TeacherJpaEntity;
 import org.springframework.stereotype.Component;
-
-import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -30,7 +29,8 @@ public class TeacherMapper implements GenericMapper<Teacher, TeacherJpaEntity> {
 
     @Override
     public TeacherJpaEntity toEntity(Teacher entity) {
-        UserJpaEntity userJpaEntity = userJpaRepository.findByUserId(entity.getUserId()).orElseThrow();
+        UserJpaEntity userJpaEntity = userJpaRepository.findByUserId
+                (entity.getUserId()).orElse(null);
 
         return new TeacherJpaEntity(
                 entity.getTeacherId(),
