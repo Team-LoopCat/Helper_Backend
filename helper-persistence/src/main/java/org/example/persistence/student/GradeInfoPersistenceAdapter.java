@@ -2,7 +2,7 @@ package org.example.persistence.student;
 
 import lombok.RequiredArgsConstructor;
 import org.example.domain.student.spi.QueryGradeInfoPort;
-import org.example.persistence.gradeInfo.repository.GradeInfoJpaRepository;
+import org.example.persistence.student.repository.GradeInfoJpaRepository;
 import org.springframework.stereotype.Component;
 
 @Component

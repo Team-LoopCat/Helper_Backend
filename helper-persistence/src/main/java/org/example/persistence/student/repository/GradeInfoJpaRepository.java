@@ -8,4 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface GradeInfoJpaRepository extends CrudRepository<GradeInfoJpaEntity, GradeInfoId> {
 
     Optional<GradeInfoJpaEntity> findByClassroomAndGrade(String classroom, String grade);
+
+    Boolean existsByGradeAndClassroom(String grade, String classroom);
 }
