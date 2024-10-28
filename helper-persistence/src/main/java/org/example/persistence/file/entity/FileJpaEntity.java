@@ -24,11 +24,11 @@ public class FileJpaEntity {
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID fileId;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = PostJpaEntity.class)
+    @ManyToOne(cascade = CascadeType.ALL, optional = true, targetEntity = PostJpaEntity.class)
     @JoinColumn(name = "postId", referencedColumnName = "postId")
     private PostJpaEntity post;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = TestJpaEntity.class)
+    @ManyToOne(cascade = CascadeType.ALL, optional = true, targetEntity = TestJpaEntity.class)
     @JoinColumn(name = "testId", referencedColumnName = "testId")
     private TestJpaEntity test;
 

@@ -1,6 +1,7 @@
 package org.example.persistence.file.mapper;
 
 import java.util.Optional;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.file.model.File;
 import org.example.persistence.GenericMapper;
@@ -25,8 +26,8 @@ public class FileMapper implements GenericMapper<File, FileJpaEntity> {
 
         return Optional.of(new File(
                 fileEntity.getFileId(),
-                fileEntity.getPost().getPostId(),
-                fileEntity.getTest().getTestId(),
+                Optional.ofNullable(fileEntity.getPost().getPostId()),
+                Optional.ofNullable(fileEntity.getTest().getTestId()),
                 fileEntity.getUrl(),
                 fileEntity.getFilename()
         ));
@@ -35,10 +36,10 @@ public class FileMapper implements GenericMapper<File, FileJpaEntity> {
     @Override
     public FileJpaEntity toEntity(File entity) {
         PostJpaEntity postJpaEntity = postJpaRepository.findById
-                (entity.getPostId()).orElse(null);
+                (entity.getPostId().orElse(new UUID(0, 0))).orElse(null);
 
         TestJpaEntity testJpaEntity = testJpaRepository.findById
-                (entity.getTestId()).orElse(null);
+                (entity.getTestId().orElse(new UUID(0, 0))).orElse(null);
 
         return new FileJpaEntity(
                 entity.getFileId(),
