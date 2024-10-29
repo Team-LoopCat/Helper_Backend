@@ -1,12 +1,10 @@
 package org.example.global.security.exception;
 
-import org.example.global.exception.BusinessException;
-import org.example.global.exception.ErrorCode;
+import org.example.common.exception.GlobalBusinessException;
+import org.example.global.security.exception.errorCode.SecurityErrorCode;
 
-public class ForbiddenRoleException extends BusinessException {
-    public static InvalidRoleException Exception = new InvalidRoleException();
+public class ForbiddenRoleException extends GlobalBusinessException {
+    public static final InvalidRoleException EXCEPTION = new InvalidRoleException();
 
-    public ForbiddenRoleException() {
-        super(ErrorCode.FORBIDDEN_ROLE);
-    }
+    public ForbiddenRoleException() { super(SecurityErrorCode.FORBIDDEN_ROLE); }
 }

@@ -6,5 +6,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface QueryTeacherPort {
+
     public Optional<Teacher> queryUserById(UUID teacherId);
 }

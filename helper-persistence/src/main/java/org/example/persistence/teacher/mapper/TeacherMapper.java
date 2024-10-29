@@ -1,5 +1,6 @@
 package org.example.persistence.teacher.mapper;
 
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.teacher.model.Teacher;
 import org.example.persistence.GenericMapper;
@@ -8,35 +9,33 @@ import org.example.persistence.auth.repository.UserJpaRepository;
 import org.example.persistence.teacher.entity.TeacherJpaEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-
 @Component
 @RequiredArgsConstructor
 public class TeacherMapper implements GenericMapper<Teacher, TeacherJpaEntity> {
     private final UserJpaRepository userJpaRepository;
 
     @Override
-    public Optional<Teacher> toDomain(TeacherJpaEntity entity) {
-        if (entity == null) return Optional.empty();
+    public Optional<Teacher> toDomain(Optional<TeacherJpaEntity> entity) {
+        if (entity.isEmpty()) return Optional.empty();
+
+        TeacherJpaEntity teacherEntity = entity.get();
 
         return Optional.of(new Teacher(
-                entity.getTeacherId(),
-                entity.getUser().getUserId(),
-                entity.getName(),
-                entity.getProfile(),
-                entity.getUser().getRole()
+                teacherEntity.getTeacherId(),
+                teacherEntity.getUser().getUserId(),
+                teacherEntity.getName()
         ));
     }
 
     @Override
     public TeacherJpaEntity toEntity(Teacher entity) {
-        UserJpaEntity userJpaEntity = userJpaRepository.findByUserId(entity.getUserId()).orElseThrow();
+        UserJpaEntity userJpaEntity = userJpaRepository.findByUserId
+                (entity.getUserId()).orElse(null);
 
         return new TeacherJpaEntity(
                 entity.getTeacherId(),
                 userJpaEntity,
-                entity.getName(),
-                entity.getProfile()
+                entity.getName()
         );
     }
 }
