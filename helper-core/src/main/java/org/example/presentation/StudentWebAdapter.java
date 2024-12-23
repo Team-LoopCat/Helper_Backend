@@ -21,7 +21,7 @@ public class StudentWebAdapter {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/")
+    @DeleteMapping
     public void deleteStudent () {
         deleteStudentUseCase.execute();
     }
