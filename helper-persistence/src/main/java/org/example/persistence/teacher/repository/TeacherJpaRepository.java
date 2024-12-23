@@ -8,4 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface TeacherJpaRepository extends CrudRepository<TeacherJpaEntity, UUID> {
 
     Optional<TeacherJpaEntity> findByTeacherId(UUID teacherId);
+
+    Boolean existsTeacherJpaEntityByUserUserId(String id);
 }

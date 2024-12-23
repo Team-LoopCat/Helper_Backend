@@ -21,4 +21,9 @@ public class TeacherPersistenceAdapter implements QueryTeacherPort {
                 teacherJpaRepository.findByTeacherId(teacherId)
         );
     }
+
+    @Override
+    public Boolean checkTeacherId(String id) {
+        return teacherJpaRepository.existsTeacherJpaEntityByUserUserId(id);
+    }
 }
