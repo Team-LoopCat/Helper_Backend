@@ -4,7 +4,9 @@ import java.util.Optional;
 import org.example.domain.subject.model.Subject;
 import org.example.persistence.GenericMapper;
 import org.example.persistence.subject.entity.SubjectJpaEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SubjectMapper implements GenericMapper<Subject, SubjectJpaEntity> {
 
     @Override
