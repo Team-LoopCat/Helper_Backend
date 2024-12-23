@@ -1,18 +1,22 @@
 package org.example.persistence.student;
 
-import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.example.domain.auth.model.User;
 import org.example.domain.student.model.Student;
 import org.example.domain.student.spi.QueryStudentPort;
+import org.example.persistence.auth.mapper.UserMapper;
 import org.example.persistence.student.mapper.StudentMapper;
 import org.example.persistence.student.repository.StudentJpaRepository;
 import org.springframework.stereotype.Component;
+
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
 public class StudentPersistenceAdapter implements QueryStudentPort {
     private final StudentJpaRepository studentRepository;
     private final StudentMapper studentMapper;
+    private final UserMapper userMapper;
 
     @Override
     public Boolean checkStudentExistsByEmail(String email) {
@@ -28,6 +32,15 @@ public class StudentPersistenceAdapter implements QueryStudentPort {
     public void saveStudent(Student student) {
         studentRepository.save(
                 studentMapper.toEntity(student)
+        );
+    }
+
+    @Override
+    public Optional<Student> getStudentByUserId(User user) {
+        return studentMapper.toDomain(
+                studentRepository.findByUser(
+                        userMapper.toEntity(user)
+                )
         );
     }
 }

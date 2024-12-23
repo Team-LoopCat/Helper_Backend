@@ -31,7 +31,8 @@ public class StudentMapper implements GenericMapper<Student, StudentJpaEntity> {
                 studentEntity.getStudentId(),
                 studentEntity.getGradeInfo().getGrade(),
                 studentEntity.getGradeInfo().getClassroom(),
-                Optional.ofNullable(studentEntity.getSubject().getSubjectId()),
+                Optional.ofNullable(studentEntity.getSubject())
+                        .map(SubjectJpaEntity::getSubjectId),
                 studentEntity.getUser().getUserId(),
                 studentEntity.getNickname(),
                 studentEntity.getEmail()
