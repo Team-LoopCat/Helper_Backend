@@ -20,7 +20,7 @@ public class TeacherWebAdapter {
     private final GetTeacherMyUseCase getTeacherMyUseCase;
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping
+    @GetMapping("/my")
     public GetTeacherMyResponseDto getTeacherMy() {
         return getTeacherMyUseCase.execute();
     }
