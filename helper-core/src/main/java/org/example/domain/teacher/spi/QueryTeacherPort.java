@@ -3,11 +3,10 @@ package org.example.domain.teacher.spi;
 import org.example.domain.teacher.model.Teacher;
 
 import java.util.Optional;
-import java.util.UUID;
 
 public interface QueryTeacherPort {
 
-    Optional<Teacher> queryUserById(UUID teacherId);
+    Optional<Teacher> queryTeacherById(String id);
 
     Boolean checkTeacherId(String id);
 }
