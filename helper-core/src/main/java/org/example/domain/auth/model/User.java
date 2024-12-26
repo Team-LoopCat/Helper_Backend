@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @Builder
 @RequiredArgsConstructor
+@AllArgsConstructor
 public class User {
 
     private final String userId;

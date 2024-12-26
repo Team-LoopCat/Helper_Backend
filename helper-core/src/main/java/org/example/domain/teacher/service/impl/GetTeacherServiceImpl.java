@@ -20,4 +20,10 @@ public class GetTeacherServiceImpl implements GetTeacherService {
                 .orElseThrow(TeacherNotFoundException::new);
 
     }
+
+    @Override
+    public Teacher getTeacherByUserId(String id) {
+        return queryTeacherPort.queryTeacherById(id)
+                .orElseThrow(TeacherNotFoundException::new);
+    }
 }
