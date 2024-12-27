@@ -7,6 +7,7 @@ import org.example.domain.auth.service.GetUserService;
 import org.example.domain.student.dto.response.GetMyInfoResponseDto;
 import org.example.domain.student.model.Student;
 import org.example.domain.student.service.GetStudentService;
+import org.example.domain.subject.model.Subject;
 import org.example.domain.subject.service.GetSubjectService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,12 +26,10 @@ public class GetMyInfoUseCase {
         User user = getUserService.getUserById(userId);
         Student student = getStudentService.getStudentByUserId(user);
 
-        String selectedSubject;
-        if (student.getSubjectId().isPresent()) {
-            selectedSubject = getSubjectService.getSubjectById(student.getSubjectId().get()).getName();
-        } else {
-            selectedSubject = null;
-        }
+        String selectedSubject = student.getSubjectId()
+                .map(getSubjectService::getSubjectById)
+                .map(Subject::getName)
+                .orElse(null);
 
         return new GetMyInfoResponseDto(user.getProfile(), student.getNickname(), selectedSubject);
     }
