@@ -1,0 +1,25 @@
+package org.example.persistence.study;
+
+import java.util.Optional;
+import lombok.RequiredArgsConstructor;
+import org.example.domain.study.model.Study;
+import org.example.domain.study.spi.QueryStudyPort;
+import org.example.persistence.study.mapper.StudyMapper;
+import org.example.persistence.study.repository.StudyJpaRepository;
+import org.springframework.stereotype.Component;
+
+@Component
+@RequiredArgsConstructor
+public class StudyPersistenceAdapter implements QueryStudyPort {
+    private final StudyJpaRepository studyJpaRepository;
+    private final StudyMapper studyMapper;
+
+    @Override
+    public Study saveStudy(Study study) {
+        return studyMapper.toDomain(
+                Optional.of(studyJpaRepository.save(
+                        studyMapper.toEntity(study)
+                ))
+        ).get();
+    }
+}
