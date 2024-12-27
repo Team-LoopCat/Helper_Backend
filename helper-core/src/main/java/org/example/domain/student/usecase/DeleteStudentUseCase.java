@@ -15,6 +15,8 @@ public class DeleteStudentUseCase {
     private final SecurityService securityService;
 
     public void execute() {
-        commandUserService.deleteUser(securityService.getCurrentUserId());
+        commandUserService.deleteUser(
+                securityService.getCurrentUserId()
+        );
     }
 }
