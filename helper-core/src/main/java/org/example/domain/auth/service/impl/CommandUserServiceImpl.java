@@ -15,4 +15,9 @@ public class CommandUserServiceImpl implements CommandUserService {
     public void saveUser(User user) {
         authPort.saveUser(user);
     }
+
+    @Override
+    public void deleteUser(String userId) {
+        authPort.deleteUser(userId);
+    }
 }

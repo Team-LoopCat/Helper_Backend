@@ -1,5 +1,6 @@
-package org.example.persistence.subject.repository;
+package org.example.persistence.subject.repository;ㅌ
 
+import java.util.Optional;
 import java.util.List;
 import java.util.UUID;
 import org.example.domain.subject.spi.vo.SubjectAndAttendVO;
@@ -21,4 +22,6 @@ public interface SubjectJpaRepository extends CrudRepository<SubjectJpaEntity, U
             "WHERE t.teacher_id = :teacherId",
             nativeQuery = true)
     List<SubjectAndAttendVO> findAllByTeachTeacherId(@Param("teacherId") UUID teacherId);
+  
+    Optional<SubjectJpaEntity> findBySubjectId(UUID id);
 }

@@ -5,8 +5,9 @@ import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 
 import org.example.domain.subject.service.GetSubjectService;
-import org.example.domain.subject.spi.QuerySubjectPort;
 import org.example.domain.subject.spi.vo.SubjectAndAttendVO;
+import org.example.domain.subject.exception.SubjectNotFoundException;
+import org.example.domain.subject.model.Subject;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,5 +18,11 @@ public class GetSubjectServiceImpl implements GetSubjectService {
     @Override
     public List<SubjectAndAttendVO> getSubjectsAndAttendsByTeacherId(UUID teacherId) {
         return querySubjectPort.getSubjectsAndAttendsByTeacherId(teacherId);
+
+    @Override
+    public Subject getSubjectById(UUID id) {
+        return querySubjectPort.getSubjectById(id).orElseThrow(
+                () -> SubjectNotFoundException.EXCEPTION
+        );
     }
 }
