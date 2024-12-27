@@ -16,14 +16,14 @@ public class GetTeacherServiceImpl implements GetTeacherService {
 
     @Override
     public Teacher getCurrentTeacher() {
-        return queryTeacherPort.queryTeacherById(securityPort.getCurrentUserId())
+        return queryTeacherPort.queryTeacherByUserId(securityPort.getCurrentUserId())
                 .orElseThrow(TeacherNotFoundException::new);
 
     }
 
     @Override
     public Teacher getTeacherByUserId(String id) {
-        return queryTeacherPort.queryTeacherById(id)
+        return queryTeacherPort.queryTeacherByUserId(id)
                 .orElseThrow(TeacherNotFoundException::new);
     }
 }

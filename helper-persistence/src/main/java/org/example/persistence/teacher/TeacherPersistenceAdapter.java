@@ -25,7 +25,7 @@ public class TeacherPersistenceAdapter implements QueryTeacherPort {
     }
 
     @Override
-    public Optional<Teacher> queryTeacherById(String id) {
+    public Optional<Teacher> queryTeacherByUserId(String id) {
         return teacherMapper.toDomain(
                 teacherJpaRepository.findByUserUserId(id)
         );
