@@ -1,11 +1,13 @@
 package org.example.global.security.jwt;
 
 import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.auth.model.Role;
 import org.example.global.security.auth.CustomUserDetailService;
+import org.example.global.security.exception.ExpiredTokenException;
 import org.example.global.security.exception.InvalidRoleException;
 import org.example.global.security.exception.InvalidTokenException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,7 +27,7 @@ public class JwtParser {
     public Authentication getAuthentication(String token) {
         Claims claims = getClaims(token);
 
-        if (claims.get("type") != "access") {
+        if (!claims.get("type").equals("access")) {
             throw InvalidTokenException.EXCEPTION;
         }
 
@@ -40,8 +42,10 @@ public class JwtParser {
                 .setSigningKey(jwtProperties.secret())
                 .parseClaimsJws(token)
                 .getBody();
+        } catch (ExpiredJwtException e) {
+            throw ExpiredTokenException.EXCEPTION;
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            throw InvalidTokenException.EXCEPTION;
         }
     }
 
@@ -49,14 +53,14 @@ public class JwtParser {
         String token = req.getHeader(jwtProperties.header());
 
         if (StringUtils.hasText(token) && token.startsWith(jwtProperties.prefix()) && token.length() > 7) {
-            token = token.split(" ")[0];
+            token = token.split(" ")[1];
         }
 
         return token;
     }
 
     public UserDetails getDetail(Claims body) {
-        String role = body.get("body").toString();
+        String role = body.get("role").toString();
 
         if (List.of(Role.Head, Role.Student, Role.Teacher).contains(Role.valueOf(role))) {
             return customUserDetailService.loadUserByUserId(body.getSubject());
