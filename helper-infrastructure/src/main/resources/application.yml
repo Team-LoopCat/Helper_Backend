@@ -1,5 +1,5 @@
-# database Setting
 spring:
+  # database Setting
   datasource:
     driver-class-name: ${DB_DRIVER}
     url: ${DB_URL}
@@ -13,9 +13,26 @@ spring:
         format_sql: true
         show_sql: true
 
+  # mail setting
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${EMAIL_ADDRESS}
+    password: ${EMAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+          timeout: 5000
+          writetimeout: 5000
+          connectiontimeout: 5000
 jwt:
   prefix: ${JWT_PREFIX}
   header: ${JWT_HEADER}
   secret: ${JWT_SECRET}
   access_time: ${JWT_ACCESS_TIME}
   refresh-time: ${JWT_REFRESH_TIME}
+
