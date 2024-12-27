@@ -4,6 +4,9 @@ import lombok.RequiredArgsConstructor;
 import org.example.common.service.SecurityService;
 import org.example.common.spi.SecurityPort;
 import org.example.domain.auth.exception.PasswordMismatchException;
+import org.example.domain.auth.exception.UserNotFoundException;
+import org.example.domain.auth.model.User;
+import org.example.domain.auth.spi.QueryAuthPort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SecurityServiceImpl implements SecurityService {
     private final SecurityPort securityPort;
+    private final QueryAuthPort authPort;
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Override
@@ -18,6 +22,11 @@ public class SecurityServiceImpl implements SecurityService {
         return securityPort.getCurrentUserId();
     }
 
+    @Override
+    public User getCurrentUser() {
+        return authPort.getUserById(securityPort.getCurrentUserId())
+                .orElseThrow(UserNotFoundException::new);
+    }
 
     @Override
     public void checkPasswordMatches(String rawPassword, String encodedPassword) {
