@@ -15,6 +15,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @Transactional
 @RequiredArgsConstructor
@@ -48,6 +50,7 @@ public class SignupUseCase {
                         .grade(request.grade())
                         .classroom(request.classroom())
                         .userId(request.id())
+                        .subjectId(Optional.empty())
                         .nickname(request.nickname())
                         .email(request.email())
                         .build()
