@@ -15,6 +15,11 @@ public class GetUserServiceImpl implements GetUserService {
     private final QueryAuthPort authPort;
 
     @Override
+    public String getProfileImageById(String id) {
+        return getUserById(id).getProfile();
+    }
+
+    @Override
     public User getUserById(String id) {
         return authPort.getUserById(id)
              .orElseThrow(() -> UserNotFoundException.EXCEPTION);

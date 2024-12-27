@@ -1,11 +1,12 @@
 package org.example.common.service;
 
-import org.springframework.stereotype.Service;
+import org.example.domain.auth.model.User;
 
-@Service
 public interface SecurityService {
 
     String getCurrentUserId();
+
+    User getCurrentUser();
 
     void checkPasswordMatches(String rawPassword, String encodedPassword);
 }
