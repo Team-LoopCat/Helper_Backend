@@ -33,4 +33,8 @@ public class AuthPersistenceAdapter implements QueryAuthPort {
         return userJpaRepository.existsByUserId(id);
     }
 
+    @Override
+    public void deleteUser(String id) {
+        userJpaRepository.deleteByUserId(id);
+    }
 }

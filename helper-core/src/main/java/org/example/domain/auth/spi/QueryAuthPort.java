@@ -11,4 +11,6 @@ public interface QueryAuthPort {
     void saveUser(User user);
 
     Boolean checkUserById(String id);
+
+    void deleteUser(String id);
 }
