@@ -38,7 +38,7 @@ public class TeacherWebAdapter {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/check")
-    public void checkId(CheckIdExistRequestDto checkIdRequest) {
+    public void checkId(@RequestBody CheckIdExistRequestDto checkIdRequest) {
         checkIdExistUseCase.execute(checkIdRequest);
     }
 }

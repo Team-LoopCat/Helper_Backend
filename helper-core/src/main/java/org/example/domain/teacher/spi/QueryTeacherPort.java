@@ -10,5 +10,5 @@ public interface QueryTeacherPort {
 
     Optional<Teacher> queryTeacherByUserId(String id);
 
-    Boolean checkTeacherId(String id);
+    Boolean checkTeacherId(String id)
 }

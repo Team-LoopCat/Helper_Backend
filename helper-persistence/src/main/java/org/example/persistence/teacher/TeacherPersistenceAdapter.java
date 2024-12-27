@@ -30,9 +30,4 @@ public class TeacherPersistenceAdapter implements QueryTeacherPort {
                 teacherJpaRepository.findByUserUserId(id)
         );
     }
-
-    @Override
-    public Boolean checkTeacherId(String id) {
-        return teacherJpaRepository.existsTeacherJpaEntityByUserUserId(id);
-    }
 }
