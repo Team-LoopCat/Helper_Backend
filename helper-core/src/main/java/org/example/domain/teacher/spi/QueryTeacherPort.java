@@ -6,7 +6,9 @@ import java.util.Optional;
 
 public interface QueryTeacherPort {
 
-    Optional<Teacher> queryTeacherById(String id);
+    Teacher saveTeacher(Teacher teacher);
+
+    Optional<Teacher> queryTeacherByUserId(String id);
 
     Boolean checkTeacherId(String id);
 }
