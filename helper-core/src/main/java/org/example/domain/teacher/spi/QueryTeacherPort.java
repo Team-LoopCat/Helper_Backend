@@ -8,6 +8,4 @@ import java.util.UUID;
 public interface QueryTeacherPort {
 
     Optional<Teacher> queryUserById(UUID teacherId);
-
-    Boolean checkTeacherId(String id);
 }

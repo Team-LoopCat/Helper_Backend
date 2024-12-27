@@ -1,8 +1,8 @@
 package org.example.domain.teacher.usecase;
 
 import lombok.RequiredArgsConstructor;
+import org.example.domain.auth.service.CheckUserService;
 import org.example.domain.teacher.dto.request.CheckIdExistRequestDto;
-import org.example.domain.teacher.service.CheckTeacherService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,9 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class CheckIdExistUseCase {
-    private final CheckTeacherService checkTeacherService;
+    private final CheckUserService checkUserService;
 
     public void execute(CheckIdExistRequestDto request) {
-        checkTeacherService.checkIdExist(request.id());
+        checkUserService.checkUserExistsById(request.id());
     }
 }

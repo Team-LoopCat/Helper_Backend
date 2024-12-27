@@ -5,7 +5,7 @@ import org.example.common.exception.GlobalErrorCode;
 
 @RequiredArgsConstructor
 public enum TeacherErrorCode implements GlobalErrorCode {
-    ID_ALREADY_EXIST(409, "이미 존재하는 아이디입니다.");
+    ;
 
     private final int errorStatus;
     private final String errorMessage;
