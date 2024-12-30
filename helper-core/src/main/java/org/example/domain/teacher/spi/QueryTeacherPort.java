@@ -9,6 +9,4 @@ public interface QueryTeacherPort {
     Teacher saveTeacher(Teacher teacher);
 
     Optional<Teacher> queryTeacherByUserId(String id);
-
-    Boolean checkTeacherId(String id);
 }
