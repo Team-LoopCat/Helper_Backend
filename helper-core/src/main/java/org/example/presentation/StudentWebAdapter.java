@@ -27,7 +27,7 @@ public class StudentWebAdapter {
     @GetMapping("/my")
     public GetMyInfoResponseDto getMyInfo () {
         return getMyInfoUseCase.execute();
-
+    }
   
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping

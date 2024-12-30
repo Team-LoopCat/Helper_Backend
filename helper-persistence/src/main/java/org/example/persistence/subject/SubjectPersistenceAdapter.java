@@ -20,11 +20,12 @@ public class SubjectPersistenceAdapter implements QuerySubjectPort {
     @Override
     public List<SubjectAndAttendVO> getSubjectsAndAttendsByTeacherId(UUID teacherId) {
         return subjectJpaRepository.findAllByTeachTeacherId(teacherId);
+    }
 
     @Override
     public Optional<Subject> getSubjectById(UUID subjectId) {
         return subjectMapper.toDomain(
-                subjectRepository.findBySubjectId(subjectId)
+                subjectJpaRepository.findBySubjectId(subjectId)
         );
     }
 }
