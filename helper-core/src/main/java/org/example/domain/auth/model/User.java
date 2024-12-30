@@ -1,6 +1,5 @@
 package org.example.domain.auth.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -8,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 @Getter
 @Builder
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class User {
 
     private final String userId;

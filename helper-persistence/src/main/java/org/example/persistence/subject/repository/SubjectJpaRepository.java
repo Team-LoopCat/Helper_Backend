@@ -1,4 +1,4 @@
-package org.example.persistence.subject.repository;ㅌ
+package org.example.persistence.subject.repository;
 
 import java.util.Optional;
 import java.util.List;
