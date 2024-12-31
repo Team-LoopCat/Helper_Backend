@@ -2,7 +2,7 @@ package org.example.common.util;
 
 import java.util.Random;
 
-public class VerifyCodeUtil {
+public final class VerifyCodeUtil {
 
     public static String createRandomCode() {
         Random random = new Random();
