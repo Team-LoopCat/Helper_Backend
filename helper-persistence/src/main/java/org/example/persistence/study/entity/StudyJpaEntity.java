@@ -48,6 +48,9 @@ public class StudyJpaEntity {
     private String date;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(10)")
+    private String start;
+
+    @Column(nullable = false, columnDefinition = "VARCHAR(10)")
     private String end;
 
     @Column(nullable = false)
