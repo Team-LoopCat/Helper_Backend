@@ -32,6 +32,7 @@ public class PostStudyUseCase {
                         .content(request.content())
                         .location(request.location())
                         .date(request.date())
+                        .start(request.start())
                         .end(request.end())
                         .category(request.category())
                         .build()

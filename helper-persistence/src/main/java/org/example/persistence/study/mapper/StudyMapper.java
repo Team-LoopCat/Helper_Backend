@@ -31,6 +31,7 @@ public class StudyMapper implements GenericMapper<Study, StudyJpaEntity> {
                 studyEntity.getContent(),
                 studyEntity.getLocation(),
                 studyEntity.getDate(),
+                studyEntity.getStart(),
                 studyEntity.getEnd(),
                 studyEntity.getCategory()
         ));
@@ -52,6 +53,7 @@ public class StudyMapper implements GenericMapper<Study, StudyJpaEntity> {
                 entity.getContent(),
                 entity.getLocation(),
                 entity.getDate(),
+                entity.getStart(),
                 entity.getEnd(),
                 entity.getCategory()
         );
