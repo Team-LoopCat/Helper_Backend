@@ -7,5 +7,7 @@ public interface EmailService {
 
     void sendEmail(MimeMessage emailForm);
 
-    MimeMessage makeEmailForm(String content, String requestEmail, String senderEmail) throws MessagingException;
+    void checkEmailIsValid(String email);
+
+    MimeMessage makeEmailForm(String content, String requestEmail, String senderEmail);
 }

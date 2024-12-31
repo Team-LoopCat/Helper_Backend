@@ -1,7 +1,7 @@
-package org.example.domain.student.exception.errorCode;
+package org.example.domain.student.exception;
 
 import org.example.common.exception.GlobalBusinessException;
-import org.example.common.exception.GlobalErrorCode;
+import org.example.domain.student.exception.errorCode.StudentErrorCode;
 
 public class EmailSendingException extends GlobalBusinessException {
     public static final EmailSendingException EXCEPTION = new EmailSendingException();

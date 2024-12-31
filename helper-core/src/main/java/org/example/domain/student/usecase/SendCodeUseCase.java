@@ -5,7 +5,7 @@ import org.example.common.service.EmailService;
 import org.example.common.service.RedisService;
 import org.example.common.util.VerifyCodeUtil;
 import org.example.domain.student.dto.request.SendCodeRequestDto;
-import org.example.domain.student.exception.errorCode.EmailSendingException;
+import org.example.domain.student.exception.EmailSendingException;
 import org.springframework.beans.factory.annotation.Value;
 import jakarta.mail.MessagingException;
 
@@ -24,20 +24,17 @@ public class SendCodeUseCase {
     private String senderEmail;
 
     public void execute(SendCodeRequestDto request) {
+        emailService.checkEmailIsValid(request.email());
+
         String code = VerifyCodeUtil.createRandomCode();
 
-        try {
-            emailService.sendEmail(
-                    emailService.makeEmailForm(code, request.email(), senderEmail)
-            );
-        } catch (MessagingException e) {
-            throw EmailSendingException.EXCEPTION;
-        }
+        emailService.sendEmail(
+                emailService.makeEmailForm(code, request.email(), senderEmail)
+        );
 
         if (redisService.checkDataExists(request.email())) {
             redisService.deleteData(request.email());
         }
-
         redisService.setData(request.email(), code, 60 * 5L);
     }
 }
