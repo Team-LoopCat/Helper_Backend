@@ -15,7 +15,7 @@ spring:
 
 cloud:
   aws:
-    buket: ${S3_BUKET_NAME}
+    bucket: ${S3_BUCKET_NAME}
     stack:
       auto: false
     credentials:

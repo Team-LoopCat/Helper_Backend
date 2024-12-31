@@ -15,7 +15,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class FileAdapter implements FileService {
     @Value("${cloud.aws.bucket}")
-    private String buket;
+    private String bucket;
 
     private final AmazonS3Client amazonS3Client;
 
@@ -28,9 +28,9 @@ public class FileAdapter implements FileService {
             objectMetadata.setContentType(file.getContentType());
             objectMetadata.setContentLength(file.getSize());
 
-            amazonS3Client.putObject(buket, fileName, file.getInputStream(), objectMetadata);
+            amazonS3Client.putObject(bucket, fileName, file.getInputStream(), objectMetadata);
 
-            return amazonS3Client.getResourceUrl(buket, fileName);
+            return amazonS3Client.getResourceUrl(bucket, fileName);
         } catch (Exception e) {
             throw FileUploadException.EXCEPTION;
         }
