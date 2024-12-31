@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.domain.study.dto.request.PostStudyRequestDto;
 import org.example.domain.study.dto.request.UpdateStudyRequestDto;
 import org.example.domain.study.dto.response.PostStudyResponseDto;
+import org.example.domain.study.usecase.DeleteStudyUseCase;
 import org.example.domain.study.usecase.PostStudyUseCase;
 import org.example.domain.study.usecase.UpdateStudyUseCase;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StudyWebAdapter {
     private final PostStudyUseCase postStudyUseCase;
     private final UpdateStudyUseCase updateStudyUseCase;
+    private final DeleteStudyUseCase deleteStudyUseCase;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -39,6 +41,6 @@ public class StudyWebAdapter {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{study_id}")
     public void deleteStudy(@PathVariable("study_id") UUID studyId) {
-
+        deleteStudyUseCase.execute(studyId);
     }
 }
