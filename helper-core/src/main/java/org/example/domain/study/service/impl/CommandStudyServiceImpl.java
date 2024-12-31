@@ -15,4 +15,9 @@ public class CommandStudyServiceImpl implements CommandStudyService {
     public Study saveStudy(Study study) {
         return queryStudyPort.saveStudy(study);
     }
+
+    @Override
+    public void deleteStudy(Study study) {
+        queryStudyPort.deleteStudyByStudyId(study.getStudyId());
+    }
 }
