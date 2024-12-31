@@ -22,7 +22,7 @@ public class FileAdapter implements FileService {
     @Override
     public String uploadFile(MultipartFile file) {
         try {
-            String fileName = file.getOriginalFilename() + UUID.randomUUID();
+            String fileName =  UUID.randomUUID() + file.getOriginalFilename();
 
             ObjectMetadata objectMetadata = new ObjectMetadata();
             objectMetadata.setContentType(file.getContentType());
