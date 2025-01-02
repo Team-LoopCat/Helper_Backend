@@ -21,7 +21,8 @@ public class EmailAdapter implements EmailService {
 
     @Override
     public void checkEmailIsValid(String email) {
-        if (email == null || !email.endsWith(".com")) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        if (email == null || !email.matches(emailRegex)) {
             throw EmailNotValidException.EXCEPTION;
         }
     }
