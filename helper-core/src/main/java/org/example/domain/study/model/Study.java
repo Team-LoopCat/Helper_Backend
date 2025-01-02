@@ -24,6 +24,8 @@ public class Study {
 
     private final String date;
 
+    private final String start;
+
     private final String end;
 
     private final Category category;
