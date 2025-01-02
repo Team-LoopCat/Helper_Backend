@@ -1,5 +1,8 @@
 package org.example.common.util;
 
+import org.example.domain.student.exception.CodeNotExistsInRedisException;
+import org.example.domain.student.exception.VerifyCodeNotMatchesException;
+
 import java.util.Random;
 
 public final class VerifyCodeUtil {
@@ -14,5 +17,17 @@ public final class VerifyCodeUtil {
         }
 
         return randomNumber.toString();
+    }
+
+    public static void checkCodeExistsInRedis(String redisCode) {
+        if (redisCode == null) {
+            throw CodeNotExistsInRedisException.EXCEPTION;
+        }
+    }
+
+    public static void checkCodeMatches(String generatedCode, String RequestCode) {
+        if (!generatedCode.equals(RequestCode)) {
+            throw VerifyCodeNotMatchesException.EXCEPTION;
+        }
     }
 }
