@@ -22,7 +22,7 @@ public class UpdateStudyUseCase {
     private final SecurityService securityService;
 
     public void execute(UUID studyId, UpdateStudyRequestDto request) {
-        Study currentStudy = getStudyService.findByStudyId(studyId);
+        Study currentStudy = getStudyService.getStudyById(studyId);
         User currentUser = securityService.getCurrentUser();
 
         checkStudyService.checkStudyIsOwn(currentStudy, currentUser);

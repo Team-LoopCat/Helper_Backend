@@ -14,7 +14,7 @@ public class GetStudyServiceImpl implements GetStudyService {
     private final QueryStudyPort queryStudyPort;
 
     @Override
-    public Study findByStudyId(UUID studyId) {
+    public Study getStudyById(UUID studyId) {
         return queryStudyPort.findByStudyId(studyId).orElseThrow(
                 () -> StudyNotFoundException.EXCEPTION
         );

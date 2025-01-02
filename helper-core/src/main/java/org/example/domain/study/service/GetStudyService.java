@@ -5,5 +5,5 @@ import org.example.domain.study.model.Study;
 
 public interface GetStudyService {
 
-    Study findByStudyId(UUID studyId);
+    Study getStudyById(UUID studyId);
 }
