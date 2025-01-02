@@ -9,6 +9,7 @@ import org.example.domain.student.usecase.GetMyInfoUseCase;
 import org.example.domain.student.usecase.DeleteStudentUseCase;
 import org.example.domain.student.usecase.SendCodeUseCase;
 import org.example.domain.student.usecase.SignupUseCase;
+import org.example.domain.student.usecase.UpdateUserUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +22,7 @@ public class StudentWebAdapter {
     private final GetMyInfoUseCase getMyInfoUseCase;
     private final DeleteStudentUseCase deleteStudentUseCase;
     private final SendCodeUseCase sendCodeUseCase;
+    private final UpdateUserUseCase updateUserUseCase;
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/signup")
@@ -49,5 +51,6 @@ public class StudentWebAdapter {
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/profile")
     public void updateUser (@RequestPart(value = "profile", required = false) MultipartFile file, @RequestPart("body") UpdateStudentRequestDto request) {
+        updateUserUseCase.execute(file, request);
     }
 }
