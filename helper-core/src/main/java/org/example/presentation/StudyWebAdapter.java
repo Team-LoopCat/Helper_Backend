@@ -6,6 +6,7 @@ import org.example.domain.study.dto.response.GetStudyListResponseDto;
 import org.example.domain.study.dto.request.PostStudyRequestDto;
 import org.example.domain.study.dto.request.UpdateStudyRequestDto;
 import org.example.domain.study.dto.response.PostStudyResponseDto;
+import org.example.domain.study.model.Category;
 import org.example.domain.study.usecase.DeleteStudyUseCase;
 import org.example.domain.study.usecase.GetStudyListUseCase;
 import org.example.domain.study.usecase.PostStudyUseCase;
@@ -51,7 +52,7 @@ public class StudyWebAdapter {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    public GetStudyListResponseDto getStudyList(@RequestParam("subjectId") UUID subjectId) {
-        return getStudyListUseCase.execute(subjectId);
+    public GetStudyListResponseDto getStudyList(@RequestParam("category") Category category) {
+        return getStudyListUseCase.execute(category);
     }
 }
