@@ -19,11 +19,6 @@ public final class VerifyCodeUtil {
         return randomNumber.toString();
     }
 
-    public static void checkCodeExistsInRedis(String redisCode) {
-        if (redisCode == null) {
-            throw CodeNotExistsInRedisException.EXCEPTION;
-        }
-    }
 
     public static void checkCodeMatches(String generatedCode, String RequestCode) {
         if (!generatedCode.equals(RequestCode)) {
