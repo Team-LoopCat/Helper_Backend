@@ -25,6 +25,11 @@ public class StudyPersistenceAdapter implements QueryStudyPort {
     }
 
     @Override
+    public Optional<StudyWithMemberCountVO> findStudyDetailByStudyId(UUID studyId) {
+        return studyJpaRepository.findDetailByStudyId(studyId);
+    }
+
+    @Override
     public Study saveStudy(Study study) {
         return studyMapper.toDomain(
                 Optional.of(studyJpaRepository.save(
