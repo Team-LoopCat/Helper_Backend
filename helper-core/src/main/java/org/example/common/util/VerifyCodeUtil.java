@@ -18,11 +18,4 @@ public final class VerifyCodeUtil {
 
         return randomNumber.toString();
     }
-
-
-    public static void checkCodeMatches(String generatedCode, String RequestCode) {
-        if (!generatedCode.equals(RequestCode)) {
-            throw VerifyCodeNotMatchesException.EXCEPTION;
-        }
-    }
 }
