@@ -10,5 +10,7 @@ public interface GetStudyService {
 
     Study getStudyById(UUID studyId);
 
+    StudyWithMemberCountVO getStudyDetailById(UUID studyId);
+
     List<StudyWithMemberCountVO> getStudyListBySubject(Subject subject);
 }
