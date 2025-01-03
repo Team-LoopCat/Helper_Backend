@@ -50,7 +50,7 @@ public class StudentWebAdapter {
 
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/profile")
-    public void updateUser (@RequestPart(value = "profile", required = false) MultipartFile file, @RequestPart("body") UpdateStudentRequestDto request) {
-        updateUserUseCase.execute(file, request);
+    public void updateUser (@RequestBody UpdateStudentRequestDto request) {
+        updateUserUseCase.execute(request);
     }
 }
