@@ -21,4 +21,14 @@ public interface StudyJpaRepository extends CrudRepository<StudyJpaEntity, UUID>
             "ORDER BY s.date, s.start",
             nativeQuery = true)
     List<StudyWithMemberCountVO> findAllByCategoryWithCount(@Param("category") Category category);
+
+    @Query(value =
+            "SELECT s.study_id, s.student_id, s.subject_id, s.title, s.location, s.date, s.start, s.end, s.category, count(m.study_id) " +
+            "FROM study s " +
+            "JOIN member m " +
+            "ON s.study_id = m.study_id && m.is_banned = 0 " +
+            "GROUP BY s.study_id " +
+            "ORDER BY s.date, s.start",
+            nativeQuery = true)
+    List<StudyWithMemberCountVO> findAllWithCount();
 }

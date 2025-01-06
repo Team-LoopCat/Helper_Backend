@@ -52,7 +52,7 @@ public class StudyWebAdapter {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
-    public GetStudyListResponseDto getStudyList(@RequestParam("category") Category category) {
+    public GetStudyListResponseDto getStudyList(@RequestParam(value = "category", required = false) Category category) {
         return getStudyListUseCase.execute(category);
     }
 }

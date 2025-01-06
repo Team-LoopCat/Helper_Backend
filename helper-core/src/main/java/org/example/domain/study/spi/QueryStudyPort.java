@@ -15,5 +15,7 @@ public interface QueryStudyPort {
 
     void deleteStudyByStudyId(UUID studyId);
 
+    List<StudyWithMemberCountVO> findAllWithCount();
+
     List<StudyWithMemberCountVO> findAllByCategory(Category category);
 }

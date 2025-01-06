@@ -11,5 +11,7 @@ public interface GetStudyService {
 
     Study getStudyById(UUID studyId);
 
+    List<StudyWithMemberCountVO> getAllStudyList();
+
     List<StudyWithMemberCountVO> getStudyListByCategory(Category category);
 }

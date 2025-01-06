@@ -24,6 +24,11 @@ public class GetStudyServiceImpl implements GetStudyService {
     }
 
     @Override
+    public List<StudyWithMemberCountVO> getAllStudyList() {
+        return queryStudyPort.findAllWithCount();
+    }
+
+    @Override
     public List<StudyWithMemberCountVO> getStudyListByCategory(Category category) {
         return queryStudyPort.findAllByCategory(category);
     }

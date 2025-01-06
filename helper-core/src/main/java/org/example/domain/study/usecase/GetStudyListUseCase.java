@@ -16,7 +16,9 @@ public class GetStudyListUseCase {
     private final GetStudyService getStudyService;
 
     public GetStudyListResponseDto execute(Category category) {
-        List<StudyWithMemberCountVO> studies = getStudyService.getStudyListByCategory(category);
+        List<StudyWithMemberCountVO> studies = (category == null) ?
+            getStudyService.getAllStudyList() :
+            getStudyService.getStudyListByCategory(category);
 
         return GetStudyListResponseDto.from(studies);
     }
