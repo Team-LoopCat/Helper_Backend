@@ -2,12 +2,14 @@ package org.example.presentation;
 
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.example.domain.study.dto.response.GetStudyDetailResponseDto;
 import org.example.domain.study.dto.response.GetStudyListResponseDto;
 import org.example.domain.study.dto.request.PostStudyRequestDto;
 import org.example.domain.study.dto.request.UpdateStudyRequestDto;
 import org.example.domain.study.dto.response.PostStudyResponseDto;
 import org.example.domain.study.model.Category;
 import org.example.domain.study.usecase.DeleteStudyUseCase;
+import org.example.domain.study.usecase.GetStudyDetailUseCase;
 import org.example.domain.study.usecase.GetStudyListUseCase;
 import org.example.domain.study.usecase.PostStudyUseCase;
 import org.example.domain.study.usecase.UpdateStudyUseCase;
@@ -31,6 +33,7 @@ public class StudyWebAdapter {
     private final UpdateStudyUseCase updateStudyUseCase;
     private final DeleteStudyUseCase deleteStudyUseCase;
     private final GetStudyListUseCase getStudyListUseCase;
+    private final GetStudyDetailUseCase getStudyDetailUseCase;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -54,5 +57,11 @@ public class StudyWebAdapter {
     @GetMapping
     public GetStudyListResponseDto getStudyList(@RequestParam(value = "category", required = false) Category category) {
         return getStudyListUseCase.execute(category);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/{study_id}")
+    public GetStudyDetailResponseDto getStudyDetail(@PathVariable("study_id") UUID studyId) {
+        return getStudyDetailUseCase.execute(studyId);
     }
 }

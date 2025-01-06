@@ -24,6 +24,12 @@ public class GetStudyServiceImpl implements GetStudyService {
     }
 
     @Override
+    public StudyWithMemberCountVO getStudyDetailById(UUID studyId) {
+        return queryStudyPort.findStudyDetailByStudyId(studyId).orElseThrow(
+                () -> StudyNotFoundException.EXCEPTION
+        );
+    }
+
     public List<StudyWithMemberCountVO> getAllStudyList() {
         return queryStudyPort.findAllWithCount();
     }

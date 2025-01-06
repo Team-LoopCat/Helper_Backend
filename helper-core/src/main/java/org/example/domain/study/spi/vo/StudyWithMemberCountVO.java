@@ -8,6 +8,7 @@ public record StudyWithMemberCountVO(
         String studentId,
         UUID subjectId,
         String title,
+        String content,
         String location,
         String date,
         String start,

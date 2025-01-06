@@ -11,6 +11,8 @@ public interface QueryStudyPort {
 
     Optional<Study> findByStudyId(UUID studyId);
 
+    Optional<StudyWithMemberCountVO> findStudyDetailByStudyId(UUID studyId);
+
     Study saveStudy(Study study);
 
     void deleteStudyByStudyId(UUID studyId);
