@@ -30,6 +30,6 @@ public class UserJpaEntity {
     private Role role;
 
     @ColumnDefault("'DEFAULT_IMG_URL'") // todo: 기본 이미지 URL 정해지면 그걸로 바꾸기
-    @Column(nullable = false, columnDefinition = "VARCHAR(100)")
+    @Column(nullable = false, columnDefinition = "VARCHAR(200)")
     private String profile;
 }
