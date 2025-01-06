@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.common.service.EmailService;
 import org.example.domain.student.exception.EmailNotValidException;
 import org.example.domain.student.exception.EmailSendingException;
+import org.example.domain.student.exception.VerifyCodeNotMatchesException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 
@@ -39,6 +40,13 @@ public class EmailAdapter implements EmailService {
             return message;
         } catch (MessagingException e) {
             throw EmailSendingException.EXCEPTION;
+        }
+    }
+
+    @Override
+    public void checkCodeMatches(String generatedCode, String RequestCode) {
+        if (!generatedCode.equals(RequestCode)) {
+            throw VerifyCodeNotMatchesException.EXCEPTION;
         }
     }
 

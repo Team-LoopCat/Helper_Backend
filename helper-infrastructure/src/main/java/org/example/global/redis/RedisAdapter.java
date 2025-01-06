@@ -2,6 +2,7 @@ package org.example.global.redis;
 
 import lombok.RequiredArgsConstructor;
 import org.example.common.service.RedisService;
+import org.example.domain.student.exception.CodeNotExistsInRedisException;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.core.ValueOperations;
 import org.springframework.stereotype.Service;
@@ -28,7 +29,13 @@ public class RedisAdapter implements RedisService {
     @Override
     public String getData(String key) {
         ValueOperations<String, String> valueOperations = redis.opsForValue();
-        return valueOperations.get(key);
+        String data = valueOperations.get(key);
+
+        if (data == null) {
+            throw CodeNotExistsInRedisException.EXCEPTION;
+        }
+        
+        return data;
     }
 
     @Override

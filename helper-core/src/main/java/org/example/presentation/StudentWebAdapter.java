@@ -3,13 +3,9 @@ package org.example.presentation;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.student.dto.request.SendCodeRequestDto;
 import org.example.domain.student.dto.request.SignupRequestDto;
-import org.example.domain.student.dto.request.UpdateStudentRequestDto;
+import org.example.domain.student.dto.request.VerifyCodeRequestDto;
 import org.example.domain.student.dto.response.GetMyInfoResponseDto;
-import org.example.domain.student.usecase.GetMyInfoUseCase;
-import org.example.domain.student.usecase.DeleteStudentUseCase;
-import org.example.domain.student.usecase.SendCodeUseCase;
-import org.example.domain.student.usecase.SignupUseCase;
-import org.example.domain.student.usecase.UpdateUserUseCase;
+import org.example.domain.student.usecase.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,6 +18,7 @@ public class StudentWebAdapter {
     private final GetMyInfoUseCase getMyInfoUseCase;
     private final DeleteStudentUseCase deleteStudentUseCase;
     private final SendCodeUseCase sendCodeUseCase;
+    private final VerifyCodeUseCase verifyCodeUseCase;
     private final UpdateUserUseCase updateUserUseCase;
 
     @ResponseStatus(HttpStatus.OK)
@@ -48,6 +45,12 @@ public class StudentWebAdapter {
         sendCodeUseCase.execute(request);
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @PostMapping("/email/verify")
+    public void verifyCode (@RequestBody VerifyCodeRequestDto request) {
+        verifyCodeUseCase.execute(request);
+    }
+    
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/profile")
     public void updateUser (@RequestBody UpdateStudentRequestDto request) {
