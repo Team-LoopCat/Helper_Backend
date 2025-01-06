@@ -1,13 +1,11 @@
 package org.example.presentation;
 
 import lombok.RequiredArgsConstructor;
+import org.example.domain.student.dto.request.ChangePasswordRequestDto;
 import org.example.domain.student.dto.request.SendCodeRequestDto;
 import org.example.domain.student.dto.request.SignupRequestDto;
 import org.example.domain.student.dto.response.GetMyInfoResponseDto;
-import org.example.domain.student.usecase.GetMyInfoUseCase;
-import org.example.domain.student.usecase.DeleteStudentUseCase;
-import org.example.domain.student.usecase.SendCodeUseCase;
-import org.example.domain.student.usecase.SignupUseCase;
+import org.example.domain.student.usecase.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,6 +17,7 @@ public class StudentWebAdapter {
     private final GetMyInfoUseCase getMyInfoUseCase;
     private final DeleteStudentUseCase deleteStudentUseCase;
     private final SendCodeUseCase sendCodeUseCase;
+    private final ChangePasswordUseCase changePasswordUseCase;
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/signup")
@@ -42,5 +41,11 @@ public class StudentWebAdapter {
     @PostMapping("/email/send")
     public void sendCode (@RequestBody SendCodeRequestDto request) {
         sendCodeUseCase.execute(request);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/password")
+    public void changePassword(@RequestBody ChangePasswordRequestDto request) {
+        changePasswordUseCase.execute(request);
     }
 }
