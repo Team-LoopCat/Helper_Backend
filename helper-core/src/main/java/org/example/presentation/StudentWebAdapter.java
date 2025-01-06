@@ -8,6 +8,7 @@ import org.example.domain.student.dto.response.GetMyInfoResponseDto;
 import org.example.domain.student.usecase.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,6 +19,7 @@ public class StudentWebAdapter {
     private final DeleteStudentUseCase deleteStudentUseCase;
     private final SendCodeUseCase sendCodeUseCase;
     private final VerifyCodeUseCase verifyCodeUseCase;
+    private final UpdateUserUseCase updateUserUseCase;
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/signup")
@@ -47,5 +49,11 @@ public class StudentWebAdapter {
     @PostMapping("/email/verify")
     public void verifyCode (@RequestBody VerifyCodeRequestDto request) {
         verifyCodeUseCase.execute(request);
+    }
+    
+    @ResponseStatus(HttpStatus.OK)
+    @PatchMapping("/profile")
+    public void updateUser (@RequestBody UpdateStudentRequestDto request) {
+        updateUserUseCase.execute(request);
     }
 }
