@@ -32,7 +32,7 @@ public class SecurityConfig {
                 .formLogin(AbstractHttpConfigurer::disable)
 
                 .authorizeHttpRequests((auth) -> {
-                    auth.requestMatchers("/auth/login", "/student/signup", "/error").permitAll()
+                    auth.requestMatchers("/auth/login", "/student/signup", "/student/email/verify", "/student/email/send").permitAll()
                             .anyRequest().authenticated();
                 })
 
