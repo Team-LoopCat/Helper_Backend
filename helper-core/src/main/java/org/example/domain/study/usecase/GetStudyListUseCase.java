@@ -1,14 +1,11 @@
 package org.example.domain.study.usecase;
 
 import java.util.List;
-import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.study.dto.response.GetStudyListResponseDto;
-import org.example.domain.study.model.Study;
+import org.example.domain.study.model.Category;
 import org.example.domain.study.service.GetStudyService;
 import org.example.domain.study.spi.vo.StudyWithMemberCountVO;
-import org.example.domain.subject.model.Subject;
-import org.example.domain.subject.service.GetSubjectService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,12 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class GetStudyListUseCase {
     private final GetStudyService getStudyService;
-    private final GetSubjectService getSubjectService;
 
-    public GetStudyListResponseDto execute(UUID subjectId) {
-        Subject subject = getSubjectService.getSubjectById(subjectId);
-
-        List<StudyWithMemberCountVO> studies = getStudyService.getStudyListBySubject(subject);
+    public GetStudyListResponseDto execute(Category category) {
+        List<StudyWithMemberCountVO> studies = (category == null) ?
+            getStudyService.getAllStudyList() :
+            getStudyService.getStudyListByCategory(category);
 
         return GetStudyListResponseDto.from(studies);
     }

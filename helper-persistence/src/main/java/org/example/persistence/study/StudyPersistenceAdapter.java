@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.example.domain.study.model.Category;
 import org.example.domain.study.model.Study;
 import org.example.domain.study.spi.QueryStudyPort;
 import org.example.domain.study.spi.vo.StudyWithMemberCountVO;
@@ -44,7 +45,12 @@ public class StudyPersistenceAdapter implements QueryStudyPort {
     }
 
     @Override
-    public List<StudyWithMemberCountVO> findAllBySubjectId(UUID subjectId) {
-        return studyJpaRepository.findAllBySubjectSubjectIdWithCount(subjectId);
+    public List<StudyWithMemberCountVO> findAllWithCount() {
+        return studyJpaRepository.findAllWithCount();
+    }
+
+    @Override
+    public List<StudyWithMemberCountVO> findAllByCategory(Category category) {
+        return studyJpaRepository.findAllByCategoryWithCount(category);
     }
 }
