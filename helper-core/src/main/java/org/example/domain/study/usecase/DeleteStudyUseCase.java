@@ -21,7 +21,7 @@ public class DeleteStudyUseCase {
     private final SecurityService securityService;
 
     public void execute(UUID studyId) {
-        Study currentStudy = getStudyService.findByStudyId(studyId);
+        Study currentStudy = getStudyService.getStudyById(studyId);
         User currentUser = securityService.getCurrentUser();
 
         checkStudyService.checkStudyIsOwn(currentStudy, currentUser);
