@@ -6,7 +6,7 @@ import org.example.common.exception.GlobalErrorCode;
 @RequiredArgsConstructor
 public enum StudentErrorCode implements GlobalErrorCode {
     EMAIL_NOT_VALID(400, "이메일이 유효하지 않습니다"),
-    VERIFY_CODE_NOT_MATCHES(401, "인증 코드가 틀렸습니다"),
+    VERIFY_CODE_NOT_MATCHES(400, "인증 코드가 틀렸습니다"),
     GRADE_NOT_EXISTS(404, "존재하지 않는 학년/반입니다"),
     STUDENT_NOT_FOUND(404, "존재하지 않는 학생입니다"),
     CODE_NOT_EXISTS_IN_REDIS(404, "유효하지 않거나 만료된 인증코드입니다"),
