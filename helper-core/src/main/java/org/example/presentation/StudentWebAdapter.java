@@ -22,7 +22,6 @@ public class StudentWebAdapter {
     private final VerifyCodeUseCase verifyCodeUseCase;
     private final UpdateUserUseCase updateUserUseCase;
     private final ChangePasswordUseCase changePasswordUseCase;
-    private final ChangePasswordUseCase changePasswordUseCase;
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/signup")
@@ -58,12 +57,6 @@ public class StudentWebAdapter {
     @PatchMapping("/profile")
     public void updateUser (@RequestBody UpdateStudentRequestDto request) {
         updateUserUseCase.execute(request);
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @PatchMapping("/password")
-    public void changePassword(@RequestBody ChangePasswordRequestDto request) {
-        changePasswordUseCase.execute(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
