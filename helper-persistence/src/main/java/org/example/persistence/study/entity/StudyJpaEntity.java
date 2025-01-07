@@ -31,10 +31,6 @@ public class StudyJpaEntity {
     @JoinColumn(name = "studentId", referencedColumnName = "studentId")
     private StudentJpaEntity student;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = SubjectJpaEntity.class)
-    @JoinColumn(name = "subjectId", referencedColumnName = "subjectId")
-    private SubjectJpaEntity subject;
-
     @Column(nullable = false, columnDefinition = "VARCHAR(40)")
     private String title;
 

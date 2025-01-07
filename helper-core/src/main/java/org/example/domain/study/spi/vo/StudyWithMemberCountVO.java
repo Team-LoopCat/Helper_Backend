@@ -6,7 +6,6 @@ import org.example.domain.study.model.Category;
 public record StudyWithMemberCountVO(
         UUID studyId,
         String studentId,
-        UUID subjectId,
         String title,
         String content,
         String location,
