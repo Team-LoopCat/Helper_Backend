@@ -14,8 +14,6 @@ public class Study {
 
     private final String studentId;
 
-    private final UUID subjectId;
-
     private final String title;
 
     private final String content;

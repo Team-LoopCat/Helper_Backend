@@ -31,7 +31,6 @@ public class UpdateStudyUseCase {
                 Study.builder()
                         .studyId(currentStudy.getStudyId())
                         .studentId(currentStudy.getStudentId())
-                        .subjectId(request.subjectId())
                         .title(request.title())
                         .content(request.content())
                         .date(request.date())
