@@ -11,6 +11,7 @@ import org.example.domain.study.model.Category;
 import org.example.domain.study.usecase.DeleteStudyUseCase;
 import org.example.domain.study.usecase.GetStudyDetailUseCase;
 import org.example.domain.study.usecase.GetStudyListUseCase;
+import org.example.domain.study.usecase.JoinStudyUseCase;
 import org.example.domain.study.usecase.PostStudyUseCase;
 import org.example.domain.study.usecase.UpdateStudyUseCase;
 import org.springframework.http.HttpStatus;
@@ -32,6 +33,7 @@ public class StudyWebAdapter {
     private final PostStudyUseCase postStudyUseCase;
     private final UpdateStudyUseCase updateStudyUseCase;
     private final DeleteStudyUseCase deleteStudyUseCase;
+    private final JoinStudyUseCase joinStudyUseCase;
     private final GetStudyListUseCase getStudyListUseCase;
     private final GetStudyDetailUseCase getStudyDetailUseCase;
 
@@ -51,6 +53,12 @@ public class StudyWebAdapter {
     @DeleteMapping("/{study_id}")
     public void deleteStudy(@PathVariable("study_id") UUID studyId) {
         deleteStudyUseCase.execute(studyId);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping("/join/{study_id}")
+    public void joinStudy(@PathVariable("study_id") UUID studyId) {
+        joinStudyUseCase.execute(studyId);
     }
 
     @ResponseStatus(HttpStatus.OK)
