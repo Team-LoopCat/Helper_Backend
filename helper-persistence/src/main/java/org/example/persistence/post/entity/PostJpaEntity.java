@@ -14,7 +14,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.example.domain.study.model.Category;
+import org.example.domain.post.model.PostCategory;
 import org.example.persistence.student.entity.StudentJpaEntity;
 import org.hibernate.annotations.ColumnDefault;
 
@@ -46,7 +46,7 @@ public class PostJpaEntity {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Category category;
+    private PostCategory category;
 
     @ColumnDefault("NOW()")
     @Column(nullable = false, columnDefinition = "DATETIME")

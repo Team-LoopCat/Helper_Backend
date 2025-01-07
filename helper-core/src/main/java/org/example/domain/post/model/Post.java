@@ -3,11 +3,14 @@ package org.example.domain.post.model;
 import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
+
+import lombok.Builder;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.study.model.Category;
 
 @Getter
+@Builder
 @RequiredArgsConstructor
 public class Post {
 
@@ -23,7 +26,7 @@ public class Post {
 
     private final String tag;
 
-    private final Category category;
+    private final PostCategory category;
 
     private final LocalDateTime createdAt;
 }
