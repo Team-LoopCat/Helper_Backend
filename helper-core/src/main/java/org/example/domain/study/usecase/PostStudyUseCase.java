@@ -16,18 +16,15 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @RequiredArgsConstructor
 public class PostStudyUseCase {
-    private final GetSubjectService getSubjectService;
     private final CommandStudyService commandStudyService;
     private final SecurityService securityService;
 
     public PostStudyResponseDto execute(PostStudyRequestDto request) {
         User user = securityService.getCurrentUser();
-        Subject subject = getSubjectService.getSubjectById(request.subjectId());
 
         Study study = commandStudyService.saveStudy(
                 Study.builder()
                         .studentId(user.getUserId())
-                        .subjectId(subject.getSubjectId())
                         .title(request.title())
                         .content(request.content())
                         .location(request.location())
