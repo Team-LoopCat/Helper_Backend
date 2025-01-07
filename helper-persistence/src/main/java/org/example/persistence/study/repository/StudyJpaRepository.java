@@ -38,6 +38,18 @@ public interface StudyJpaRepository extends CrudRepository<StudyJpaEntity, UUID>
             "FROM study s " +
             "JOIN member m " +
             "ON s.study_id = m.study_id && m.is_banned = 0 " +
+            "WHERE s.study_id = :studyId " +
+            "GROUP BY s.study_id " +
+            "ORDER BY s.date, s.start",
+            nativeQuery = true
+    )
+    List<StudyWithMemberCountVO> findAllByStudentId(@Param("studentId") String studentId);
+
+    @Query(value =
+            "SELECT s.study_id, s.student_id, s.title, s.content, s.location, s.date, s.start, s.end, s.category, count(m.study_id) " +
+            "FROM study s " +
+            "JOIN member m " +
+            "ON s.study_id = m.study_id && m.is_banned = 0 " +
             "GROUP BY s.study_id " +
             "ORDER BY s.date, s.start",
             nativeQuery = true)

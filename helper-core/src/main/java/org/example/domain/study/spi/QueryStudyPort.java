@@ -19,5 +19,7 @@ public interface QueryStudyPort {
 
     List<StudyWithMemberCountVO> findAllWithCount();
 
+    List<StudyWithMemberCountVO> findAllByStudentId(String studentId);
+
     List<StudyWithMemberCountVO> findAllByCategory(Category category);
 }

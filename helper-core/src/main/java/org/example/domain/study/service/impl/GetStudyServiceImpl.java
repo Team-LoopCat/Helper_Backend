@@ -3,6 +3,7 @@ package org.example.domain.study.service.impl;
 import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.example.domain.student.model.Student;
 import org.example.domain.study.exception.StudyNotFoundException;
 import org.example.domain.study.model.Category;
 import org.example.domain.study.model.Study;
@@ -37,5 +38,10 @@ public class GetStudyServiceImpl implements GetStudyService {
     @Override
     public List<StudyWithMemberCountVO> getStudyListByCategory(Category category) {
         return queryStudyPort.findAllByCategory(category);
+    }
+
+    @Override
+    public List<StudyWithMemberCountVO> getStudyListByStudent(Student student) {
+        return queryStudyPort.findAllByStudentId(student.getStudentId());
     }
 }
