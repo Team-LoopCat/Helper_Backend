@@ -33,6 +33,7 @@ public class UpdateStudyUseCase {
                         .studentId(currentStudy.getStudentId())
                         .title(request.title())
                         .content(request.content())
+                        .location(request.location())
                         .date(request.date())
                         .start(request.start())
                         .end(request.end())
