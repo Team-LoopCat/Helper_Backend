@@ -124,7 +124,7 @@ public class SecurityConfig {
                         // util
                         authorization
                                 .requestMatchers(HttpMethod.GET, "/util/teacher/subject").hasAnyAuthority(Role.Teacher.name(), Role.Head.name())
-                                .requestMatchers(HttpMethod.GET, "/util/teacher/teacher/{subject_id}").hasAnyAuthority(Role.Teacher.name(), Role.Head.name())
+                                .requestMatchers(HttpMethod.GET, "/util/teacher/{subject_id}").hasAnyAuthority(Role.Teacher.name(), Role.Head.name())
                                 .requestMatchers(HttpMethod.GET, "/util/student/subject").hasAnyAuthority(Role.Student.name())
                                 .requestMatchers(HttpMethod.GET, "/util/student/optional").hasAnyAuthority(Role.Student.name())
                                 .requestMatchers(HttpMethod.POST, "/util/file").permitAll();
