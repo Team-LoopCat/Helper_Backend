@@ -10,5 +10,5 @@ public interface QueryMemberPort {
 
     boolean existsByStudyIdAndStudentId(UUID studyId, String studentId);
 
-    Optional<Member> findByStudyIdAbdStudentId(UUID studyId, String studentId);
+    Optional<Member> findByStudyIdAndStudentId(UUID studyId, String studentId);
 }

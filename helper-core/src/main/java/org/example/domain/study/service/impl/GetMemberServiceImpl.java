@@ -16,7 +16,7 @@ public class GetMemberServiceImpl implements GetMemberService {
 
     @Override
     public Member getByStudyAndStudent(Study study, Student student) {
-        return queryMemberPort.findByStudyIdAbdStudentId(study.getStudyId(), student.getStudentId()).orElseThrow(
+        return queryMemberPort.findByStudyIdAndStudentId(study.getStudyId(), student.getStudentId()).orElseThrow(
                 () -> MemberNotFoundException.EXCEPTION
         );
     }

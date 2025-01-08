@@ -30,7 +30,7 @@ public class MemberPersistenceAdapter implements QueryMemberPort {
     }
 
     @Override
-    public Optional<Member> findByStudyIdAbdStudentId(UUID studyId, String studentId) {
+    public Optional<Member> findByStudyIdAndStudentId(UUID studyId, String studentId) {
         return memberMapper.toDomain(
                 memberJpaRepository.findByStudyIdAndStudentId(studyId, studentId)
         );
