@@ -15,4 +15,9 @@ public class CommandMemberServiceImpl implements CommandMemberService {
     public Member saveMember(Member member) {
         return queryMemberPort.saveMember(member);
     }
+
+    @Override
+    public void deleteMember(Member member) {
+        queryMemberPort.deleteMember(member);
+    }
 }
