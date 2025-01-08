@@ -35,4 +35,11 @@ public class MemberPersistenceAdapter implements QueryMemberPort {
                 memberJpaRepository.findByStudyIdAndStudentId(studyId, studentId)
         );
     }
+
+    @Override
+    public void deleteMember(Member member) {
+        memberJpaRepository.delete(
+                memberMapper.toEntity(member)
+        );
+    }
 }
