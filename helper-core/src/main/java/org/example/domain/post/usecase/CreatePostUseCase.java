@@ -30,8 +30,7 @@ public class CreatePostUseCase {
         User user = securityService.getCurrentUser();
         String studentId =  getStudentService.getStudentByUser(user).getStudentId();
 
-        UUID postUUID = UUID.randomUUID();
-        commendPostService.savePost(Post.builder()
+        UUID postUUID = commendPostService.savePost(Post.builder()
                 .studentId(studentId)
                 .title(request.title())
                 .content(request.contents())
@@ -39,7 +38,7 @@ public class CreatePostUseCase {
                 .tag(String.join(",", request.tag()))
                 .category(request.category())
                 .build()
-        );
+        ).getPostId();
 
         for (FileDataVO fileDatum : request.fileData()) {
             commendFileService.saveFile(File.builder()
