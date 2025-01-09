@@ -23,7 +23,7 @@ public class GetMyStudyListUseCase {
     public GetStudyListResponseDto execute() {
         User user = securityService.getCurrentUser();
 
-        Student currentStudent = getStudentService.getStudentByUserId(user);
+        Student currentStudent = getStudentService.getStudentByUser(user);
 
         List<StudyWithMemberCountVO> myStudies = getStudyService.getStudyListByStudent(currentStudent);
 

@@ -25,7 +25,7 @@ public class UpdateUserUseCase {
 
     public void execute(UpdateStudentRequestDto request) {
         User user = securityService.getCurrentUser();
-        Student student = getStudentService.getStudentByUserId(user);
+        Student student = getStudentService.getStudentByUser(user);
 
         if (request.profile() != null && !request.profile().isEmpty()) {
             commandUserService.saveUser(

@@ -5,5 +5,5 @@ import org.example.domain.student.model.Student;
 
 public interface GetStudentService {
 
-    Student getStudentByUserId(User user);
+    Student getStudentByUser(User user);
 }
