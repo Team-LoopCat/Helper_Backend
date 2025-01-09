@@ -14,6 +14,7 @@ public class UploadFileUseCase {
     private final FileService fileService;
 
     public UploadFileResponseDto execute(MultipartFile file) {
-        return new UploadFileResponseDto(fileService.uploadFile(file));
+        String fileUrl = fileService.uploadFile(file);
+        return new UploadFileResponseDto(fileUrl);
     }
 }
