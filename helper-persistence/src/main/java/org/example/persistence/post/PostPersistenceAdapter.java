@@ -8,6 +8,7 @@ import org.example.persistence.post.repository.PostJpaRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -20,5 +21,15 @@ public class PostPersistenceAdapter implements QueryPostPort {
         return postMapper.toDomain(
                 Optional.of(postJpaRepository.save(postMapper.toEntity(post)))
         ).get();
+    }
+
+    @Override
+    public Optional<Post> getPostByPostId(UUID postId) {
+        return postMapper.toDomain(postJpaRepository.getPostJpaEntityByPostId(postId));
+    }
+
+    @Override
+    public void deletePost(Post post) {
+        postJpaRepository.delete(postMapper.toEntity(post));
     }
 }
