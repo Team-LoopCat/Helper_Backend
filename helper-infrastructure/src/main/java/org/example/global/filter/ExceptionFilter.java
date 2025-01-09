@@ -7,6 +7,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.example.common.exception.GlobalBusinessException;
 import org.example.common.exception.GlobalErrorCode;
 import org.example.global.exception.ErrorResponse;
@@ -15,6 +16,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+@Slf4j
 @RequiredArgsConstructor
 public class ExceptionFilter extends OncePerRequestFilter {
     private final ObjectMapper objectMapper;
@@ -26,6 +28,7 @@ public class ExceptionFilter extends OncePerRequestFilter {
         } catch (GlobalBusinessException e) {
             convertErrorToJson(response, e.errorCode);
         } catch (Exception e) {
+            log.error(e.getMessage());
             convertErrorToJson(response, GeneralExceptionCode.INTERNAL_SERVER_ERROR);
         }
     }
