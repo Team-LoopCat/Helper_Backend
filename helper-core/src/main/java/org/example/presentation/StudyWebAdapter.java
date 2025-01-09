@@ -64,7 +64,7 @@ public class StudyWebAdapter {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @PostMapping("/leave/{study_id}")
+    @DeleteMapping("/leave/{study_id}")
     public void leaveStudy(@PathVariable("study_id") UUID studyId) {
         leaveStudyUseCase.execute(studyId);
     }
