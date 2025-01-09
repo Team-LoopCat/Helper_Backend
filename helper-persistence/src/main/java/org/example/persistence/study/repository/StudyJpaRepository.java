@@ -38,7 +38,7 @@ public interface StudyJpaRepository extends CrudRepository<StudyJpaEntity, UUID>
             "FROM study s " +
             "JOIN member m " +
             "ON s.study_id = m.study_id && m.is_banned = 0 " +
-            "WHERE s.study_id = :studyId " +
+            "WHERE s.student_id = :studentId " +
             "GROUP BY s.study_id " +
             "ORDER BY s.date, s.start",
             nativeQuery = true
