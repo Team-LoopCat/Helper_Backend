@@ -43,4 +43,11 @@ public class StudentPersistenceAdapter implements QueryStudentPort {
                 )
         );
     }
+
+    @Override
+    public Optional<Student> getStudentByStudentId(String studentId) {
+        return studentMapper.toDomain(
+                studentRepository.findByStudentId(studentId)
+        );
+    }
 }

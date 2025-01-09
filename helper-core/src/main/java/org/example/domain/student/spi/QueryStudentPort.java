@@ -14,4 +14,6 @@ public interface QueryStudentPort {
     void saveStudent(Student student);
 
     Optional<Student> getStudentByUserId(User user);
+
+    Optional<Student> getStudentByStudentId(String studentId);
 }

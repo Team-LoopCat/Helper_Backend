@@ -19,4 +19,11 @@ public class GetStudentServiceImpl implements GetStudentService {
                 () -> StudentNotFoundException.EXCEPTION
         );
     }
+
+    @Override
+    public Student getStudentByStudentId(String studentId) {
+        return studentPort.getStudentByStudentId(studentId).orElseThrow(
+                () -> StudentNotFoundException.EXCEPTION
+        );
+    }
 }

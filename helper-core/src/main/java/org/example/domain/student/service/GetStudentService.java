@@ -6,4 +6,6 @@ import org.example.domain.student.model.Student;
 public interface GetStudentService {
 
     Student getStudentByUserId(User user);
+
+    Student getStudentByStudentId(String studentId);
 }
