@@ -4,5 +4,5 @@ import org.example.domain.post.model.Post;
 
 public interface CommendPostService {
 
-    void savePost(Post post);
+    Post savePost(Post post);
 }

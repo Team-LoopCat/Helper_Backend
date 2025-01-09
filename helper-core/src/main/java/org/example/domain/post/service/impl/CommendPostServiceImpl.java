@@ -12,7 +12,7 @@ public class CommendPostServiceImpl implements CommendPostService {
     private final QueryPostPort queryPostPort;
 
     @Override
-    public void savePost(Post post) {
-        queryPostPort.savePost(post);
+    public Post savePost(Post post) {
+        return queryPostPort.savePost(post);
     }
 }

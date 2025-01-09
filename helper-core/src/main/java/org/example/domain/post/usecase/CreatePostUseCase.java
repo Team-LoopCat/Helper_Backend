@@ -28,18 +28,16 @@ public class CreatePostUseCase {
 
     public void execute(CreatePostRequestDto request) {
         User user = securityService.getCurrentUser();
-        String studentId =  getStudentService.getStudentByUserId(user).getStudentId();
+        String studentId =  getStudentService.getStudentByUser(user).getStudentId();
 
         UUID postUUID = UUID.randomUUID();
         commendPostService.savePost(Post.builder()
-                .postId(postUUID)
                 .studentId(studentId)
                 .title(request.title())
                 .content(request.contents())
                 .photo(Optional.ofNullable(request.photo()))
                 .tag(String.join(",", request.tag()))
                 .category(request.category())
-                .createdAt(LocalDateTime.now())
                 .build()
         );
 
