@@ -69,6 +69,12 @@ public class StudyWebAdapter {
         leaveStudyUseCase.execute(studyId);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/ban/{study_id}/{student_id}")
+    public void banStudent(@PathVariable("study_id") UUID studyId, @PathVariable("student_id") String student_id) {
+
+    }
+
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
     public GetStudyListResponseDto getStudyList(@RequestParam(value = "category", required = false) Category category) {
