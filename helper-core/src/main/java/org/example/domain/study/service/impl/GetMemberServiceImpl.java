@@ -1,5 +1,6 @@
 package org.example.domain.study.service.impl;
 
+import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.student.model.Student;
 import org.example.domain.study.exception.MemberNotFoundException;
@@ -19,5 +20,10 @@ public class GetMemberServiceImpl implements GetMemberService {
         return queryMemberPort.findByStudyIdAndStudentId(study.getStudyId(), student.getStudentId()).orElseThrow(
                 () -> MemberNotFoundException.EXCEPTION
         );
+    }
+
+    @Override
+    public List<Student> getAllStudentByStudy(Study study) {
+        return queryMemberPort.findAllStudentByStudyId(study.getStudyId());
     }
 }

@@ -1,34 +1,37 @@
 package org.example.domain.study.usecase;
 
+import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.common.service.SecurityService;
 import org.example.domain.student.model.Student;
 import org.example.domain.student.service.GetStudentService;
-import org.example.domain.study.model.Member;
+import org.example.domain.study.dto.response.GetMemberListResponseDto;
 import org.example.domain.study.model.Study;
-import org.example.domain.study.service.CommandMemberService;
+import org.example.domain.study.service.CheckStudyService;
 import org.example.domain.study.service.GetMemberService;
 import org.example.domain.study.service.GetStudyService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
+@Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class LeaveStudyUseCase {
+public class GetMemberListUseCase {
+    private final GetStudyService getStudyService;
     private final SecurityService securityService;
     private final GetStudentService getStudentService;
-    private final GetStudyService getStudyService;
+    private final CheckStudyService checkStudyService;
     private final GetMemberService getMemberService;
-    private final CommandMemberService commandMemberService;
 
-    public void execute(UUID studyId) {
+    public GetMemberListResponseDto execute(UUID studyId) {
         Study currentStudy = getStudyService.getStudyById(studyId);
         Student currentStudent = getStudentService.getStudentByUser(securityService.getCurrentUser());
 
-        Member member = getMemberService.getByStudyAndStudent(currentStudy, currentStudent);
+        checkStudyService.checkStudyIsOwn(currentStudy, currentStudent);
 
-        commandMemberService.deleteMember(member);
+        List<Student> members = getMemberService.getAllStudentByStudy(currentStudy);
+
+        return GetMemberListResponseDto.from(members);
     }
 }
