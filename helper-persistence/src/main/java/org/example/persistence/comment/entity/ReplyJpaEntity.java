@@ -14,11 +14,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.persistence.student.entity.StudentJpaEntity;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 @Getter
 @Entity(name = "reply")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@DynamicInsert
 public class ReplyJpaEntity {
 
     @Id

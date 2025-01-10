@@ -15,11 +15,13 @@ import lombok.NoArgsConstructor;
 import org.example.persistence.post.entity.PostJpaEntity;
 import org.example.persistence.student.entity.StudentJpaEntity;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 @Getter
 @Entity(name = "comment")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@DynamicInsert
 public class CommentJpaEntity {
 
     @Id

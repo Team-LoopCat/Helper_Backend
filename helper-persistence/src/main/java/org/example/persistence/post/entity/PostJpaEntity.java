@@ -14,10 +14,10 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 
 @Getter
-@DynamicInsert
 @Entity(name = "post")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@DynamicInsert
 public class PostJpaEntity {
 
     @Id
