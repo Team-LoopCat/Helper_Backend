@@ -1,10 +1,13 @@
 package org.example.persistence.study;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.example.domain.student.model.Student;
 import org.example.domain.study.model.Member;
 import org.example.domain.study.spi.QueryMemberPort;
+import org.example.persistence.student.mapper.StudentMapper;
 import org.example.persistence.study.mapper.MemberMapper;
 import org.example.persistence.study.repository.MemberJpaRepository;
 import org.springframework.stereotype.Component;
@@ -14,6 +17,7 @@ import org.springframework.stereotype.Component;
 public class MemberPersistenceAdapter implements QueryMemberPort {
     private final MemberJpaRepository memberJpaRepository;
     private final MemberMapper memberMapper;
+    private final StudentMapper studentMapper;
 
     @Override
     public Member saveMember(Member member) {
@@ -34,6 +38,16 @@ public class MemberPersistenceAdapter implements QueryMemberPort {
         return memberMapper.toDomain(
                 memberJpaRepository.findByStudyIdAndStudentId(studyId, studentId)
         );
+    }
+
+    @Override
+    public List<Student> findAllStudentByStudyId(UUID studyId) {
+        return memberJpaRepository.findStudentByStudyId(studyId)
+                .stream().map(entity ->
+                        studentMapper.toDomain(
+                                Optional.of(entity)
+                        ).get()
+                ).toList();
     }
 
     @Override
