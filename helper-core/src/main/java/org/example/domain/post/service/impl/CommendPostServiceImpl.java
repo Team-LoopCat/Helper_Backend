@@ -15,4 +15,7 @@ public class CommendPostServiceImpl implements CommendPostService {
     public Post savePost(Post post) {
         return queryPostPort.savePost(post);
     }
+
+    @Override
+    public void deletePost(Post post) { queryPostPort.deletePost(post); }
 }

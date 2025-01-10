@@ -64,7 +64,7 @@ public class SecurityConfig {
                         authorization
                                 .requestMatchers(HttpMethod.POST, "/post/create").hasAuthority(Role.Student.name())
                                 .requestMatchers(HttpMethod.PATCH, "/post/{postId}").hasAuthority(Role.Student.name())
-                                .requestMatchers(HttpMethod.DELETE, "/post/update/{postId}").hasAuthority(Role.Student.name())
+                                .requestMatchers(HttpMethod.DELETE, "/post/{postId}").hasAuthority(Role.Student.name())
                                 .requestMatchers(HttpMethod.GET, "/post/detail/{postId}").hasAuthority(Role.Student.name())
                                 .requestMatchers(HttpMethod.GET, "/post/search").hasAuthority(Role.Student.name());
 

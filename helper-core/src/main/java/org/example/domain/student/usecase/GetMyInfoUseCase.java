@@ -24,7 +24,7 @@ public class GetMyInfoUseCase {
     public GetMyInfoResponseDto execute() {
         String userId = securityService.getCurrentUserId();
         User user = getUserService.getUserById(userId);
-        Student student = getStudentService.getStudentByUserId(user);
+        Student student = getStudentService.getStudentByUser(user);
 
         String selectedSubject = student.getSubjectId()
                 .map(getSubjectService::getSubjectById)

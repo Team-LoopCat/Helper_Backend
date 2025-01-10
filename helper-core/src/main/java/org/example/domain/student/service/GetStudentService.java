@@ -4,8 +4,8 @@ import org.example.domain.auth.model.User;
 import org.example.domain.student.model.Student;
 
 public interface GetStudentService {
-
-    Student getStudentByUserId(User user);
-
-    Student getStudentByStudentId(String studentId);
+  
+    Student getStudentByUser(User user);
+  
+    Student getStudentByStudentId(String studentId)
 }
