@@ -11,4 +11,6 @@ public interface QueryMemberPort {
     Optional<Boolean> findIsBannedByStudyIdAndStudentId(UUID studyId, String studentId);
 
     Optional<Member> findByStudyIdAndStudentId(UUID studyId, String studentId);
+
+    void deleteMember(Member member);
 }

@@ -13,6 +13,7 @@ import org.example.domain.study.usecase.GetMyStudyListUseCase;
 import org.example.domain.study.usecase.GetStudyDetailUseCase;
 import org.example.domain.study.usecase.GetStudyListUseCase;
 import org.example.domain.study.usecase.JoinStudyUseCase;
+import org.example.domain.study.usecase.LeaveStudyUseCase;
 import org.example.domain.study.usecase.PostStudyUseCase;
 import org.example.domain.study.usecase.UpdateStudyUseCase;
 import org.springframework.http.HttpStatus;
@@ -35,6 +36,7 @@ public class StudyWebAdapter {
     private final UpdateStudyUseCase updateStudyUseCase;
     private final DeleteStudyUseCase deleteStudyUseCase;
     private final JoinStudyUseCase joinStudyUseCase;
+    private final LeaveStudyUseCase leaveStudyUseCase;
     private final GetStudyListUseCase getStudyListUseCase;
     private final GetStudyDetailUseCase getStudyDetailUseCase;
     private final GetMyStudyListUseCase getMyStudyListUseCase;
@@ -61,6 +63,12 @@ public class StudyWebAdapter {
     @PostMapping("/join/{study_id}")
     public void joinStudy(@PathVariable("study_id") UUID studyId) {
         joinStudyUseCase.execute(studyId);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/leave/{study_id}")
+    public void leaveStudy(@PathVariable("study_id") UUID studyId) {
+        leaveStudyUseCase.execute(studyId);
     }
 
     @ResponseStatus(HttpStatus.OK)
