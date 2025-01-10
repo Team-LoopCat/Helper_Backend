@@ -14,7 +14,7 @@ public class GetStudentServiceImpl implements GetStudentService {
     private final QueryStudentPort studentPort;
 
     @Override
-    public Student getStudentByUserId(User user) {
+    public Student getStudentByUser(User user) {
         return studentPort.getStudentByUserId(user).orElseThrow(
                 () -> StudentNotFoundException.EXCEPTION
         );
