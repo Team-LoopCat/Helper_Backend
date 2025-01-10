@@ -12,4 +12,6 @@ public interface QueryPostPort {
     Optional<Post> getPostByPostId(UUID postId);
 
     void deletePost(Post post);
+
+    Boolean checkPostExists(UUID postId);
 }

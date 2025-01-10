@@ -36,4 +36,9 @@ public class PostPersistenceAdapter implements QueryPostPort {
                 postMapper.toEntity(post)
         );
     }
+
+    @Override
+    public Boolean checkPostExists(UUID postId) {
+        return postJpaRepository.existsByPostId(postId);
+    }
 }
