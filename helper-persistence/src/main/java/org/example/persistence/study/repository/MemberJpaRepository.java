@@ -10,13 +10,17 @@ import org.springframework.data.repository.query.Param;
 
 public interface MemberJpaRepository extends CrudRepository<MemberJpaEntity, MemberId> {
 
-    @Query(value =
-            "SELECT m.isBanned " +
+    @Query("SELECT m.isBanned " +
             "FROM member m " +
-            "WHERE m.studyId = :studyId AND " +
-                    "m.studentId = :studentId"
+            "WHERE m.studyId.studyId = :studyId AND " +
+                    "m.studentId.studentId = :studentId"
     )
     Optional<Boolean> findIsBannedByStudyIdAndStudentId(@Param("studyId") UUID studyId, @Param("studentId") String studentId);
 
-    Optional<MemberJpaEntity> findByStudyIdAndStudentId(UUID studyId, String studentId);
+    @Query("SELECT m " +
+            "FROM member m " +
+            "WHERE m.studyId.studyId = :studyId AND " +
+                "m.studentId.studentId = :studentId"
+    )
+    Optional<MemberJpaEntity> findByStudyIdAndStudentId(@Param("studyId") UUID studyId, @Param("studentId") String studentId);
 }
