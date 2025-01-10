@@ -15,6 +15,7 @@ import org.example.domain.study.usecase.GetStudyListUseCase;
 import org.example.domain.study.usecase.JoinStudyUseCase;
 import org.example.domain.study.usecase.LeaveStudyUseCase;
 import org.example.domain.study.usecase.PostStudyUseCase;
+import org.example.domain.study.usecase.StudyBanStudentUseCase;
 import org.example.domain.study.usecase.UpdateStudyUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -37,6 +38,7 @@ public class StudyWebAdapter {
     private final DeleteStudyUseCase deleteStudyUseCase;
     private final JoinStudyUseCase joinStudyUseCase;
     private final LeaveStudyUseCase leaveStudyUseCase;
+    private final StudyBanStudentUseCase studyBanStudentUseCase;
     private final GetStudyListUseCase getStudyListUseCase;
     private final GetStudyDetailUseCase getStudyDetailUseCase;
     private final GetMyStudyListUseCase getMyStudyListUseCase;
@@ -69,6 +71,12 @@ public class StudyWebAdapter {
     @DeleteMapping("/leave/{study_id}")
     public void leaveStudy(@PathVariable("study_id") UUID studyId) {
         leaveStudyUseCase.execute(studyId);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/ban/{study_id}/{student_id}")
+    public void banStudent(@PathVariable("study_id") UUID studyId, @PathVariable("student_id") String student_id) {
+        studyBanStudentUseCase.execute(studyId, student_id);
     }
 
     @ResponseStatus(HttpStatus.OK)
