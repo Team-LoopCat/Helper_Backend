@@ -13,6 +13,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.persistence.subject.entity.AttendJpaEntity;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Entity(name = "testInfo")
@@ -24,11 +26,13 @@ public class TestInfoJpaEntity {
     @Id
     @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = AttendJpaEntity.class)
     @JoinColumn(name = "attendId", referencedColumnName = "attendId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private AttendJpaEntity attend;
 
     @Id
     @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = TestJpaEntity.class)
     @JoinColumn(name = "testId", referencedColumnName = "testId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private TestJpaEntity test;
 
     @Column(nullable = false, columnDefinition = "DATE")

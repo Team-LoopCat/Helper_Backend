@@ -13,6 +13,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.persistence.post.entity.PostJpaEntity;
 import org.example.persistence.test.entity.TestJpaEntity;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Entity(name = "file")
@@ -26,10 +28,12 @@ public class FileJpaEntity {
 
     @ManyToOne(cascade = CascadeType.ALL, optional = true, targetEntity = PostJpaEntity.class)
     @JoinColumn(name = "postId", referencedColumnName = "postId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private PostJpaEntity post;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = true, targetEntity = TestJpaEntity.class)
     @JoinColumn(name = "testId", referencedColumnName = "testId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private TestJpaEntity test;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(100)")

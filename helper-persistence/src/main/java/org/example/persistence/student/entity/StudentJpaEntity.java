@@ -33,10 +33,12 @@ public class StudentJpaEntity {
             @JoinColumn(name = "grade", referencedColumnName = "grade"),
             @JoinColumn(name = "classroom", referencedColumnName = "classroom")
     })
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     private GradeInfoJpaEntity gradeInfo;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = true, targetEntity = SubjectJpaEntity.class)
     @JoinColumn(name = "subjectId", referencedColumnName = "subjectId")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private SubjectJpaEntity subject;
 
     @OneToOne(cascade = CascadeType.ALL, optional = false, targetEntity = UserJpaEntity.class)

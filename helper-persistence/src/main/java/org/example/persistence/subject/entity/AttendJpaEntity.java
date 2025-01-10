@@ -13,6 +13,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.persistence.student.entity.GradeInfoJpaEntity;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Entity(name = "attend")
@@ -29,9 +31,11 @@ public class AttendJpaEntity {
             @JoinColumn(name = "grade", referencedColumnName = "grade"),
             @JoinColumn(name = "classroom", referencedColumnName = "classroom")
     })
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     private GradeInfoJpaEntity gradeInfo;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = SubjectJpaEntity.class)
     @JoinColumn(name = "subjectId", referencedColumnName = "subjectId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private SubjectJpaEntity subject;
 }

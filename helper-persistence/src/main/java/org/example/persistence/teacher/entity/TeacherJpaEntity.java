@@ -12,6 +12,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.persistence.auth.entity.UserJpaEntity;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Entity(name = "teacher")
@@ -25,6 +27,7 @@ public class TeacherJpaEntity {
 
     @OneToOne(cascade = CascadeType.ALL, optional = false, targetEntity = UserJpaEntity.class)
     @JoinColumn(name = "userId", referencedColumnName = "userId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private UserJpaEntity user;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(5)")

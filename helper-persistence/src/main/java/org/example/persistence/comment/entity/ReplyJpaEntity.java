@@ -15,6 +15,8 @@ import lombok.NoArgsConstructor;
 import org.example.persistence.student.entity.StudentJpaEntity;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Entity(name = "reply")
@@ -29,10 +31,12 @@ public class ReplyJpaEntity {
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudentJpaEntity.class)
     @JoinColumn(name = "studentId", referencedColumnName = "studentId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private StudentJpaEntity student;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = CommentJpaEntity.class)
     @JoinColumn(name = "commentId", referencedColumnName = "commentId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private CommentJpaEntity comment;
 
     @Column(nullable = false, columnDefinition = "TEXT")

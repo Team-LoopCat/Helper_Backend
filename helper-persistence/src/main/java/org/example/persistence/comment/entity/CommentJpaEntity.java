@@ -16,6 +16,8 @@ import org.example.persistence.post.entity.PostJpaEntity;
 import org.example.persistence.student.entity.StudentJpaEntity;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Entity(name = "comment")
@@ -30,10 +32,12 @@ public class CommentJpaEntity {
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudentJpaEntity.class)
     @JoinColumn(name = "studentId", referencedColumnName = "studentId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private StudentJpaEntity student;
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = PostJpaEntity.class)
     @JoinColumn(name = "postId", referencedColumnName = "postId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private PostJpaEntity post;
 
     @Column(nullable = false, columnDefinition = "TEXT")

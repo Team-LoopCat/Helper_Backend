@@ -16,6 +16,8 @@ import lombok.NoArgsConstructor;
 import org.example.domain.study.model.Category;
 import org.example.persistence.student.entity.StudentJpaEntity;
 import org.example.persistence.subject.entity.SubjectJpaEntity;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Entity(name = "study")
@@ -29,6 +31,7 @@ public class StudyJpaEntity {
 
     @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudentJpaEntity.class)
     @JoinColumn(name = "studentId", referencedColumnName = "studentId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private StudentJpaEntity student;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(40)")
