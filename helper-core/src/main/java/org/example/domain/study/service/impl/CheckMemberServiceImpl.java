@@ -16,6 +16,7 @@ public class CheckMemberServiceImpl implements CheckMemberService {
     @Override
     public void checkAlreadyJoined(Member member) {
         if (queryMemberPort.existsByStudyIdAndStudentId(member.getStudyId(), member.getStudentId())) {
+            //a
             throw AlreadyJoinedStudyException.EXCEPTION;
         }
     }
