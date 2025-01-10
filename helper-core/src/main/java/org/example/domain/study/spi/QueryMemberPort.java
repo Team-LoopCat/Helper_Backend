@@ -8,7 +8,7 @@ public interface QueryMemberPort {
 
     Member saveMember(Member member);
 
-    boolean existsByStudyIdAndStudentId(UUID studyId, String studentId);
+    Optional<Boolean> findIsBannedByStudyIdAndStudentId(UUID studyId, String studentId);
 
     Optional<Member> findByStudyIdAndStudentId(UUID studyId, String studentId);
 

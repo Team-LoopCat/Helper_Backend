@@ -53,4 +53,9 @@ public class StudyPersistenceAdapter implements QueryStudyPort {
     public List<StudyWithMemberCountVO> findAllByCategory(Category category) {
         return studyJpaRepository.findAllByCategoryWithCount(category);
     }
+
+    @Override
+    public List<StudyWithMemberCountVO> findAllByStudentId(String studentId) {
+        return studyJpaRepository.findAllByStudentId(studentId);
+    }
 }

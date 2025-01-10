@@ -28,7 +28,7 @@ public class UpdateTeacherUseCase {
             new Teacher(
                 currentTeacher.getTeacherId(),
                 request.id(),
-                currentTeacher.getName()
+                request.name()
             )
         );
 

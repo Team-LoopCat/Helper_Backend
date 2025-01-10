@@ -9,6 +9,7 @@ import org.example.domain.study.dto.request.UpdateStudyRequestDto;
 import org.example.domain.study.dto.response.PostStudyResponseDto;
 import org.example.domain.study.model.Category;
 import org.example.domain.study.usecase.DeleteStudyUseCase;
+import org.example.domain.study.usecase.GetMyStudyListUseCase;
 import org.example.domain.study.usecase.GetStudyDetailUseCase;
 import org.example.domain.study.usecase.GetStudyListUseCase;
 import org.example.domain.study.usecase.JoinStudyUseCase;
@@ -40,6 +41,7 @@ public class StudyWebAdapter {
     private final StudyBanStudentUseCase studyBanStudentUseCase;
     private final GetStudyListUseCase getStudyListUseCase;
     private final GetStudyDetailUseCase getStudyDetailUseCase;
+    private final GetMyStudyListUseCase getMyStudyListUseCase;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -87,5 +89,11 @@ public class StudyWebAdapter {
     @GetMapping("/{study_id}")
     public GetStudyDetailResponseDto getStudyDetail(@PathVariable("study_id") UUID studyId) {
         return getStudyDetailUseCase.execute(studyId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/my")
+    public GetStudyListResponseDto getMyStudyList() {
+        return getMyStudyListUseCase.execute();
     }
 }

@@ -23,17 +23,17 @@ public class JoinStudyUseCase {
     private final GetStudyService getStudyService;
     private final CheckMemberService checkMemberService;
     private final CommandMemberService commandMemberService;
-    private final GetMemberService getMemberService;
 
     public void execute(UUID studyId) {
-        Student currentStudent = getStudentService.getStudentByUserId(securityService.getCurrentUser());
-
         Study currentStudy = getStudyService.getStudyById(studyId);
-        
-        Member member = getMemberService.getByStudyAndStudent(currentStudy, currentStudent);
+        Student currentStudent = getStudentService.getStudentByUser(securityService.getCurrentUser());
 
-        checkMemberService.checkAlreadyJoined(member);
-        checkMemberService.checkBannedFromStudy(member);
+        checkMemberService.checkJoinAvailable(currentStudy, currentStudent);
+
+        Member member = Member.builder()
+                .studyId(currentStudy.getStudyId())
+                .studentId(currentStudent.getStudentId())
+                .build();
 
         commandMemberService.saveMember(member);
     }

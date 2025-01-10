@@ -25,8 +25,8 @@ public class MemberPersistenceAdapter implements QueryMemberPort {
     }
 
     @Override
-    public boolean existsByStudyIdAndStudentId(UUID studyId, String studentId) {
-        return memberJpaRepository.existsByStudyIdAndStudentId(studyId, studentId);
+    public Optional<Boolean> findIsBannedByStudyIdAndStudentId(UUID studyId, String studentId) {
+        return memberJpaRepository.findIsBannedByStudyIdAndStudentId(studyId, studentId);
     }
 
     @Override
