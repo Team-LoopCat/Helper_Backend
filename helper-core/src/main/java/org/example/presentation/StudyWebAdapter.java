@@ -2,6 +2,7 @@ package org.example.presentation;
 
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.example.domain.study.dto.response.GetMemberListResponseDto;
 import org.example.domain.study.dto.response.GetStudyDetailResponseDto;
 import org.example.domain.study.dto.response.GetStudyListResponseDto;
 import org.example.domain.study.dto.request.PostStudyRequestDto;
@@ -9,6 +10,7 @@ import org.example.domain.study.dto.request.UpdateStudyRequestDto;
 import org.example.domain.study.dto.response.PostStudyResponseDto;
 import org.example.domain.study.model.Category;
 import org.example.domain.study.usecase.DeleteStudyUseCase;
+import org.example.domain.study.usecase.GetMemberListUseCase;
 import org.example.domain.study.usecase.GetMyStudyListUseCase;
 import org.example.domain.study.usecase.GetStudyDetailUseCase;
 import org.example.domain.study.usecase.GetStudyListUseCase;
@@ -39,6 +41,7 @@ public class StudyWebAdapter {
     private final JoinStudyUseCase joinStudyUseCase;
     private final LeaveStudyUseCase leaveStudyUseCase;
     private final StudyBanStudentUseCase studyBanStudentUseCase;
+    private final GetMemberListUseCase getMemberListUseCase;
     private final GetStudyListUseCase getStudyListUseCase;
     private final GetStudyDetailUseCase getStudyDetailUseCase;
     private final GetMyStudyListUseCase getMyStudyListUseCase;
@@ -77,6 +80,12 @@ public class StudyWebAdapter {
     @DeleteMapping("/ban/{study_id}/{student_id}")
     public void banStudent(@PathVariable("study_id") UUID studyId, @PathVariable("student_id") String student_id) {
         studyBanStudentUseCase.execute(studyId, student_id);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/member/{study_id}")
+    public GetMemberListResponseDto getMemberList(@PathVariable("study_id") UUID studyId) {
+        return getMemberListUseCase.execute(studyId);
     }
 
     @ResponseStatus(HttpStatus.OK)
