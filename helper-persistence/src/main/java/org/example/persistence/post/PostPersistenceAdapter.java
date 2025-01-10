@@ -25,11 +25,15 @@ public class PostPersistenceAdapter implements QueryPostPort {
 
     @Override
     public Optional<Post> getPostByPostId(UUID postId) {
-        return postMapper.toDomain(postJpaRepository.getPostJpaEntityByPostId(postId));
+        return postMapper.toDomain(
+                postJpaRepository.getPostJpaEntityByPostId(postId)
+        );
     }
 
     @Override
     public void deletePost(Post post) {
-        postJpaRepository.delete(postMapper.toEntity(post));
+        postJpaRepository.delete(
+                postMapper.toEntity(post)
+        );
     }
 }
