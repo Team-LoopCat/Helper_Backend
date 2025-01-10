@@ -2,7 +2,7 @@ package org.example.domain.study.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.example.domain.study.exception.AlreadyJoinedStudyException;
-import org.example.domain.study.exception.YouBannedFromStudyException;
+import org.example.domain.study.exception.AlreadyBannedFromStudyException;
 import org.example.domain.study.model.Member;
 import org.example.domain.study.service.CheckMemberService;
 import org.example.domain.study.spi.QueryMemberPort;
@@ -16,7 +16,6 @@ public class CheckMemberServiceImpl implements CheckMemberService {
     @Override
     public void checkAlreadyJoined(Member member) {
         if (queryMemberPort.existsByStudyIdAndStudentId(member.getStudyId(), member.getStudentId())) {
-            //a
             throw AlreadyJoinedStudyException.EXCEPTION;
         }
     }
@@ -24,7 +23,7 @@ public class CheckMemberServiceImpl implements CheckMemberService {
     @Override
     public void checkBannedFromStudy(Member member) {
         if (member.getIsBanned()) {
-            throw YouBannedFromStudyException.EXCEPTION;
+            throw AlreadyBannedFromStudyException.EXCEPTION;
         }
     }
 }
