@@ -17,7 +17,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class StudyBanStudentsUseCase {
+public class StudyBanStudentUseCase {
     private final GetStudyService getStudyService;
     private final GetStudentService getStudentService;
     private final GetMemberService getMemberService;
