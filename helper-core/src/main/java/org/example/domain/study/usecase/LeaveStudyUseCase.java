@@ -25,7 +25,7 @@ public class LeaveStudyUseCase {
 
     public void execute(UUID studyId) {
         Study currentStudy = getStudyService.getStudyById(studyId);
-        Student currentStudent = getStudentService.getStudentByUserId(securityService.getCurrentUser());
+        Student currentStudent = getStudentService.getStudentByUser(securityService.getCurrentUser());
 
         Member member = getMemberService.getByStudyAndStudent(currentStudy, currentStudent);
 

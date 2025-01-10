@@ -26,7 +26,7 @@ public class UpdateStudyUseCase {
 
     public void execute(UUID studyId, UpdateStudyRequestDto request) {
         Study currentStudy = getStudyService.getStudyById(studyId);
-        Student currentStudent = getStudentService.getStudentByUserId(securityService.getCurrentUser());
+        Student currentStudent = getStudentService.getStudentByUser(securityService.getCurrentUser());
 
         checkStudyService.checkStudyIsOwn(currentStudy, currentStudent);
 

@@ -7,5 +7,5 @@ public interface GetStudentService {
   
     Student getStudentByUser(User user);
   
-    Student getStudentByStudentId(String studentId)
+    Student getStudentByStudentId(String studentId);
 }
