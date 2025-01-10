@@ -25,8 +25,8 @@ public class JoinStudyUseCase {
     private final CommandMemberService commandMemberService;
 
     public void execute(UUID studyId) {
-        Student currentStudent = getStudentService.getStudentByUserId(securityService.getCurrentUser());
         Study currentStudy = getStudyService.getStudyById(studyId);
+        Student currentStudent = getStudentService.getStudentByUser(securityService.getCurrentUser());
 
         checkMemberService.checkJoinAvailable(currentStudy, currentStudent);
 
