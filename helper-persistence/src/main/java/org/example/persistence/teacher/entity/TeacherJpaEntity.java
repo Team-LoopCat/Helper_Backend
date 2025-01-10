@@ -1,11 +1,7 @@
 package org.example.persistence.teacher.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
+
 import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -22,6 +18,7 @@ import org.hibernate.annotations.OnDeleteAction;
 public class TeacherJpaEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID teacherId;
 

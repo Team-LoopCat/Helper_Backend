@@ -1,11 +1,7 @@
 package org.example.persistence.comment.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 import java.util.UUID;
 import lombok.AccessLevel;
@@ -27,6 +23,7 @@ import org.hibernate.annotations.OnDeleteAction;
 public class CommentJpaEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID commentId;
 
