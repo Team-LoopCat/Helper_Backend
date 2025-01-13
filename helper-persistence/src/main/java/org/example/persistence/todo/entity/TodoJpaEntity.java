@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.persistence.student.entity.StudentJpaEntity;
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -31,9 +32,10 @@ public class TodoJpaEntity {
     @Column(nullable = false, columnDefinition = "VARCHAR(50)")
     private String content;
 
+    @ColumnDefault("FALSE")
     @Column(nullable = false, columnDefinition = "TINYINT")
     private Boolean completed;
 
-    @Column(nullable = true, columnDefinition = "DATE")
+    @Column(nullable = false, columnDefinition = "DATE")
     private LocalDate date;
 }
