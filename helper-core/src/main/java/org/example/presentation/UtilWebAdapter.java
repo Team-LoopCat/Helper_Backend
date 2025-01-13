@@ -14,8 +14,8 @@ public class UtilWebAdapter {
     private final UploadFileUseCase uploadFileUseCase;
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/util/file")
-    public UploadFileResponseDto uploadFile(@RequestPart("file")MultipartFile file) {
+    @PostMapping("/file")
+    public UploadFileResponseDto uploadFile(@RequestPart("file") MultipartFile file) {
         return uploadFileUseCase.execute(file);
     }
 }
