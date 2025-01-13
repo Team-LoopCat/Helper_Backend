@@ -26,7 +26,7 @@ public class PostWebAdapter {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @PostMapping("/{postId}")
+    @PatchMapping("/{postId}")
     public void updatePost(@PathVariable UUID postId, @RequestBody UpdatePostRequestDto request) {
         updatePostUseCase.execute(postId, request);
     }
