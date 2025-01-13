@@ -1,11 +1,7 @@
 package org.example.persistence.exam.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.UUID;
 import lombok.AccessLevel;
@@ -24,6 +20,7 @@ import org.hibernate.annotations.OnDeleteAction;
 public class ExamDataJpaEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, unique = true, columnDefinition = "BINARY(16)")
     private UUID examDataId;
 
