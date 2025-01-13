@@ -22,7 +22,7 @@ public class AttendJpaEntity {
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID attendId;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = GradeInfoJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = GradeInfoJpaEntity.class)
     @JoinColumns({
             @JoinColumn(name = "grade", referencedColumnName = "grade"),
             @JoinColumn(name = "classroom", referencedColumnName = "classroom")
@@ -30,7 +30,7 @@ public class AttendJpaEntity {
     @OnDelete(action = OnDeleteAction.NO_ACTION)
     private GradeInfoJpaEntity gradeInfo;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = SubjectJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = SubjectJpaEntity.class)
     @JoinColumn(name = "subjectId", referencedColumnName = "subjectId")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private SubjectJpaEntity subject;

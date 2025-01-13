@@ -26,12 +26,12 @@ public class ReplyJpaEntity {
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID replyId;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudentJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = StudentJpaEntity.class)
     @JoinColumn(name = "studentId", referencedColumnName = "studentId")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private StudentJpaEntity student;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = CommentJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = CommentJpaEntity.class)
     @JoinColumn(name = "commentId", referencedColumnName = "commentId")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private CommentJpaEntity comment;

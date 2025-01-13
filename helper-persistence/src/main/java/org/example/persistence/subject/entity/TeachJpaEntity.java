@@ -22,13 +22,13 @@ import org.hibernate.annotations.OnDeleteAction;
 public class TeachJpaEntity {
 
     @Id
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = TeacherJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = TeacherJpaEntity.class)
     @JoinColumn(name = "teacherId", referencedColumnName = "teacherId")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private TeacherJpaEntity teacher;
 
     @Id
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = SubjectJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = SubjectJpaEntity.class)
     @JoinColumn(name = "subjectId", referencedColumnName = "subjectId")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private SubjectJpaEntity subject;

@@ -24,7 +24,7 @@ public class StudyJpaEntity {
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID studyId;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudentJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = StudentJpaEntity.class)
     @JoinColumn(name = "studentId", referencedColumnName = "studentId")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private StudentJpaEntity student;

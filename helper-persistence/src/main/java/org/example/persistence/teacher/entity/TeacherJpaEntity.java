@@ -22,7 +22,7 @@ public class TeacherJpaEntity {
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID teacherId;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false, targetEntity = UserJpaEntity.class)
+    @OneToOne(optional = false, targetEntity = UserJpaEntity.class)
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private UserJpaEntity user;

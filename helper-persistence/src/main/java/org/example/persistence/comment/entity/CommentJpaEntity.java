@@ -27,12 +27,12 @@ public class CommentJpaEntity {
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID commentId;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudentJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = StudentJpaEntity.class)
     @JoinColumn(name = "studentId", referencedColumnName = "studentId")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private StudentJpaEntity student;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = PostJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = PostJpaEntity.class)
     @JoinColumn(name = "postId", referencedColumnName = "postId")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private PostJpaEntity post;
