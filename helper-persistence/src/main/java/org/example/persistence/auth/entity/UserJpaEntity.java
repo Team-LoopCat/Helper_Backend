@@ -11,11 +11,13 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.domain.auth.model.Role;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.DynamicInsert;
 
 @Getter
 @Entity(name = "user")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@DynamicInsert
 public class UserJpaEntity {
 
     @Id

@@ -11,6 +11,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.persistence.teacher.entity.TeacherJpaEntity;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Entity(name = "teach")
@@ -20,12 +22,14 @@ import org.example.persistence.teacher.entity.TeacherJpaEntity;
 public class TeachJpaEntity {
 
     @Id
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = TeacherJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = TeacherJpaEntity.class)
     @JoinColumn(name = "teacherId", referencedColumnName = "teacherId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private TeacherJpaEntity teacher;
 
     @Id
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = SubjectJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = SubjectJpaEntity.class)
     @JoinColumn(name = "subjectId", referencedColumnName = "subjectId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private SubjectJpaEntity subject;
 }

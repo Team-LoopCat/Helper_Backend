@@ -28,18 +28,20 @@ public class StudentJpaEntity {
     @Column(nullable = false, unique = true, columnDefinition = "CHAR(4)")
     private String studentId;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = GradeInfoJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = GradeInfoJpaEntity.class)
     @JoinColumns({
             @JoinColumn(name = "grade", referencedColumnName = "grade"),
             @JoinColumn(name = "classroom", referencedColumnName = "classroom")
     })
+    @OnDelete(action = OnDeleteAction.NO_ACTION)
     private GradeInfoJpaEntity gradeInfo;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = true, targetEntity = SubjectJpaEntity.class)
+    @ManyToOne(optional = true, targetEntity = SubjectJpaEntity.class)
     @JoinColumn(name = "subjectId", referencedColumnName = "subjectId")
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private SubjectJpaEntity subject;
 
-    @OneToOne(cascade = CascadeType.ALL, optional = false, targetEntity = UserJpaEntity.class)
+    @OneToOne(optional = false, targetEntity = UserJpaEntity.class)
     @JoinColumn(name = "userId", referencedColumnName = "userId")
     @OnDelete(action = OnDeleteAction.CASCADE)
     private UserJpaEntity user;

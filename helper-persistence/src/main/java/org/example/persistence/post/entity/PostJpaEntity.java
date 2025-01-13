@@ -12,12 +12,14 @@ import org.example.domain.post.model.PostCategory;
 import org.example.persistence.student.entity.StudentJpaEntity;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
-@DynamicInsert
 @Entity(name = "post")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @AllArgsConstructor
+@DynamicInsert
 public class PostJpaEntity {
 
     @Id
@@ -25,8 +27,9 @@ public class PostJpaEntity {
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID postId;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudentJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = StudentJpaEntity.class)
     @JoinColumn(name = "studentId", referencedColumnName = "studentId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private StudentJpaEntity student;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(40)")

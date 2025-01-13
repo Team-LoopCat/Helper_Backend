@@ -1,13 +1,7 @@
 package org.example.persistence.study.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
+
 import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -16,6 +10,8 @@ import lombok.NoArgsConstructor;
 import org.example.domain.study.model.Category;
 import org.example.persistence.student.entity.StudentJpaEntity;
 import org.example.persistence.subject.entity.SubjectJpaEntity;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Entity(name = "study")
@@ -24,11 +20,13 @@ import org.example.persistence.subject.entity.SubjectJpaEntity;
 public class StudyJpaEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID studyId;
 
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudentJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = StudentJpaEntity.class)
     @JoinColumn(name = "studentId", referencedColumnName = "studentId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private StudentJpaEntity student;
 
     @Column(nullable = false, columnDefinition = "VARCHAR(40)")

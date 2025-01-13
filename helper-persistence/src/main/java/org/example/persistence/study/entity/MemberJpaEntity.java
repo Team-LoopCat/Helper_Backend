@@ -14,6 +14,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.example.persistence.student.entity.StudentJpaEntity;
 import org.hibernate.annotations.ColumnDefault;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Entity(name = "member")
@@ -23,13 +25,15 @@ import org.hibernate.annotations.ColumnDefault;
 public class MemberJpaEntity {
 
     @Id
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudentJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = StudentJpaEntity.class)
     @JoinColumn(name = "studentId", referencedColumnName = "studentId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private String studentId;
 
     @Id
-    @ManyToOne(cascade = CascadeType.ALL, optional = false, targetEntity = StudyJpaEntity.class)
+    @ManyToOne(optional = false, targetEntity = StudyJpaEntity.class)
     @JoinColumn(name = "studyId", referencedColumnName = "studyId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private UUID studyId;
 
     @ColumnDefault("false")
