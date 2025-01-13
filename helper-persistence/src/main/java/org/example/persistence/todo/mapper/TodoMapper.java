@@ -35,7 +35,7 @@ public class TodoMapper implements GenericMapper<Todo, TodoJpaEntity> {
                 (entity.getStudentId()).orElse(null);
 
         return new TodoJpaEntity(
-                entity.getTodoID(),
+                entity.getTodoId(),
                 studentJpaEntity,
                 entity.getContent(),
                 entity.getCompleted(),
