@@ -70,7 +70,7 @@ public class SecurityConfig {
 
                         // comment
                         authorization
-                                .requestMatchers(HttpMethod.POST, "/comment/create/{postId}").hasAuthority(Role.Student.name())
+                                .requestMatchers(HttpMethod.POST, "/comment/create").hasAuthority(Role.Student.name())
                                 .requestMatchers(HttpMethod.PATCH, "/comment/{commentId}").hasAuthority(Role.Student.name())
                                 .requestMatchers(HttpMethod.DELETE, "/comment/{commentId}").hasAuthority(Role.Student.name());
 
