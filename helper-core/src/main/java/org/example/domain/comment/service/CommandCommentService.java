@@ -5,6 +5,4 @@ import org.example.domain.comment.model.Comment;
 public interface CommandCommentService {
 
     void saveComment(Comment comment);
-
-    void deleteComment(Comment comment);
 }
