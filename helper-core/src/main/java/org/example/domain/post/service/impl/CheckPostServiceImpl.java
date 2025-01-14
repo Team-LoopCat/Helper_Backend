@@ -24,7 +24,7 @@ public class CheckPostServiceImpl implements CheckPostService {
 
     @Override
     public void checkPostExists(UUID postId) {
-        if (!queryPostPort.checkPostExists(postId)) {
+        if (queryPostPort.checkPostExists(postId)) {
             throw PostNotFoundException.EXCEPTION;
         }
     }
