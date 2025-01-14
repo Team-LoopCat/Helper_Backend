@@ -1,5 +1,6 @@
 package org.example.presentation;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.student.dto.request.ChangePasswordRequestDto;
 import org.example.domain.student.dto.request.SendCodeRequestDto;
@@ -25,7 +26,7 @@ public class StudentWebAdapter {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/signup")
-    public void signup (@RequestBody SignupRequestDto request) {
+    public void signup (@Valid @RequestBody SignupRequestDto request) {
         signupUseCase.execute(request);
     }
 
@@ -43,25 +44,25 @@ public class StudentWebAdapter {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/email/send")
-    public void sendCode (@RequestBody SendCodeRequestDto request) {
+    public void sendCode (@Valid @RequestBody SendCodeRequestDto request) {
         sendCodeUseCase.execute(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/email/verify")
-    public void verifyCode (@RequestBody VerifyCodeRequestDto request) {
+    public void verifyCode (@Valid @RequestBody VerifyCodeRequestDto request) {
         verifyCodeUseCase.execute(request);
     }
     
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/profile")
-    public void updateUser (@RequestBody UpdateStudentRequestDto request) {
+    public void updateUser (@Valid @RequestBody UpdateStudentRequestDto request) {
         updateUserUseCase.execute(request);
     }
 
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/password")
-    public void changePassword(@RequestBody ChangePasswordRequestDto request) {
+    public void changePassword(@Valid @RequestBody ChangePasswordRequestDto request) {
         changePasswordUseCase.execute(request);
     }
 }

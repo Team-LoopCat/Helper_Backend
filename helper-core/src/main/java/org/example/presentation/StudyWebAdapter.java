@@ -1,5 +1,6 @@
 package org.example.presentation;
 
+import jakarta.validation.Valid;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.study.dto.response.GetMemberListResponseDto;
@@ -48,13 +49,13 @@ public class StudyWebAdapter {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public PostStudyResponseDto postStudy(@RequestBody PostStudyRequestDto postStudyRequest) {
+    public PostStudyResponseDto postStudy(@Valid @RequestBody PostStudyRequestDto postStudyRequest) {
         return postStudyUseCase.execute(postStudyRequest);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PatchMapping("/{study_id}")
-    public void updateStudy(@PathVariable("study_id") UUID studyId, @RequestBody UpdateStudyRequestDto updateStudyRequest) {
+    public void updateStudy(@PathVariable("study_id") UUID studyId, @Valid @RequestBody UpdateStudyRequestDto updateStudyRequest) {
         updateStudyUseCase.execute(studyId, updateStudyRequest);
     }
 

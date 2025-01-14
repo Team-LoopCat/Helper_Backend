@@ -1,5 +1,6 @@
 package org.example.presentation;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.teacher.dto.request.CheckIdExistRequestDto;
 import org.example.domain.teacher.dto.request.UpdateTeacherRequestDto;
@@ -26,7 +27,7 @@ public class TeacherWebAdapter {
 
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping
-    public void updateTeacher(@RequestBody UpdateTeacherRequestDto updateTeacherRequest) {
+    public void updateTeacher(@Valid @RequestBody UpdateTeacherRequestDto updateTeacherRequest) {
         updateTeacherUseCase.execute(updateTeacherRequest);
     }
 
@@ -38,7 +39,7 @@ public class TeacherWebAdapter {
 
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/check")
-    public void checkId(@RequestBody CheckIdExistRequestDto checkIdRequest) {
+    public void checkId(@Valid @RequestBody CheckIdExistRequestDto checkIdRequest) {
         checkIdExistUseCase.execute(checkIdRequest);
     }
 }

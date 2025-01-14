@@ -1,12 +1,15 @@
 package org.example.domain.student.dto.request;
 
+import jakarta.annotation.Nullable;
+import jakarta.validation.constraints.NotBlank;
+
 public record SignupRequestDto(
-        String grade,
-        String classroom,
-        String number,
-        String id,
-        String nickname,
-        String password,
-        String email,
-        String profile
+        @NotBlank String grade,
+        @NotBlank String classroom,
+        @NotBlank String number,
+        @NotBlank String id,
+        @NotBlank String nickname,
+        @NotBlank String password,
+        @NotBlank String email,
+        @Nullable String profile
 ) {}

@@ -22,13 +22,13 @@ public class PostWebAdapter {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
-    public void createPost(@RequestBody CreatePostRequestDto request) {
+    public void createPost(@Valid @RequestBody CreatePostRequestDto request) {
         createPostUseCase.execute(request);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PatchMapping("/{postId}")
-    public void updatePost(@Valid @PathVariable UUID postId, @Valid @RequestBody UpdatePostRequestDto request) {
+    public void updatePost(@PathVariable UUID postId, @Valid @RequestBody UpdatePostRequestDto request) {
         updatePostUseCase.execute(postId, request);
     }
 

@@ -1,5 +1,7 @@
 package org.example.domain.student.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
+
 public record SendCodeRequestDto(
-        String email
+        @NotBlank String email
 ) { }

@@ -1,7 +1,9 @@
 package org.example.domain.teacher.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
+
 public record UpdateTeacherRequestDto(
-        String name,
-        String id,
-        String profile_image
+        @NotBlank String name,
+        @NotBlank String id,
+        @NotBlank String profile_image
 ) { }
