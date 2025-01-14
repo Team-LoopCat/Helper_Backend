@@ -1,5 +1,6 @@
 package org.example.presentation;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.comment.dto.request.CreateCommentRequestDto;
 import org.example.domain.comment.usecase.CreateCommentUseCase;
@@ -14,7 +15,7 @@ public class CommentWebAdapter {
     private final CreateCommentUseCase createCommentUseCase;
 
     @PostMapping("/create/{postId}")
-    private void createComment(@PathVariable UUID postId, @RequestBody CreateCommentRequestDto request) {
+    private void createComment(@Valid @PathVariable UUID postId, @Valid @RequestBody CreateCommentRequestDto request) {
         createCommentUseCase.execute(postId, request);
     }
 }
