@@ -7,9 +7,6 @@ import org.example.persistence.comment.mapper.CommentMapper;
 import org.example.persistence.comment.repository.CommentJpaRepository;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
-import java.util.UUID;
-
 @Component
 @RequiredArgsConstructor
 public class CommentPersistenceAdapter implements QueryCommentPort {
@@ -20,20 +17,6 @@ public class CommentPersistenceAdapter implements QueryCommentPort {
     public void saveComment(Comment comment) {
         commentJpaRepository.save(
                 commentMapper.toEntity(comment)
-        );
-    }
-
-    @Override
-    public void deleteComment(Comment comment) {
-        commentJpaRepository.delete(
-                commentMapper.toEntity(comment)
-        );
-    }
-
-    @Override
-    public Optional<Comment> getCommentByCommentId(UUID commentId) {
-        return commentMapper.toDomain(
-                commentJpaRepository.findByCommentId(commentId)
         );
     }
 }
