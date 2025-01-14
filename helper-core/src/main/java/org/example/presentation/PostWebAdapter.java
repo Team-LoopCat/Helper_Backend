@@ -1,5 +1,6 @@
 package org.example.presentation;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.post.dto.request.CreatePostRequestDto;
 import org.example.domain.post.dto.request.UpdatePostRequestDto;
@@ -27,7 +28,7 @@ public class PostWebAdapter {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PatchMapping("/{postId}")
-    public void updatePost(@PathVariable UUID postId, @RequestBody UpdatePostRequestDto request) {
+    public void updatePost(@Valid @PathVariable UUID postId, @Valid @RequestBody UpdatePostRequestDto request) {
         updatePostUseCase.execute(postId, request);
     }
 
