@@ -1,8 +1,11 @@
 package org.example.domain.file.service;
 
 import org.example.domain.file.model.File;
+import org.example.domain.post.model.Post;
 
-public interface CommendFileService {
+public interface CommandFileService {
 
     void saveFile(File file);
+
+    void deleteAllByPost(Post post);
 }

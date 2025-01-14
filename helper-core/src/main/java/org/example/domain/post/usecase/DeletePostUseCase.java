@@ -3,10 +3,9 @@ package org.example.domain.post.usecase;
 import lombok.RequiredArgsConstructor;
 import org.example.common.service.SecurityService;
 import org.example.domain.auth.model.User;
-import org.example.domain.post.exception.IsNotWriterException;
 import org.example.domain.post.model.Post;
 import org.example.domain.post.service.CheckPostService;
-import org.example.domain.post.service.CommendPostService;
+import org.example.domain.post.service.CommandPostService;
 import org.example.domain.post.service.GetPostService;
 import org.example.domain.student.service.GetStudentService;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,7 @@ public class DeletePostUseCase {
     private final SecurityService securityService;
     private final GetPostService getPostService;
     private final GetStudentService getStudentService;
-    private final CommendPostService commendPostService;
+    private final CommandPostService commandPostService;
     private final CheckPostService checkPostService;
 
     public void execute(UUID postId) {
@@ -31,6 +30,6 @@ public class DeletePostUseCase {
 
         checkPostService.checkIsWriter(post, studentId);
 
-        commendPostService.deletePost(post);
+        commandPostService.deletePost(post);
     }
 }
