@@ -24,8 +24,8 @@ public class CommentWebAdapter {
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping("/{postId}")
-    private void deleteComment(@Valid @PathVariable UUID postId) {
-        deleteCommentUseCase.execute(postId);
+    @DeleteMapping("/{commentId}")
+    private void deleteComment(@Valid @PathVariable UUID commentId) {
+        deleteCommentUseCase.execute(commentId);
     }
 }
