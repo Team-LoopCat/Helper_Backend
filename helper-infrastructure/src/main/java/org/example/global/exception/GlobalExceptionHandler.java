@@ -8,6 +8,7 @@ import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 
 import java.util.stream.Collectors;
 
@@ -33,8 +34,15 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<ErrorResponse> validationExceptionHandler (HttpMessageNotReadableException e) {
+    public ResponseEntity<ErrorResponse> JsonParseExceptionHandler (HttpMessageNotReadableException e) {
         ErrorResponse response = ErrorResponse.of(GeneralExceptionCode.BAD_REQUEST, "json 형식이 잘못된거 같습니다");
+
+        return new ResponseEntity<>(response, HttpStatusCode.valueOf(400));
+    }
+
+    @ExceptionHandler(MethodArgumentTypeMismatchException.class)
+    public ResponseEntity<ErrorResponse> ArgumentTypeMismatchExceptionHandler (MethodArgumentTypeMismatchException e) {
+        ErrorResponse response = ErrorResponse.of(GeneralExceptionCode.BAD_REQUEST, "쿼리스트링 또는 파라미터 형식이 잘못된거 같습니다");
 
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(400));
     }
