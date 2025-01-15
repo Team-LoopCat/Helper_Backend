@@ -34,7 +34,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ErrorResponse> validationExceptionHandler (HttpMessageNotReadableException e) {
-        ErrorResponse response = ErrorResponse.of(GeneralExceptionCode.BAD_REQUEST, "enum 값이 잘못됬습니다");
+        ErrorResponse response = ErrorResponse.of(GeneralExceptionCode.BAD_REQUEST, "json 형식이 잘못된거 같습니다");
 
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(400));
     }
