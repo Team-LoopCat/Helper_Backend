@@ -9,4 +9,6 @@ public interface TodoQueryPort {
     Todo saveTodo(Todo todo);
 
     Optional<Todo> findTodoById(UUID id);
+
+    void deleteTodo(Todo todo);
 }

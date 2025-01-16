@@ -30,4 +30,11 @@ public class TodoPersistenceAdapter implements TodoQueryPort {
                 todoJpaRepository.findById(id)
         );
     }
+
+    @Override
+    public void deleteTodo(Todo todo) {
+        todoJpaRepository.delete(
+                todoMapper.toEntity(todo)
+        );
+    }
 }
