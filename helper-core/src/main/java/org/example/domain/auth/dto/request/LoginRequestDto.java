@@ -1,6 +1,8 @@
 package org.example.domain.auth.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
+
 public record LoginRequestDto(
-        String id,
-        String password
+        @NotBlank String id,
+        @NotBlank String password
 ) {}
