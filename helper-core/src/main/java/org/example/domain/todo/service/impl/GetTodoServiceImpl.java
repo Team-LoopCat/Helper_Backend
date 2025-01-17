@@ -25,6 +25,6 @@ public class GetTodoServiceImpl implements GetTodoService {
 
     @Override
     public List<Todo> getAllTodoByDateAndStudent(LocalDate date, Student student) {
-        return todoQueryPort.findAllTodoByStudentId(date, student.getStudentId());
+        return todoQueryPort.findAllTodoByDateAndStudentId(date, student.getStudentId());
     }
 }
