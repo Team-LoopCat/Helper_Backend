@@ -1,7 +1,7 @@
 package org.example.domain.comment.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.example.domain.comment.exception.CommentNotExistsException;
+import org.example.domain.comment.exception.CommentNotFoundException;
 import org.example.domain.comment.model.Comment;
 import org.example.domain.comment.service.GetCommentService;
 import org.example.domain.comment.spi.QueryCommentPort;
@@ -17,7 +17,7 @@ public class GetCommentServiceImpl implements GetCommentService {
     @Override
     public Comment getCommentByCommentId(UUID commentId) {
         return queryCommentPort.getCommentByCommentId(commentId).orElseThrow(
-                () -> CommentNotExistsException.EXCEPTION
+                () -> CommentNotFoundException.EXCEPTION
         );
     }
 }
