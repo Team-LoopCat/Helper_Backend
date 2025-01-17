@@ -1,6 +1,7 @@
 package org.example.persistence.todo;
 
 import java.util.Optional;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.todo.model.Todo;
 import org.example.domain.todo.spi.TodoQueryPort;
@@ -21,5 +22,12 @@ public class TodoPersistenceAdapter implements TodoQueryPort {
                         todoMapper.toEntity(todo)
                 ))
         ).get();
+    }
+
+    @Override
+    public Optional<Todo> findTodoById(UUID id) {
+        return todoMapper.toDomain(
+                todoJpaRepository.findById(id)
+        );
     }
 }
