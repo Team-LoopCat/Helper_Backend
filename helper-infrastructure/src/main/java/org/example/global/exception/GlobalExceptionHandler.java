@@ -35,14 +35,14 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ErrorResponse> JsonParseExceptionHandler (HttpMessageNotReadableException e) {
-        ErrorResponse response = ErrorResponse.of(GeneralExceptionCode.BAD_REQUEST, "json 형식이 잘못된거 같습니다");
+        ErrorResponse response = ErrorResponse.of(GeneralExceptionCode.BAD_REQUEST, "json 형식이 잘못되었습니다");
 
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(400));
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public ResponseEntity<ErrorResponse> ArgumentTypeMismatchExceptionHandler (MethodArgumentTypeMismatchException e) {
-        ErrorResponse response = ErrorResponse.of(GeneralExceptionCode.BAD_REQUEST, "쿼리스트링 또는 파라미터 형식이 잘못된거 같습니다");
+        ErrorResponse response = ErrorResponse.of(GeneralExceptionCode.BAD_REQUEST, "쿼리스트링 또는 파라미터 형식이 잘못되었습니다");
 
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(400));
     }
