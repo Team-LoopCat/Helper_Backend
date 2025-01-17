@@ -3,8 +3,8 @@ package org.example.domain.comment.exception;
 import org.example.common.exception.GlobalBusinessException;
 import org.example.domain.comment.exception.errorCode.CommentErrorCode;
 
-public class CommentNotExistsException extends GlobalBusinessException {
-    public static final CommentNotExistsException EXCEPTION = new CommentNotExistsException();
+public class CommentNotFoundException extends GlobalBusinessException {
+    public static final CommentNotFoundException EXCEPTION = new CommentNotFoundException();
 
-    public CommentNotExistsException() { super(CommentErrorCode.COMMENT_NOT_FOUND); }
+    public CommentNotFoundException() { super(CommentErrorCode.COMMENT_NOT_FOUND); }
 }
