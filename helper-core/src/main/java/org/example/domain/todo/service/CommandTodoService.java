@@ -5,4 +5,6 @@ import org.example.domain.todo.model.Todo;
 public interface CommandTodoService {
 
     Todo saveTodo(Todo todo);
+
+    void deleteTodo(Todo todo);
 }

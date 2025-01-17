@@ -15,4 +15,9 @@ public class CommandTodoServiceImpl implements CommandTodoService {
     public Todo saveTodo(Todo todo) {
         return todoQueryPort.saveTodo(todo);
     }
+
+    @Override
+    public void deleteTodo(Todo todo) {
+        todoQueryPort.deleteTodo(todo);
+    }
 }
