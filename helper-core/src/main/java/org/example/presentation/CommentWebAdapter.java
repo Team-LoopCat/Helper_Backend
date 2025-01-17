@@ -4,18 +4,28 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.comment.dto.request.CreateCommentRequestDto;
 import org.example.domain.comment.usecase.CreateCommentUseCase;
+import org.example.domain.comment.usecase.DeleteCommentUseCase;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/post")
+@RequestMapping("/comment")
 public class CommentWebAdapter {
     private final CreateCommentUseCase createCommentUseCase;
+    private final DeleteCommentUseCase deleteCommentUseCase;
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create/{postId}")
     private void createComment(@PathVariable UUID postId, @Valid @RequestBody CreateCommentRequestDto request) {
         createCommentUseCase.execute(postId, request);
+    }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{commentId}")
+    private void deleteComment(@Valid @PathVariable UUID commentId) {
+        deleteCommentUseCase.execute(commentId);
     }
 }
