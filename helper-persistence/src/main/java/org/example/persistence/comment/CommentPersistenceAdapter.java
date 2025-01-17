@@ -3,10 +3,12 @@ package org.example.persistence.comment;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.comment.model.Comment;
 import org.example.domain.comment.spi.QueryCommentPort;
+import org.example.domain.comment.spi.vo.CommentDataVO;
 import org.example.persistence.comment.mapper.CommentMapper;
 import org.example.persistence.comment.repository.CommentJpaRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -35,5 +37,10 @@ public class CommentPersistenceAdapter implements QueryCommentPort {
         return commentMapper.toDomain(
                 commentJpaRepository.findByCommentId(commentId)
         );
+    }
+
+    @Override
+    public List<CommentDataVO> getAllCommentsWithWritersByPost(UUID postId) {
+        return commentJpaRepository.findAllWithWriterByPostId(postId);
     }
 }
