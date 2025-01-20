@@ -1,7 +1,10 @@
 package org.example.domain.todo.service.impl;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.example.domain.student.model.Student;
 import org.example.domain.todo.exception.TodoNotFoundException;
 import org.example.domain.todo.model.Todo;
 import org.example.domain.todo.service.GetTodoService;
@@ -18,5 +21,10 @@ public class GetTodoServiceImpl implements GetTodoService {
         return todoQueryPort.findTodoById(todoId).orElseThrow(
                 () -> TodoNotFoundException.EXCEPTION
         );
+    }
+
+    @Override
+    public List<Todo> getAllTodoByDateAndStudent(LocalDate date, Student student) {
+        return todoQueryPort.findAllTodoByDateAndStudentId(date, student.getStudentId());
     }
 }

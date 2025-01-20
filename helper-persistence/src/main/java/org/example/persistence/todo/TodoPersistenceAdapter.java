@@ -1,5 +1,7 @@
 package org.example.persistence.todo;
 
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -29,6 +31,15 @@ public class TodoPersistenceAdapter implements TodoQueryPort {
         return todoMapper.toDomain(
                 todoJpaRepository.findById(id)
         );
+    }
+
+    @Override
+    public List<Todo> findAllTodoByDateAndStudentId(LocalDate date, String studentId) {
+        return todoJpaRepository.findAllByDateAndStudentStudentId(date, studentId).stream().map(
+                (entity) -> todoMapper.toDomain(
+                        Optional.of(entity)
+                ).get()
+        ).toList();
     }
 
     @Override
