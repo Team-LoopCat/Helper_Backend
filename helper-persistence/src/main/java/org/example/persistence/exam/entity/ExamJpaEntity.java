@@ -2,6 +2,8 @@ package org.example.persistence.exam.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
 import java.time.LocalDate;
 import java.util.UUID;
@@ -9,6 +11,7 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.domain.student.model.Major;
 
 @Getter
 @Entity(name = "exam")
@@ -26,8 +29,12 @@ public class ExamJpaEntity {
     @Column(nullable = false, columnDefinition = "DATE")
     private LocalDate end;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(10)")
-    private String name;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Major major;
+
+    @Column(nullable = false, columnDefinition = "CHAR(1)")
+    private String grade;
 
     @Column(nullable = false, columnDefinition = "DATE")
     private LocalDate deadline;

@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import org.example.domain.student.model.Major;
 
 @Getter
 @RequiredArgsConstructor
@@ -15,7 +16,9 @@ public class Exam {
 
     private final LocalDate end;
 
-    private final String name;
+    private final Major major;
+
+    private final String grade;
 
     private final LocalDate deadline;
 }
