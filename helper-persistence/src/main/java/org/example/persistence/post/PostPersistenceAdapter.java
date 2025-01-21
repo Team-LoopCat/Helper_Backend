@@ -1,8 +1,9 @@
 package org.example.persistence.post;
 
 import lombok.RequiredArgsConstructor;
-import org.example.domain.post.dto.vo.PostListDataVO;
+import org.example.domain.post.dto.vo.PostListVO;
 import org.example.domain.post.model.Post;
+import org.example.domain.post.model.PostCategory;
 import org.example.domain.post.spi.QueryPostPort;
 import org.example.persistence.post.mapper.PostMapper;
 import org.example.persistence.post.repository.PostJpaRepository;
@@ -45,7 +46,9 @@ public class PostPersistenceAdapter implements QueryPostPort {
     }
 
     @Override
-    public List<PostListDataVO> searchAllPostLikeKeyword(String keyword) {
-        return postJpaRepository.searchAllByTitleOrContentLikeKeyword(keyword);
+    public List<PostListVO> searchAllPostLikeKeywordAndCategory(String keyword, PostCategory category) {
+        return postJpaRepository.findByTitleOrContentLikeKeywordAndCategory(keyword, category).stream()
+                .map(PostListVO::of)
+                .toList();
     }
 }

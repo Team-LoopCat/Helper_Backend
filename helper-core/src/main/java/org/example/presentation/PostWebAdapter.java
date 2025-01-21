@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.domain.post.dto.request.CreatePostRequestDto;
 import org.example.domain.post.dto.request.UpdatePostRequestDto;
 import org.example.domain.post.dto.response.GetPostListResponseDto;
+import org.example.domain.post.model.PostCategory;
 import org.example.domain.post.usecase.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,10 @@ public class PostWebAdapter {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/search")
-    public GetPostListResponseDto getPostList(@RequestParam("keyword") String keyword) {
-        return getPostListUseCase.execute(keyword);
+    public GetPostListResponseDto getPostList(
+            @RequestParam(value = "keyword", required = false) String keyword,
+            @RequestParam(value = "category", required = false) PostCategory category
+    ) {
+        return getPostListUseCase.execute(keyword, category);
     }
 }

@@ -4,7 +4,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.example.domain.post.dto.vo.PostListDataVO;
+import org.example.domain.post.model.PostCategory;
+import org.example.domain.post.spi.vo.PostListDatumVO;
 import org.example.persistence.post.entity.PostJpaEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -16,10 +17,14 @@ public interface PostJpaRepository extends CrudRepository<PostJpaEntity, UUID> {
 
     Boolean existsByPostId(UUID postId);
 
-    @Query("SELECT p.postId, p.title, p.content, p.tag, count(c.post.postId) as commentCount " +
-            "FROM post p INNER JOIN comment c ON p.postId = c.post.postId " +
-            "WHERE p.title LIKE %:keyword% " +
-            "OR p.content LIKE %:keyword% " +
-            "GROUP BY p.postId, p.title, p.content, p.tag")
-    List<PostListDataVO> searchAllByTitleOrContentLikeKeyword(@Param("keyword") String keyword);
+    @Query("SELECT " +
+            "new org.example.domain.post.spi.vo.PostListDatumVO(p.postId, p.title, p.content, p.tag, count(c.post.postId)) " +
+            "FROM post p LEFT OUTER JOIN comment c ON p.postId = c.post.postId " +
+            "LEFT OUTER JOIN reply r ON c.commentId = r.comment.commentId " +
+            "WHERE (p.title LIKE CONCAT('%', :keyword, '%') " +
+            "OR p.content LIKE CONCAT('%', :keyword, '%')) " +
+            "AND (:category IS NULL OR p.category = :category) " +
+            "GROUP BY p.postId, p.title, p.content, p.tag " +
+            "ORDER BY p.createdAt desc")
+    List<PostListDatumVO> findByTitleOrContentLikeKeywordAndCategory(@Param("keyword") String keyword, @Param("category") PostCategory category);
 }

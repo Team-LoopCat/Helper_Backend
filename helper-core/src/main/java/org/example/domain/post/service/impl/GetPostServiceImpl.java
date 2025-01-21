@@ -1,9 +1,10 @@
 package org.example.domain.post.service.impl;
 
 import lombok.RequiredArgsConstructor;
-import org.example.domain.post.dto.vo.PostListDataVO;
+import org.example.domain.post.dto.vo.PostListVO;
 import org.example.domain.post.exception.PostNotFoundException;
 import org.example.domain.post.model.Post;
+import org.example.domain.post.model.PostCategory;
 import org.example.domain.post.service.GetPostService;
 import org.example.domain.post.spi.QueryPostPort;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public class GetPostServiceImpl implements GetPostService {
     }
 
     @Override
-    public List<PostListDataVO> searchAllPostLikeKeyword(String keyword) {
-        return queryPostPort.searchAllPostLikeKeyword(keyword);
+    public List<PostListVO> searchAllPostLikeKeywordAndCategory(String keyword, PostCategory category) {
+        return queryPostPort.searchAllPostLikeKeywordAndCategory(keyword, category);
     }
 }

@@ -1,7 +1,8 @@
 package org.example.domain.post.spi;
 
-import org.example.domain.post.dto.vo.PostListDataVO;
+import org.example.domain.post.dto.vo.PostListVO;
 import org.example.domain.post.model.Post;
+import org.example.domain.post.model.PostCategory;
 
 import java.util.List;
 import java.util.Optional;
@@ -17,5 +18,5 @@ public interface QueryPostPort {
 
     Boolean checkPostExists(UUID postId);
 
-    List<PostListDataVO> searchAllPostLikeKeyword(String keyword);
+    List<PostListVO> searchAllPostLikeKeywordAndCategory(String keyword, PostCategory category);
 }
