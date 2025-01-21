@@ -1,4 +1,4 @@
-package org.example.domain.post.dto.vo;
+package org.example.domain.file.spi.vo;
 
 public record FileDataVO(
         String file,

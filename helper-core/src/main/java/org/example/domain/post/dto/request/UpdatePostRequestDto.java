@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import org.example.common.annotation.ValidEnum;
-import org.example.domain.post.dto.vo.FileDataVO;
+import org.example.domain.file.spi.vo.FileDataVO;
 import org.example.domain.post.model.PostCategory;
 
 import java.util.List;
