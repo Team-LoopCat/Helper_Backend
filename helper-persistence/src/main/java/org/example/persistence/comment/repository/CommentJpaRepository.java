@@ -14,8 +14,10 @@ public interface CommentJpaRepository extends CrudRepository<CommentJpaEntity, U
 
     Optional<CommentJpaEntity> findByCommentId(UUID commentId);
 
-    @Query(value = "SELECT c.commentId, c.content, c.createdAt, s.studentId, s.nickname " +
-           "FROM student s INNER JOIN comment c ON s.studentId = c.student.studentId" +
-           " WHERE c.post.postId = :postId")
+    @Query(value = "SELECT " +
+           "NEW org.example.domain.comment.spi.vo.CommentDataVO(c.commentId, s.studentId, s.nickname, c.content, c.createdAt) " +
+           "FROM student s INNER JOIN comment c ON s.studentId = c.student.studentId " +
+           "WHERE c.post.postId = :postId " +
+           "ORDER BY 4 desc")
     List<CommentDataVO> findAllWithWriterByPostId(@Param("postId") UUID postId);
 }

@@ -14,7 +14,8 @@ public interface FileJpaRepository extends CrudRepository<FileJpaEntity, UUID> {
 
     void deleteAllByPost(PostJpaEntity post);
 
-    @Query("SELECT f.filename, f.url " +
+    @Query("SELECT " +
+            "NEW org.example.domain.file.spi.vo.FileDataVO(f.filename, f.url) " +
             "FROM file f " +
             "WHERE f.post.postId = :postId")
     List<FileDataVO> findAllByPostId(@Param("postId") UUID postId);
