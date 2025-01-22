@@ -36,4 +36,9 @@ public class CommentPersistenceAdapter implements QueryCommentPort {
                 commentJpaRepository.findByCommentId(commentId)
         );
     }
+
+    @Override
+    public boolean checkComemntById(UUID commentId) {
+        return commentJpaRepository.existsByCommentId(commentId);
+    }
 }

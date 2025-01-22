@@ -12,4 +12,6 @@ public interface QueryCommentPort {
     void deleteComment(Comment comment);
 
     Optional<Comment> getCommentByCommentId(UUID commentId);
+
+    boolean checkComemntById(UUID commentId);
 }

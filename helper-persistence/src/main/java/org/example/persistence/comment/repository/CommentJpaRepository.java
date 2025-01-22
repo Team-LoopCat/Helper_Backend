@@ -8,4 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 public interface CommentJpaRepository extends CrudRepository<CommentJpaEntity, UUID> {
 
     Optional<CommentJpaEntity> findByCommentId(UUID commentId);
+
+    Boolean existsByCommentId(UUID commentId);
 }
