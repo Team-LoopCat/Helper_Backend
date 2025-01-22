@@ -24,7 +24,7 @@ public class CheckCommentServiceImpl implements CheckCommentService {
 
     @Override
     public void checkCommentExistsByCommentId(UUID commentId) {
-        if (queryCommentPort.checkComemntById(commentId)) {
+        if (!queryCommentPort.checkComemntById(commentId)) {
             throw CommentNotFoundException.EXCEPTION;
         }
     }
