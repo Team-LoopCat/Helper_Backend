@@ -76,7 +76,7 @@ public class SecurityConfig {
 
                         // reply
                         authorization
-                                .requestMatchers(HttpMethod.POST, "/reply/create").hasAnyAuthority(Role.Student.name())
+                                .requestMatchers(HttpMethod.POST, "/reply/create/{commentId}").hasAnyAuthority(Role.Student.name())
                                 .requestMatchers(HttpMethod.PATCH, "/reply/{replyId}").hasAnyAuthority(Role.Student.name())
                                 .requestMatchers(HttpMethod.DELETE, "/reply/{replyId}").hasAnyAuthority(Role.Student.name());
 
