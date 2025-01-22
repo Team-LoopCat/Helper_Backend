@@ -16,9 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class GetTodoListUseCase {
-    private GetTodoService getTodoService;
-    private SecurityService securityService;
-    private GetStudentService getStudentService;
+    private final GetTodoService getTodoService;
+    private final SecurityService securityService;
+    private final GetStudentService getStudentService;
 
     public GetTodoListResponseDto execute(LocalDate date) {
         Student currentStudent = getStudentService.getStudentByUser(securityService.getCurrentUser());
