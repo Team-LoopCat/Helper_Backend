@@ -2,6 +2,7 @@ package org.example.persistence.exam;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.StreamSupport;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.exam.model.Exam;
 import org.example.domain.exam.spi.QueryExamPort;
@@ -22,12 +23,14 @@ public class ExamPersistenceAdapter implements QueryExamPort {
 
     @Override
     public List<Exam> saveAll(List<Exam> exams) {
-        return examJpaRepository.saveAll(
-                exams.stream().map(examMapper::toEntity).toList()
-        ).stream().map(entity ->
-                examMapper.toDomain(
-                        Optional.of(entity)
-                ).get()
-        ).toList();
+        return StreamSupport.stream(
+                examJpaRepository.saveAll(
+                        exams.stream().map(examMapper::toEntity).toList()
+                ).spliterator(), false)
+                .map(entity ->
+                        examMapper.toDomain(
+                                Optional.of(entity)
+                        ).get()
+                ).toList();
     }
 }

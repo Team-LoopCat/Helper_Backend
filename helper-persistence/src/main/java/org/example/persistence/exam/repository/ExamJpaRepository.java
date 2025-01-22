@@ -8,6 +8,4 @@ import org.springframework.data.repository.CrudRepository;
 public interface ExamJpaRepository extends CrudRepository<ExamJpaEntity, UUID> {
 
     boolean existsBy();
-
-    List<ExamJpaEntity> saveAll(List<ExamJpaEntity> e);
 }
