@@ -28,13 +28,13 @@ public class CommentWebAdapter {
 
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/{commentId}")
-    private void updateComment(@Valid @PathVariable UUID commentId, @Valid @RequestBody UpdateCommentRequestDto request) {
+    private void updateComment(@PathVariable UUID commentId, @Valid @RequestBody UpdateCommentRequestDto request) {
         updateCommentUseCase.execute(commentId, request);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{commentId}")
-    private void deleteComment(@Valid @PathVariable UUID commentId) {
+    private void deleteComment(@PathVariable UUID commentId) {
         deleteCommentUseCase.execute(commentId);
     }
 }
