@@ -33,4 +33,16 @@ public class ExamPersistenceAdapter implements QueryExamPort {
                         ).get()
                 ).toList();
     }
+
+    @Override
+    public List<Exam> queryAllExams() {
+        return StreamSupport.stream(
+                examJpaRepository.findAll()
+                .spliterator(), false)
+                .map(entity ->
+                        examMapper.toDomain(
+                                Optional.of(entity)
+                        ).get()
+                ).toList();
+    }
 }

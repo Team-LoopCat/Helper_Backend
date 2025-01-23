@@ -8,4 +8,6 @@ public interface QueryExamPort {
     boolean existsAnyExam();
 
     List<Exam> saveAll(List<Exam> exams);
+
+    List<Exam> queryAllExams();
 }
