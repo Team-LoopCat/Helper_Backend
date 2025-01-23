@@ -1,8 +1,10 @@
 package org.example.domain.exam.dto.request;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import org.example.domain.student.model.Major;
 
 public record MajorGradeRequestDto(
-        Major major,
-        String grade
+        @NotNull Major major,
+        @NotBlank String grade
 ) { }
