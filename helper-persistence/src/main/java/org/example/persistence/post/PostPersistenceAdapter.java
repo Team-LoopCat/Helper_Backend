@@ -48,7 +48,7 @@ public class PostPersistenceAdapter implements QueryPostPort {
     @Override
     public List<PostListVO> searchAllPostLikeKeywordAndCategory(String keyword, PostCategory category) {
         return postJpaRepository.findByTitleOrContentLikeKeywordAndCategory(keyword, category).stream()
-                .map(PostListVO::of)
+                .map(PostListVO::from)
                 .toList();
     }
 }
