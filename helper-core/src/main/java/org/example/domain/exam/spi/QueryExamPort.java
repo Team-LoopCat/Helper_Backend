@@ -10,4 +10,6 @@ public interface QueryExamPort {
     List<Exam> saveAll(List<Exam> exams);
 
     List<Exam> queryAllExams();
+
+    void deleteAllExams();
 }

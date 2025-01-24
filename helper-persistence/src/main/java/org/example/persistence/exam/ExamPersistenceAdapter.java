@@ -45,4 +45,9 @@ public class ExamPersistenceAdapter implements QueryExamPort {
                         ).get()
                 ).toList();
     }
+
+    @Override
+    public void deleteAllExams() {
+        examJpaRepository.deleteAll();
+    }
 }
