@@ -24,4 +24,9 @@ public class GetUserServiceImpl implements GetUserService {
         return authPort.getUserById(id)
              .orElseThrow(() -> UserNotFoundException.EXCEPTION);
     }
+
+    @Override
+    public User getUserByStudentId(String studentId) {
+        return authPort.getUserByStudentId(studentId);
+    }
 }

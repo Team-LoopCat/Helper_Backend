@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.domain.post.dto.request.CreatePostRequestDto;
 import org.example.domain.post.dto.request.UpdatePostRequestDto;
 import org.example.domain.post.dto.response.GetPostListResponseDto;
+import org.example.domain.post.dto.response.GetPostDetailResponseDto;
 import org.example.domain.post.model.PostCategory;
 import org.example.domain.post.usecase.*;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,7 @@ public class PostWebAdapter {
     private final UpdatePostUseCase updatePostUseCase;
     private final DeletePostUseCase deletePostUseCase;
     private final GetPostListUseCase getPostListUseCase;
+    private final GetPostDetailUseCase getPostDetailUseCase;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/create")
@@ -46,5 +48,11 @@ public class PostWebAdapter {
             @RequestParam(value = "category", required = false) PostCategory category
     ) {
         return getPostListUseCase.execute(keyword, category);
+    }
+  
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/detail/{postId}")
+    public GetPostDetailResponseDto getPostDetail(@PathVariable UUID postId) {
+        return getPostDetailUseCase.execute(postId);
     }
 }
