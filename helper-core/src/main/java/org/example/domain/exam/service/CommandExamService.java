@@ -8,4 +8,6 @@ import org.example.domain.exam.model.Exam;
 public interface CommandExamService {
 
     List<Exam> startExam(LocalDate deadline, LocalDate start, LocalDate end, List<MajorGradeRequestDto> grades);
+
+    void deleteAllExams();
 }
