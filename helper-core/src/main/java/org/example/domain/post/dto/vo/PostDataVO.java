@@ -1,5 +1,6 @@
 package org.example.domain.post.dto.vo;
 
+import org.example.domain.auth.model.User;
 import org.example.domain.post.model.Post;
 import org.example.domain.post.model.PostCategory;
 import org.example.domain.student.model.Student;
@@ -15,9 +16,10 @@ public record PostDataVO (
     PostCategory category,
     LocalDateTime createdAt,
     String writerName,
-    String studentId
+    String studentId,
+    String writerProfile
 ) {
-    public static PostDataVO of(Student student, Post post) {
+    public static PostDataVO of(Student student, Post post, User user) {
         return new PostDataVO(
                 post.getTitle(),
                 post.getContent(),
@@ -26,7 +28,8 @@ public record PostDataVO (
                 post.getCategory(),
                 post.getCreatedAt(),
                 student.getNickname(),
-                student.getStudentId()
+                student.getStudentId(),
+                user.getProfile()
         );
     }
 }

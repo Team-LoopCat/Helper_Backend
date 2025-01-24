@@ -12,7 +12,7 @@ import org.springframework.data.repository.query.Param;
 public interface ReplyJpaRepository extends CrudRepository<ReplyJpaEntity, UUID> {
 
     @Query(value = "SELECT " +
-            "NEW org.example.domain.comment.spi.vo.ReplyDataVO(r.replyId, s.studentId, s.nickname, r.content, r.createdAt) " +
+            "NEW org.example.domain.comment.spi.vo.ReplyDataVO(r.replyId, s.studentId, s.user.profile, s.nickname, r.content, r.createdAt) " +
             "FROM student s INNER JOIN reply r ON s.studentId = r.student.studentId " +
             "WHERE r.comment.commentId = :commentId " +
             "ORDER BY 4 desc")

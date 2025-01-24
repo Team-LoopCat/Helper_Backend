@@ -6,6 +6,7 @@ import java.util.UUID;
 public record ReplyDataVO (
         UUID replyId,
         String studentId,
+        String profile,
         String writerName,
         String contents,
         LocalDateTime createdAt

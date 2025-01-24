@@ -1,6 +1,8 @@
 package org.example.domain.post.usecase;
 
 import lombok.RequiredArgsConstructor;
+import org.example.domain.auth.model.User;
+import org.example.domain.auth.service.GetUserService;
 import org.example.domain.comment.service.GetCommentService;
 import org.example.domain.comment.service.GetReplyService;
 import org.example.domain.file.service.GetFileService;
@@ -25,6 +27,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class GetPostDetailUseCase {
     private final GetPostService getPostService;
+    private final GetUserService getUserService;
     private final GetStudentService getStudentService;
     private final GetCommentService getCommentService;
     private final GetReplyService getReplyService;
@@ -33,7 +36,8 @@ public class GetPostDetailUseCase {
     public GetPostDetailResponseDto execute(UUID postId) {
         Post post = getPostService.getPostByPostId(postId);
         Student postWriter =  getStudentService.getStudentByStudentId(post.getStudentId());
-        PostDataVO postData = PostDataVO.of(postWriter, post);
+        User user = getUserService.getUserByStudentId(post.getStudentId());
+        PostDataVO postData = PostDataVO.of(postWriter, post, user);
 
         List<CommentDataVO> commentDataVOList = getCommentService.getAllCommentsWithWritersByPost(postId);
         List<ReplyDataVO> replyDataVOList = new ArrayList<>();
