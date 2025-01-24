@@ -1,12 +1,15 @@
 package org.example.persistence.post;
 
 import lombok.RequiredArgsConstructor;
+import org.example.domain.post.dto.vo.PostListVO;
 import org.example.domain.post.model.Post;
+import org.example.domain.post.model.PostCategory;
 import org.example.domain.post.spi.QueryPostPort;
 import org.example.persistence.post.mapper.PostMapper;
 import org.example.persistence.post.repository.PostJpaRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -40,5 +43,12 @@ public class PostPersistenceAdapter implements QueryPostPort {
     @Override
     public Boolean checkPostExists(UUID postId) {
         return postJpaRepository.existsByPostId(postId);
+    }
+
+    @Override
+    public List<PostListVO> searchAllPostLikeKeywordAndCategory(String keyword, PostCategory category) {
+        return postJpaRepository.findByTitleOrContentLikeKeywordAndCategory(keyword, category).stream()
+                .map(PostListVO::from)
+                .toList();
     }
 }
