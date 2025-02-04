@@ -6,7 +6,7 @@ import org.example.domain.auth.model.User;
 import org.example.domain.file.model.File;
 import org.example.domain.file.service.CommandFileService;
 import org.example.domain.post.dto.request.UpdatePostRequestDto;
-import org.example.domain.post.dto.vo.FileDataVO;
+import org.example.domain.file.spi.vo.FileDataVO;
 import org.example.domain.post.model.Post;
 import org.example.domain.post.service.CheckPostService;
 import org.example.domain.post.service.CommandPostService;

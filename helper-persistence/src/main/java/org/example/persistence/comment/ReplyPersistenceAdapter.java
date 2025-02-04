@@ -6,6 +6,10 @@ import org.example.domain.comment.spi.QueryReplyPort;
 import org.example.persistence.comment.mapper.ReplyMapper;
 import org.example.persistence.comment.repository.ReplyJpaRepository;
 import org.springframework.stereotype.Component;
+import org.example.domain.comment.spi.vo.ReplyDataVO;
+
+import java.util.List;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -18,5 +22,10 @@ public class ReplyPersistenceAdapter implements QueryReplyPort {
         replyJpaRepository.save(
                 replyMapper.toEntity(reply)
         );
+    }
+
+    @Override
+    public List<ReplyDataVO> findAllReplyByComment(UUID commentId) {
+        return replyJpaRepository.findAllWithWriterByCommentId(commentId);
     }
 }
