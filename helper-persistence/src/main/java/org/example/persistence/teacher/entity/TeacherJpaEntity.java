@@ -29,4 +29,7 @@ public class TeacherJpaEntity {
 
     @Column(nullable = false, columnDefinition = "VARCHAR(5)")
     private String name;
+
+    @Column(nullable = true, columnDefinition = "CHAR(1)")
+    private String grade;
 }
