@@ -1,6 +1,8 @@
 package org.example.domain.comment.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.example.domain.comment.exception.ReplyNotFoundException;
+import org.example.domain.comment.model.Reply;
 import org.example.domain.comment.service.GetReplyService;
 import org.example.domain.comment.spi.QueryReplyPort;
 import org.example.domain.comment.spi.vo.ReplyDataVO;
@@ -17,5 +19,12 @@ public class GetReplyServiceImpl implements GetReplyService {
     @Override
     public List<ReplyDataVO> getAllRepliesByComment(UUID commentId) {
         return queryReplyPort.findAllReplyByComment(commentId);
+    }
+
+    @Override
+    public Reply getReplyById(UUID replyId) {
+        return queryReplyPort.getReplyById(replyId).orElseThrow(
+                () -> ReplyNotFoundException.EXCEPTION
+        );
     }
 }
