@@ -15,5 +15,7 @@ public interface QueryCommentPort {
 
     Optional<Comment> getCommentByCommentId(UUID commentId);
 
+    boolean checkComemntById(UUID commentId);
+  
     List<CommentDataVO> getAllCommentsWithWritersByPost(UUID postId);
 }

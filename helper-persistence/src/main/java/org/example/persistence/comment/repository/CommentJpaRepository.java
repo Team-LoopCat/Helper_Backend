@@ -14,6 +14,8 @@ public interface CommentJpaRepository extends CrudRepository<CommentJpaEntity, U
 
     Optional<CommentJpaEntity> findByCommentId(UUID commentId);
 
+    Boolean existsByCommentId(UUID commentId);
+  
     @Query(value = "SELECT " +
            "NEW org.example.domain.comment.spi.vo.CommentDataVO(c.commentId, s.studentId, s.user.profile, s.nickname, c.content, c.createdAt) " +
            "FROM student s INNER JOIN comment c ON s.studentId = c.student.studentId " +

@@ -40,6 +40,11 @@ public class CommentPersistenceAdapter implements QueryCommentPort {
     }
 
     @Override
+    public boolean checkComemntById(UUID commentId) {
+        return commentJpaRepository.existsByCommentId(commentId);
+    }
+  
+    @Override
     public List<CommentDataVO> getAllCommentsWithWritersByPost(UUID postId) {
         return commentJpaRepository.findAllWithWriterByPostId(postId);
     }
