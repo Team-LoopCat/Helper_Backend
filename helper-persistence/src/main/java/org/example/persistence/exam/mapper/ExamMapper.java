@@ -19,11 +19,8 @@ public class ExamMapper implements GenericMapper<Exam, ExamJpaEntity> {
 
         return Optional.of(new Exam(
                 examEntity.getExamId(),
-                examEntity.getStart(),
-                examEntity.getEnd(),
                 examEntity.getMajor(),
-                examEntity.getGrade(),
-                examEntity.getDeadline()
+                examEntity.getGrade()
         ));
     }
 
@@ -31,11 +28,8 @@ public class ExamMapper implements GenericMapper<Exam, ExamJpaEntity> {
     public ExamJpaEntity toEntity(Exam entity) {
         return new ExamJpaEntity(
                 entity.getExamId(),
-                entity.getStart(),
-                entity.getEnd(),
                 entity.getMajor(),
-                entity.getGrade(),
-                entity.getDeadline()
+                entity.getGrade()
         );
     }
 }
