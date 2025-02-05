@@ -6,7 +6,9 @@ import java.util.stream.StreamSupport;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.exam.model.Exam;
 import org.example.domain.exam.spi.QueryExamPort;
+import org.example.persistence.exam.mapper.ExamDataMapper;
 import org.example.persistence.exam.mapper.ExamMapper;
+import org.example.persistence.exam.repository.ExamDataJpaRepository;
 import org.example.persistence.exam.repository.ExamJpaRepository;
 import org.springframework.stereotype.Component;
 
@@ -14,7 +16,9 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class ExamPersistenceAdapter implements QueryExamPort {
     private final ExamJpaRepository examJpaRepository;
+    private final ExamDataJpaRepository examDataJpaRepository;
     private final ExamMapper examMapper;
+    private final ExamDataMapper examDataMapper;
 
     @Override
     public boolean existsAnyExam() {
@@ -44,6 +48,13 @@ public class ExamPersistenceAdapter implements QueryExamPort {
                                 Optional.of(entity)
                         ).get()
                 ).toList();
+    }
+
+    @Override
+    public Optional<Exam> queryFirstExamOrderByDateDesc() {
+        return examMapper.toDomain(
+                examDataJpaRepository.findFirstByOrderByDateDesc()
+        );
     }
 
     @Override
