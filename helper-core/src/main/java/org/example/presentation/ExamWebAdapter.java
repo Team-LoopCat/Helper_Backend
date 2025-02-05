@@ -4,7 +4,6 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.exam.dto.request.StartExamRequestDto;
 import org.example.domain.exam.dto.response.GetExamListResponseDto;
-import org.example.domain.exam.usecase.DeleteExamUseCase;
 import org.example.domain.exam.usecase.GetExamUseCase;
 import org.example.domain.exam.usecase.StartExamUseCase;
 import org.springframework.http.HttpStatus;
@@ -22,7 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExamWebAdapter {
     private final StartExamUseCase startExamUseCase;
     private final GetExamUseCase getExamUseCase;
-    private final DeleteExamUseCase deleteExamUseCase;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -34,11 +32,5 @@ public class ExamWebAdapter {
     @GetMapping
     public GetExamListResponseDto getExamList() {
         return getExamUseCase.execute();
-    }
-
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping
-    public void deleteExam() {
-        deleteExamUseCase.execute();
     }
 }
