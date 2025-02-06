@@ -22,7 +22,8 @@ public class StartExamUseCase {
 
     public StartExamResponseDto execute(StartExamRequestDto request) {
         Teacher currentTeacher = getTeacherService.getCurrentTeacher();
-        checkExamService.checkExamHasStarted();
+
+        checkExamService.checkExamHasStartedByGrade(currentTeacher.getGrade().get());
 
         List<Exam> exams = request.exams().stream().map(exam ->
             commandExamService.startExam(

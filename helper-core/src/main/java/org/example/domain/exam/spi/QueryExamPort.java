@@ -6,7 +6,7 @@ import org.example.domain.exam.model.ExamData;
 
 public interface QueryExamPort {
 
-    boolean existsAnyExam();
+    boolean existsExamByGrade(String grade);
 
     Exam saveExam(Exam exam);
 
