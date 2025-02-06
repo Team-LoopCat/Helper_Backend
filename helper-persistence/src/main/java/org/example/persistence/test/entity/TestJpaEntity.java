@@ -27,7 +27,4 @@ public class TestJpaEntity {
 
     @Column(nullable = false, columnDefinition = "INTEGER")
     private Integer percent;
-
-    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
-    private String file;
 }
