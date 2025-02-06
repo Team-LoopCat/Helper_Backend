@@ -10,6 +10,7 @@ import org.example.domain.comment.spi.vo.ReplyDataVO;
 
 import java.util.List;
 import java.util.UUID;
+import java.util.Optional;
 
 @Component
 @RequiredArgsConstructor
@@ -27,5 +28,12 @@ public class ReplyPersistenceAdapter implements QueryReplyPort {
     @Override
     public List<ReplyDataVO> findAllReplyByComment(UUID commentId) {
         return replyJpaRepository.findAllWithWriterByCommentId(commentId);
+    }
+
+    @Override
+    public Optional<Reply> getReplyById(UUID replyId) {
+        return replyMapper.toDomain(
+                replyJpaRepository.findById(replyId)
+        );
     }
 }
