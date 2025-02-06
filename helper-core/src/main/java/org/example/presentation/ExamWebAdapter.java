@@ -3,7 +3,7 @@ package org.example.presentation;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.exam.dto.request.StartExamRequestDto;
-import org.example.domain.exam.dto.response.GetExamListResponseDto;
+import org.example.domain.exam.dto.response.StartExamResponseDto;
 import org.example.domain.exam.usecase.StartExamUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +18,7 @@ public class ExamWebAdapter {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
-    public GetExamListResponseDto startExam(@Valid @RequestBody StartExamRequestDto requestDto) {
+    public StartExamResponseDto startExam(@Valid @RequestBody StartExamRequestDto requestDto) {
         return startExamUseCase.execute(requestDto);
     }
 }

@@ -3,7 +3,7 @@ package org.example.domain.exam.usecase;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.exam.dto.request.StartExamRequestDto;
-import org.example.domain.exam.dto.response.GetExamListResponseDto;
+import org.example.domain.exam.dto.response.StartExamResponseDto;
 import org.example.domain.exam.model.Exam;
 import org.example.domain.exam.service.CheckExamService;
 import org.example.domain.exam.service.CommandExamService;
@@ -20,7 +20,7 @@ public class StartExamUseCase {
     private final GetTeacherService getTeacherService;
     private final CheckExamService checkExamService;
 
-    public GetExamListResponseDto execute(StartExamRequestDto request) {
+    public StartExamResponseDto execute(StartExamRequestDto request) {
         Teacher currentTeacher = getTeacherService.getCurrentTeacher();
         checkExamService.checkExamHasStarted();
 
@@ -31,6 +31,6 @@ public class StartExamUseCase {
                     exam.examData())
         ).toList();
 
-        return GetExamListResponseDto.from(exams);
+        return StartExamResponseDto.from(exams);
     }
 }
