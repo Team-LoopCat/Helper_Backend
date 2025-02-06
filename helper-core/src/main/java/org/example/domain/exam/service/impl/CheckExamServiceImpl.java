@@ -26,9 +26,7 @@ public class CheckExamServiceImpl implements CheckExamService {
         Optional<Exam> optionalExam = queryExamPort.queryFirstExamOrderByDateDesc();
 
         return optionalExam.map(exam ->
-                exam.getEnd()
-                        .plusDays(1)
-                        .isBefore(LocalDate.now())
+                exam.getEnd().isBefore(LocalDate.now())
         ).orElse(false);
     }
 }
