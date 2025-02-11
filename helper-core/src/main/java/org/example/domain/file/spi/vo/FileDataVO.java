@@ -1,7 +1,9 @@
 package org.example.domain.file.spi.vo;
 
+import jakarta.validation.constraints.NotBlank;
+
 public record FileDataVO(
-        String file,
-        String fileName
+        @NotBlank String file,
+        @NotBlank String fileName
 ) {
 }

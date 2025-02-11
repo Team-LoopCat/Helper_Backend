@@ -50,7 +50,7 @@ public class CreateTestUseCase {
             commandTestInfoService.saveTestInfo(TestInfo.builder()
                     .testId(createdTest.getTestId())
                     .attendId(attendData.attendId())
-                    .endDate(LocalDate.parse(attendData.endDate()))
+                    .endDate(LocalDate.parse(attendData.endDate().toString()))
                     .build()
             );
         }
