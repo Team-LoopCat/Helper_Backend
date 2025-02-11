@@ -14,4 +14,6 @@ public interface QueryReplyPort {
     List<ReplyDataVO> findAllReplyByComment(UUID commentId);
 
     Optional<Reply> getReplyById(UUID replyId);
+
+    void deleteReply(Reply reply);
 }

@@ -36,4 +36,11 @@ public class ReplyPersistenceAdapter implements QueryReplyPort {
                 replyJpaRepository.findById(replyId)
         );
     }
+
+    @Override
+    public void deleteReply(Reply reply) {
+        replyJpaRepository.delete(
+                replyMapper.toEntity(reply)
+        );
+    }
 }

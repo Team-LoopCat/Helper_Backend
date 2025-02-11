@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.domain.comment.dto.request.CreateReplyRequestDto;
 import org.example.domain.comment.dto.request.UpdateReplyRequestDto;
 import org.example.domain.comment.usecase.CreateReplyUseCase;
+import org.example.domain.comment.usecase.DeleteReplyUseCase;
 import org.example.domain.comment.usecase.UpdateReplyUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,7 @@ import java.util.UUID;
 @RequestMapping("/reply")
 public class ReplyWebAdapter {
     private final CreateReplyUseCase createReplyUseCase;
+    private final DeleteReplyUseCase deleteReplyUseCase;
     private final UpdateReplyUseCase updateReplyUseCase;
 
     @ResponseStatus(HttpStatus.CREATED)
@@ -24,6 +26,11 @@ public class ReplyWebAdapter {
         createReplyUseCase.execute(request, commentId);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{replyId}")
+    public void deleteReply(@PathVariable("replyId") UUID replyId) {
+        deleteReplyUseCase.execute(replyId);
+    }
 
     @ResponseStatus(HttpStatus.OK)
     @PatchMapping("/{replyId}")
