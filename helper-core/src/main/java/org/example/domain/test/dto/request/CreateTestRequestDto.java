@@ -14,6 +14,6 @@ public record CreateTestRequestDto(
         @Min(0) @Max(100) int percent,
         @NotNull UUID subjectId,
         @NotBlank @Valid List<@NotNull AttendDataVo> attends,
-        @Valid @Size(max = 3) List<@NotNull FileDataVO> files
+        @Valid @Size(max = 4) List<@NotNull FileDataVO> files
 ) {
 }
