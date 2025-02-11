@@ -30,9 +30,6 @@ public class CommandExamServiceImpl implements CommandExamService {
                         .examId(exam.getExamId())
                         .date(data.date())
                         .period(data.period())
-                        .problems(data.problems())
-                        .percent(data.percent())
-                        .content(data.content())
                         .build()
             ).toList()
         );
