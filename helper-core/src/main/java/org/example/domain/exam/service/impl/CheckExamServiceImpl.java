@@ -13,7 +13,7 @@ public class CheckExamServiceImpl implements CheckExamService {
 
     @Override
     public void checkExamHasStartedByGrade(String grade) {
-        if (queryExamPort.existsExamByGrade()) {
+        if (queryExamPort.existsExamByGrade(grade)) {
             throw AlreadyStartedException.EXCEPTION;
         }
     }
