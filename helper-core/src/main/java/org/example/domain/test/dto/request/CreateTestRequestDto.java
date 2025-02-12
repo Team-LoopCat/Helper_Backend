@@ -11,7 +11,7 @@ import java.util.UUID;
 public record CreateTestRequestDto(
         @NotBlank String title,
         @NotBlank String content,
-        @Min(0) @Max(100) int percent,
+        @NotNull @Min(0) @Max(100) int percent,
         @NotNull UUID subjectId,
         @NotBlank @Valid List<@NotNull AttendDataVo> attends,
         @Valid @Size(max = 4) List<@NotNull FileDataVO> files
