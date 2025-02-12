@@ -6,5 +6,5 @@ import org.example.domain.subject.exception.errorCode.AttendErrorCode;
 public class AttendNotFoundException extends GlobalBusinessException {
     public static final AttendNotFoundException EXCEPTION = new AttendNotFoundException();
 
-    public AttendNotFoundException() { super(AttendErrorCode.SUBJECT_NOT_FOUND); }
+    public AttendNotFoundException() { super(AttendErrorCode.ATTEND_NOT_FOUND); }
 }
