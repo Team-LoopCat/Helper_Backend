@@ -13,6 +13,8 @@ public class Test {
 
     private final UUID testId;
 
+    private final UUID subjectId;
+
     private final String title;
 
     private final String content;
