@@ -5,9 +5,11 @@ import org.example.domain.file.model.File;
 import org.example.domain.file.spi.QueryFilePort;
 import org.example.domain.file.spi.vo.FileDataVO;
 import org.example.domain.post.model.Post;
+import org.example.domain.test.model.Test;
 import org.example.persistence.file.mapper.FileMapper;
 import org.example.persistence.file.repository.FileJpaRepository;
 import org.example.persistence.post.mapper.PostMapper;
+import org.example.persistence.test.mapper.TestMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,6 +20,7 @@ import java.util.UUID;
 public class FilePersistenceAdapter implements QueryFilePort {
     private final FileJpaRepository fileJpaRepository;
     private final FileMapper fileMapper;
+    private final TestMapper testMapper;
     private final PostMapper postMapper;
 
     @Override
@@ -29,6 +32,13 @@ public class FilePersistenceAdapter implements QueryFilePort {
     public void deleteAllByPost(Post post) {
         fileJpaRepository.deleteAllByPost(
                 postMapper.toEntity(post)
+        );
+    }
+
+    @Override
+    public void deleteAllByTest(Test test) {
+        fileJpaRepository.deleteAllByTest(
+                testMapper.toEntity(test)
         );
     }
 

@@ -1,6 +1,7 @@
 package org.example.domain.test.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.example.domain.test.model.Test;
 import org.example.domain.test.model.TestInfo;
 import org.example.domain.test.service.CommandTestInfoService;
 import org.example.domain.test.spi.QueryTestInfoPort;
@@ -14,5 +15,10 @@ public class CommandTestInfoServiceImpl implements CommandTestInfoService {
     @Override
     public void saveTestInfo(TestInfo testInfo) {
         queryTestInfoPort.saveTestInfo(testInfo);
+    }
+
+    @Override
+    public void deleteAllByTest(Test test) {
+        queryTestInfoPort.deleteAllByTest(test);
     }
 }
