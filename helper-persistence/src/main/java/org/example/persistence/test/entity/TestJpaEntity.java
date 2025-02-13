@@ -7,6 +7,9 @@ import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.example.persistence.subject.entity.SubjectJpaEntity;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Getter
 @Entity(name = "test")
@@ -19,6 +22,11 @@ public class TestJpaEntity {
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID testId;
 
+    @ManyToOne(optional = false, targetEntity = SubjectJpaEntity.class)
+    @JoinColumn(nullable = false, name = "subjectId", referencedColumnName = "subjectId")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    private SubjectJpaEntity subject;
+
     @Column(nullable = false, columnDefinition = "VARCHAR(50)")
     private String title;
 
@@ -27,7 +35,4 @@ public class TestJpaEntity {
 
     @Column(nullable = false, columnDefinition = "INTEGER")
     private Integer percent;
-
-    @Column(nullable = false, columnDefinition = "VARCHAR(50)")
-    private String file;
 }

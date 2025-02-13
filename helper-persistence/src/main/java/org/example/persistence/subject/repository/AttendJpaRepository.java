@@ -5,5 +5,5 @@ import org.example.persistence.subject.entity.AttendJpaEntity;
 import org.springframework.data.repository.CrudRepository;
 
 public interface AttendJpaRepository extends CrudRepository<AttendJpaEntity, UUID> {
-
+    boolean existsByAttendId(UUID id);
 }
