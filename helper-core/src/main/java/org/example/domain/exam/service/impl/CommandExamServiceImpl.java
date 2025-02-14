@@ -9,6 +9,8 @@ import org.example.domain.exam.service.CommandExamService;
 import org.example.domain.exam.spi.QueryExamPort;
 import org.example.domain.student.model.Major;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,24 +18,12 @@ public class CommandExamServiceImpl implements CommandExamService {
     private final QueryExamPort queryExamPort;
 
     @Override
-    public Exam startExam(Major major, String grade, List<ExamDataRequestDto> examData) {
-        Exam exam = queryExamPort.saveExam(
+    public Exam startExam(Major major, String grade) {
+        return queryExamPort.saveExam(
                 Exam.builder()
                     .major(major)
                     .grade(grade)
                     .build()
         );
-
-        queryExamPort.saveAllExamData(
-            examData.stream().map(data ->
-                ExamData.builder()
-                        .examId(exam.getExamId())
-                        .date(data.date())
-                        .period(data.period())
-                        .build()
-            ).toList()
-        );
-
-        return exam;
     }
 }

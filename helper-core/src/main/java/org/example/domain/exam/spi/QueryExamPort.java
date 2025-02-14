@@ -9,6 +9,4 @@ public interface QueryExamPort {
     boolean existsExamByGrade(String grade);
 
     Exam saveExam(Exam exam);
-
-    List<ExamData> saveAllExamData(List<ExamData> examData);
 }
