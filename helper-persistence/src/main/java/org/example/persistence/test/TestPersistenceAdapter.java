@@ -23,4 +23,5 @@ public class TestPersistenceAdapter implements QueryTestPort {
             ))
         ).get();
     }
+
 }
