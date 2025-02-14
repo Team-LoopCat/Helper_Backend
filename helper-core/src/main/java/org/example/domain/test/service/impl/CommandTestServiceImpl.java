@@ -15,4 +15,9 @@ public class CommandTestServiceImpl implements CommandTestService {
     public Test saveTest(Test test) {
         return queryTestPort.saveTest(test);
     }
+
+    @Override
+    public void deleteTest(Test test) {
+        queryTestPort.deleteTest(test);
+    }
 }
