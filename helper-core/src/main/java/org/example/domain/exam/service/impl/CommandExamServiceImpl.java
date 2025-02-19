@@ -26,4 +26,9 @@ public class CommandExamServiceImpl implements CommandExamService {
                     .build()
         );
     }
+
+    @Override
+    public void deleteAllExams() {
+        queryExamPort.deleteAllExams();
+    }
 }

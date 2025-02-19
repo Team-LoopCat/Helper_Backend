@@ -5,5 +5,7 @@ import org.example.domain.student.model.Major;
 
 public interface CommandExamService {
 
+    void deleteAllExams();
+  
     Exam startExam(Major major, String grade);
 }

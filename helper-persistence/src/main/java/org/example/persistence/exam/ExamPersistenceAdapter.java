@@ -28,4 +28,39 @@ public class ExamPersistenceAdapter implements QueryExamPort {
                 ))
         ).get();
     }
+
+    @Override
+    public List<ExamData> saveAllExamData(List<ExamData> examData) {
+        return examDataJpaRepository.saveAll(
+                examData.stream().map(examDataMapper::toEntity).toList()
+        ).stream().map(entity ->
+            examDataMapper.toDomain(
+                    Optional.of(entity)
+            ).get()
+        ).toList();
+    }
+
+    @Override
+    public List<Exam> queryAllExams() {
+        return StreamSupport.stream(
+                examJpaRepository.findAll()
+                .spliterator(), false)
+                .map(entity ->
+                        examMapper.toDomain(
+                                Optional.of(entity)
+                        ).get()
+                ).toList();
+    }
+
+    @Override
+    public Optional<Exam> queryFirstExamOrderByDateDesc() {
+        return examMapper.toDomain(
+                examDataJpaRepository.findFirstByOrderByDateDesc()
+        );
+    }
+
+    @Override
+    public void deleteAllExams() {
+        examJpaRepository.deleteAll();
+    }
 }
