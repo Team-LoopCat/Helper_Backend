@@ -5,7 +5,7 @@ import org.example.common.exception.GlobalErrorCode;
 
 @RequiredArgsConstructor
 public enum TestErrorCode implements GlobalErrorCode {
-    TEST_NOT_FOUND(404, "수행평가를 찾을 수 없습니다");
+    TEST_NOT_FOUND(404, "존재하지 않는 수행평가입니다");
 
     private final int errorStatus;
     private final String errorMessage;
