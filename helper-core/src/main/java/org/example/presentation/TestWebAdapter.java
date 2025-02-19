@@ -4,8 +4,10 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.test.dto.request.CreateTestRequestDto;
 import org.example.domain.test.dto.request.UpdateTestRequestDto;
+import org.example.domain.test.dto.response.GetTeacherTestListResponseDto;
 import org.example.domain.test.usecase.CreateTestUseCase;
 import org.example.domain.test.usecase.DeleteTestUseCase;
+import org.example.domain.test.usecase.GetTeacherTestListUseCase;
 import org.example.domain.test.usecase.UpdateTestUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -19,6 +21,7 @@ public class TestWebAdapter {
     private final CreateTestUseCase createTestUseCase;
     private final UpdateTestUseCase updateTestUseCase;
     private final DeleteTestUseCase deleteTestUseCase;
+    private final GetTeacherTestListUseCase getTeacherTestListUseCase;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -36,5 +39,11 @@ public class TestWebAdapter {
     @DeleteMapping("/{testId}")
     public void deleteTest(@PathVariable("testId") UUID testId) {
         deleteTestUseCase.execute(testId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/admin")
+    public GetTeacherTestListResponseDto getTeacherTestList() {
+        return getTeacherTestListUseCase.execute();
     }
 }

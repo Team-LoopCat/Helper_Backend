@@ -10,4 +10,6 @@ public interface GetSubjectService {
     List<SubjectAndAttendVO> getSubjectsAndAttendsByTeacherId(UUID teacherId);
 
     Subject getSubjectById(UUID id);
+
+    List<Subject> getSubjectsByTeacher(UUID teacherId);
 }

@@ -3,7 +3,10 @@ package org.example.persistence.subject.repository;
 import java.util.Optional;
 import java.util.List;
 import java.util.UUID;
+
+import org.example.domain.subject.model.Subject;
 import org.example.domain.subject.spi.vo.SubjectAndAttendVO;
+import org.example.domain.teacher.model.Teacher;
 import org.example.persistence.subject.entity.SubjectJpaEntity;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -24,4 +27,11 @@ public interface SubjectJpaRepository extends CrudRepository<SubjectJpaEntity, U
     List<SubjectAndAttendVO> findAllByTeachTeacherId(@Param("teacherId") UUID teacherId);
   
     Optional<SubjectJpaEntity> findBySubjectId(UUID id);
+
+    @Query(value = "SELECT S.* " +
+            "FROM subject S INNER JOIN teach TA ON (S.subject_id = TA.subject_id) " +
+            "INNER JOIN teacher T ON (T.teacher_id = TA.teacher_id) " +
+            "WHERE T.teacher_id = :teacherId"
+            , nativeQuery = true)
+    List<Subject> findAllByTeacher(@Param("teacherId") UUID teacherId);
 }

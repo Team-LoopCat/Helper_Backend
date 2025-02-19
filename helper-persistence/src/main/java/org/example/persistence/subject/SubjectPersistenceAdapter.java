@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.domain.subject.spi.QuerySubjectPort;
 import org.example.domain.subject.spi.vo.SubjectAndAttendVO;
 import org.example.domain.subject.model.Subject;
+import org.example.domain.teacher.model.Teacher;
 import org.example.persistence.subject.mapper.SubjectMapper;
 import org.example.persistence.subject.repository.SubjectJpaRepository;
 import org.springframework.stereotype.Component;
@@ -27,5 +28,10 @@ public class SubjectPersistenceAdapter implements QuerySubjectPort {
         return subjectMapper.toDomain(
                 subjectJpaRepository.findBySubjectId(subjectId)
         );
+    }
+
+    @Override
+    public List<Subject> getSubjectsByTeacher(UUID teacherId) {
+        return subjectJpaRepository.findAllByTeacher(teacherId);
     }
 }
