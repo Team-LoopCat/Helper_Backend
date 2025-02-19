@@ -48,6 +48,7 @@ public class ExamDataJpaEntity {
     @Column(nullable = true, columnDefinition = "INTEGER")
     private Integer percent;
 
-    @Column(nullable = false, columnDefinition = "VARCHAR(500)")
+    @ColumnDefault("''")
+    @Column(nullable = true, columnDefinition = "VARCHAR(500)")
     private String content;
 }

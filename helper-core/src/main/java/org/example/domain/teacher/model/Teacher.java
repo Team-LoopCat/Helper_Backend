@@ -1,5 +1,6 @@
 package org.example.domain.teacher.model;
 
+import java.util.Optional;
 import java.util.UUID;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -14,4 +15,6 @@ public class Teacher {
     private final String userId;
 
     private final String name;
+
+    private final Optional<String> grade;
 }

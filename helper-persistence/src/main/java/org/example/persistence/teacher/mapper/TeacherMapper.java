@@ -23,7 +23,8 @@ public class TeacherMapper implements GenericMapper<Teacher, TeacherJpaEntity> {
         return Optional.of(new Teacher(
                 teacherEntity.getTeacherId(),
                 teacherEntity.getUser().getUserId(),
-                teacherEntity.getName()
+                teacherEntity.getName(),
+                Optional.ofNullable(teacherEntity.getGrade())
         ));
     }
 
@@ -35,7 +36,8 @@ public class TeacherMapper implements GenericMapper<Teacher, TeacherJpaEntity> {
         return new TeacherJpaEntity(
                 entity.getTeacherId(),
                 userJpaEntity,
-                entity.getName()
+                entity.getName(),
+                entity.getGrade().orElse(null)
         );
     }
 }

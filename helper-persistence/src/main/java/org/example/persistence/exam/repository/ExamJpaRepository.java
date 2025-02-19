@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ExamJpaRepository extends CrudRepository<ExamJpaEntity, UUID> {
 
+    boolean existsByGrade(String grade);
 }
