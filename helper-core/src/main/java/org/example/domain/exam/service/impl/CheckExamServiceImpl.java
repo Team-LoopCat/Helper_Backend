@@ -4,8 +4,9 @@ import java.time.LocalDate;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.exam.exception.AlreadyStartedException;
-import org.example.domain.exam.model.Exam;
+import org.example.domain.exam.model.ExamData;
 import org.example.domain.exam.service.CheckExamService;
+import org.example.domain.exam.spi.QueryExamDataPort;
 import org.example.domain.exam.spi.QueryExamPort;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class CheckExamServiceImpl implements CheckExamService {
     private final QueryExamPort queryExamPort;
+    private final QueryExamDataPort queryExamDataPort;
 
     @Override
     public void checkExamHasStartedByGrade(String grade) {
@@ -23,10 +25,10 @@ public class CheckExamServiceImpl implements CheckExamService {
 
     @Override
     public Boolean checkExamWasFinished() {
-        Optional<Exam> optionalExam = queryExamPort.queryFirstExamOrderByDateDesc();
+        Optional<ExamData> optionalExamData = queryExamDataPort.queryFirstExamDataOrderByDateDesc();
 
-        return optionalExam.map(exam ->
-                exam.getEnd().isBefore(LocalDate.now())
+        return optionalExamData.map(exam ->
+                optionalExamData.get().getDate().isBefore(LocalDate.now())
         ).orElse(false);
     }
 }

@@ -3,6 +3,7 @@ package org.example.persistence.exam;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.example.domain.exam.model.Exam;
 import org.example.domain.exam.model.ExamData;
 import org.example.domain.exam.spi.QueryExamDataPort;
 import org.example.persistence.exam.mapper.ExamDataMapper;
@@ -24,5 +25,12 @@ public class ExamDataPersistenceAdapter implements QueryExamDataPort {
                     Optional.of(entity)
             ).get()
         ).toList();
+    }
+
+    @Override
+    public Optional<ExamData> queryFirstExamDataOrderByDateDesc() {
+        return examDataMapper.toDomain(
+                examDataJpaRepository.findFirstByOrderByDateDesc()
+        );
     }
 }

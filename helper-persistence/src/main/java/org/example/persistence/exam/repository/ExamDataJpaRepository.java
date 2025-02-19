@@ -15,5 +15,5 @@ public interface ExamDataJpaRepository extends JpaRepository<ExamDataJpaEntity, 
             "FROM examData ed " +
             "ORDER BY ed.date DESC " +
             "LIMIT 1")
-    Optional<ExamJpaEntity> findFirstByOrderByDateDesc();
+    Optional<ExamDataJpaEntity> findFirstByOrderByDateDesc();
 }
