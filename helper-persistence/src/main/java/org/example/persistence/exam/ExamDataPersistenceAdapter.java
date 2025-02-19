@@ -1,9 +1,9 @@
 package org.example.persistence.exam;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import org.example.domain.exam.model.Exam;
 import org.example.domain.exam.model.ExamData;
 import org.example.domain.exam.spi.QueryExamDataPort;
 import org.example.persistence.exam.mapper.ExamDataMapper;
@@ -28,9 +28,23 @@ public class ExamDataPersistenceAdapter implements QueryExamDataPort {
     }
 
     @Override
+    public ExamData saveExamData(ExamData examData) {
+        return examDataMapper.toDomain(
+                Optional.of(examDataJpaRepository.save(
+                        examDataMapper.toEntity(examData)
+                ))
+        ).get();
+    }
+
+    @Override
     public Optional<ExamData> queryFirstExamDataOrderByDateDesc() {
         return examDataMapper.toDomain(
                 examDataJpaRepository.findFirstByOrderByDateDesc()
         );
+    }
+
+    @Override
+    public Boolean existsExamDataByDateAndPeriod(LocalDate date, Integer period) {
+        return examDataJpaRepository.existsByDateAndPeriod(date, period);
     }
 }
