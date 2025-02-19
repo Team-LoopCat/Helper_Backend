@@ -1,13 +1,13 @@
 package org.example.domain.exam.service;
 
-import java.time.LocalDate;
 import java.util.List;
-import org.example.domain.exam.dto.request.MajorGradeRequestDto;
+import org.example.domain.exam.dto.request.ExamDataRequestDto;
 import org.example.domain.exam.model.Exam;
+import org.example.domain.student.model.Major;
 
 public interface CommandExamService {
 
-    List<Exam> startExam(LocalDate deadline, LocalDate start, LocalDate end, List<MajorGradeRequestDto> grades);
-
     void deleteAllExams();
+  
+    Exam startExam(Major major, String grade, List<ExamDataRequestDto> examData);
 }

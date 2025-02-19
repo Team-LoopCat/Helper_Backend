@@ -1,12 +1,13 @@
 package org.example.domain.exam.service.impl;
 
-import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.example.domain.exam.dto.request.MajorGradeRequestDto;
+import org.example.domain.exam.dto.request.ExamDataRequestDto;
 import org.example.domain.exam.model.Exam;
+import org.example.domain.exam.model.ExamData;
 import org.example.domain.exam.service.CommandExamService;
 import org.example.domain.exam.spi.QueryExamPort;
+import org.example.domain.student.model.Major;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -15,19 +16,28 @@ public class CommandExamServiceImpl implements CommandExamService {
     private final QueryExamPort queryExamPort;
 
     @Override
-    public List<Exam> startExam(LocalDate deadline, LocalDate start, LocalDate end, List<MajorGradeRequestDto> grades) {
-        List<Exam> exams = grades.stream()
-                .map(grade ->
-                        Exam.builder()
-                                .start(start)
-                                .end(end)
-                                .major(grade.major())
-                                .grade(grade.grade())
-                                .deadline(deadline)
-                                .build()
-                ).toList();
+    public Exam startExam(Major major, String grade, List<ExamDataRequestDto> examData) {
+        Exam exam = queryExamPort.saveExam(
+                Exam.builder()
+                    .major(major)
+                    .grade(grade)
+                    .build()
+        );
 
-        return queryExamPort.saveAll(exams);
+        queryExamPort.saveAllExamData(
+            examData.stream().map(data ->
+                ExamData.builder()
+                        .examId(exam.getExamId())
+                        .date(data.date())
+                        .period(data.period())
+                        .problems(data.problems())
+                        .percent(data.percent())
+                        .content(data.content())
+                        .build()
+            ).toList()
+        );
+
+        return exam;
     }
 
     @Override

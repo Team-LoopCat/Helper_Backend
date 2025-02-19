@@ -1,10 +1,11 @@
 package org.example.domain.exam.dto.request;
 
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import java.util.List;
 import org.example.domain.student.model.Major;
 
-public record MajorGradeRequestDto(
+public record MajorExamDataRequestDto(
         @NotNull Major major,
-        @NotBlank String grade
+        @NotNull @Valid List<ExamDataRequestDto> examData
 ) { }

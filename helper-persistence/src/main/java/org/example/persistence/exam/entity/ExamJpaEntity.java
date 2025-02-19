@@ -7,7 +7,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import java.time.LocalDate;
 import java.util.UUID;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -26,20 +25,11 @@ public class ExamJpaEntity {
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID examId;
 
-    @Column(nullable = false, columnDefinition = "DATE")
-    private LocalDate start;
-
-    @Column(nullable = false, columnDefinition = "DATE")
-    private LocalDate end;
-
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Major major;
 
     @Column(nullable = false, columnDefinition = "CHAR(1)")
     private String grade;
-
-    @Column(nullable = false, columnDefinition = "DATE")
-    private LocalDate deadline;
 }
 
