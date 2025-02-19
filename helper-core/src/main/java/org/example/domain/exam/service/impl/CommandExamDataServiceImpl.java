@@ -8,8 +8,6 @@ import org.example.domain.exam.model.ExamData;
 import org.example.domain.exam.service.CommandExamDataService;
 import org.example.domain.exam.spi.QueryExamDataPort;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -28,5 +26,10 @@ public class CommandExamDataServiceImpl implements CommandExamDataService {
                                 .build()
                 ).toList()
         );
+    }
+
+    @Override
+    public ExamData saveExamData(ExamData examData) {
+        return queryExamDataPort.saveExamData(examData);
     }
 }

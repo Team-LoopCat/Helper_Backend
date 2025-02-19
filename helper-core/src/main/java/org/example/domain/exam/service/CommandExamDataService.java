@@ -8,4 +8,6 @@ import org.example.domain.exam.model.ExamData;
 public interface CommandExamDataService {
 
     List<ExamData> saveAllExamData(Exam exam, List<ExamDataRequestDto> examData);
+
+    ExamData saveExamData(ExamData examData);
 }
