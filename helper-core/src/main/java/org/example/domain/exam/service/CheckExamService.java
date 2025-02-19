@@ -2,7 +2,7 @@ package org.example.domain.exam.service;
 
 public interface CheckExamService {
 
-    void checkExamHasStarted();
+    void checkExamHasStartedByGrade(String grade);
 
     Boolean checkExamWasFinished();
 }

@@ -7,7 +7,7 @@ import org.example.domain.exam.model.ExamData;
 
 public interface QueryExamPort {
 
-    boolean existsAnyExam();
+    boolean existsExamByGrade(String grade);
 
     List<Exam> saveAll(List<Exam> exams);
 
@@ -18,6 +18,4 @@ public interface QueryExamPort {
     void deleteAllExams();
 
     Exam saveExam(Exam exam);
-
-    List<ExamData> saveAllExamData(List<ExamData> examData);
 }

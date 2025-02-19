@@ -15,8 +15,8 @@ public class CheckExamServiceImpl implements CheckExamService {
     private final QueryExamPort queryExamPort;
 
     @Override
-    public void checkExamHasStarted() {
-        if (queryExamPort.existsAnyExam()) {
+    public void checkExamHasStartedByGrade(String grade) {
+        if (queryExamPort.existsExamByGrade(grade)) {
             throw AlreadyStartedException.EXCEPTION;
         }
     }

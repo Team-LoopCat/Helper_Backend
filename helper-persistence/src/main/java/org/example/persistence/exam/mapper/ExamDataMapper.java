@@ -38,7 +38,7 @@ public class ExamDataMapper implements GenericMapper<ExamData, ExamDataJpaEntity
     @Override
     public ExamDataJpaEntity toEntity(ExamData entity) {
         ExamJpaEntity examJpaEntity = examJpaRepository.findById
-                (entity.getSubjectId()).orElse(null);
+                (entity.getExamId()).orElse(null);
 
         SubjectJpaEntity subjectJpaEntity = subjectJpaRepository.findById
                 (entity.getSubjectId()).orElse(null);
