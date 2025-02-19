@@ -8,6 +8,7 @@ import org.example.persistence.test.repository.TestJpaRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Component
 @RequiredArgsConstructor
@@ -24,4 +25,17 @@ public class TestPersistenceAdapter implements QueryTestPort {
         ).get();
     }
 
+    @Override
+    public Optional<Test> getTestById(UUID testId) {
+        return testMapper.toDomain(
+                testJpaRepository.findById(testId)
+        );
+    }
+
+    @Override
+    public void deleteTest(Test test) {
+        testJpaRepository.delete(
+                testMapper.toEntity(test)
+        );
+    }
 }
