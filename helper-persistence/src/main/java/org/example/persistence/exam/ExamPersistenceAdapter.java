@@ -57,4 +57,16 @@ public class ExamPersistenceAdapter implements QueryExamPort {
                         ).get()
                 ).toList();
     }
+
+    @Override
+    public Optional<Exam> queryFirstExamOrderByDateDesc() {
+        return examMapper.toDomain(
+                examDataJpaRepository.findFirstByOrderByDateDesc()
+        );
+    }
+
+    @Override
+    public void deleteAllExams() {
+        examJpaRepository.deleteAll();
+    }
 }

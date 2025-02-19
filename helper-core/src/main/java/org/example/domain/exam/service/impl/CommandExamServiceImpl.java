@@ -39,4 +39,9 @@ public class CommandExamServiceImpl implements CommandExamService {
 
         return exam;
     }
+
+    @Override
+    public void deleteAllExams() {
+        queryExamPort.deleteAllExams();
+    }
 }
