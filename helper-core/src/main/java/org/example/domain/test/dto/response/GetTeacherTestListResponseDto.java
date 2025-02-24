@@ -7,7 +7,7 @@ import java.util.List;
 public record GetTeacherTestListResponseDto(
         List<TestListDataVO> tests
 ) {
-    public GetTeacherTestListResponseDto of(List<TestListDataVO> testData) {
+    public GetTeacherTestListResponseDto from(List<TestListDataVO> testData) {
         return new GetTeacherTestListResponseDto(testData);
     }
 }
