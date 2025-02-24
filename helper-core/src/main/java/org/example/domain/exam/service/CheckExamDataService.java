@@ -4,5 +4,5 @@ import java.time.LocalDate;
 
 public interface CheckExamDataService {
 
-    void checkDateOrPeriodHasBeenDuplicated(LocalDate date, Integer period);
+    void checkDateAndPeriodHaveBeenDuplicated(LocalDate date, Integer period);
 }

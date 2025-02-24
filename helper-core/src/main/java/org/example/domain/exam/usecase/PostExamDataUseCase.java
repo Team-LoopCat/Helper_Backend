@@ -18,7 +18,7 @@ public class PostExamDataUseCase {
     private final CommandExamDataService commandExamDataService;
 
     public PostExamDataResponseDto execute(ExamDataRequestDto examDataRequestDto, UUID examId) {
-        checkExamDataService.checkDateOrPeriodHasBeenDuplicated(examDataRequestDto.date(), examDataRequestDto.period());
+        checkExamDataService.checkDateAndPeriodHaveBeenDuplicated(examDataRequestDto.date(), examDataRequestDto.period());
 
         ExamData currentExamData = commandExamDataService.saveExamData(
                 ExamData.builder()
