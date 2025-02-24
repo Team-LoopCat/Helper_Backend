@@ -7,7 +7,7 @@ import org.example.domain.teacher.model.Teacher;
 import org.example.domain.teacher.service.GetTeacherService;
 import org.example.domain.test.dto.response.GetTeacherTestListResponseDto;
 import org.example.domain.test.service.GetTestService;
-import org.example.domain.test.spi.vo.TeacherTestListDataVO;
+import org.example.domain.test.spi.vo.TestListForTeacherDataVO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 @Transactional(readOnly = true)
 @RequiredArgsConstructor
-public class GetTeacherTestListUseCase {
+public class GetTestListForTeacherUseCase {
     private final GetTeacherService getTeacherService;
     private final GetTestService getTestService;
     private final GetSubjectService getSubjectService;
@@ -26,9 +26,9 @@ public class GetTeacherTestListUseCase {
         Teacher teacher = getTeacherService.getCurrentTeacher();
         List<Subject> subjects = getSubjectService.getSubjectsByTeacher(teacher.getTeacherId());
 
-        List<TeacherTestListDataVO> testListData = new ArrayList<>();
+        List<TestListForTeacherDataVO> testListData = new ArrayList<>();
         for (Subject subject: subjects) {
-            List<TeacherTestListDataVO> testData = getTestService.getTestListDataBySubjectId(subject.getSubjectId());
+            List<TestListForTeacherDataVO> testData = getTestService.getTestListDataForTeacherBySubjectId(subject.getSubjectId());
             testListData.addAll(testData);
         }
 

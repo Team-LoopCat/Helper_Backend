@@ -5,7 +5,8 @@ import org.example.domain.test.exception.TestNotFoundException;
 import org.example.domain.test.model.Test;
 import org.example.domain.test.service.GetTestService;
 import org.example.domain.test.spi.QueryTestPort;
-import org.example.domain.test.spi.vo.TeacherTestListDataVO;
+import org.example.domain.test.spi.vo.TestListDataForStudentVO;
+import org.example.domain.test.spi.vo.TestListForTeacherDataVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,7 +25,7 @@ public class GetTestServiceImpl implements GetTestService {
     }
 
     @Override
-    public List<TeacherTestListDataVO> getTestListDataBySubjectId(UUID subjectId) {
-        return queryTestPort.getTestListDataBySubjectId(subjectId);
+    public List<TestListForTeacherDataVO> getTestListDataForTeacherBySubjectId(UUID subjectId) {
+        return queryTestPort.getTestListDataForTeacherBySubjectId(subjectId);
     }
 }
