@@ -1,5 +1,6 @@
 package org.example.persistence.exam.repository;
 
+import java.time.LocalDate;
 import java.util.Optional;
 import java.util.UUID;
 import org.example.persistence.exam.entity.ExamDataJpaEntity;
@@ -16,4 +17,6 @@ public interface ExamDataJpaRepository extends JpaRepository<ExamDataJpaEntity, 
             "ORDER BY ed.date DESC " +
             "LIMIT 1")
     Optional<ExamDataJpaEntity> findFirstByOrderByDateDesc();
+
+    Boolean existsByDateAndPeriod(LocalDate date, Integer period);
 }
