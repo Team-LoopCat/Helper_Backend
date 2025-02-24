@@ -31,7 +31,7 @@ public class ExamWebAdapter {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/{exam_id}")
     public PostExamDataResponseDto postExamData(@PathVariable UUID exam_id, @Valid @RequestBody ExamDataRequestDto request) {
-        postExamDataUseCase.execute(request, exam_id);
+        return postExamDataUseCase.execute(request, exam_id);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
