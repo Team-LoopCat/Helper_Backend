@@ -1,6 +1,5 @@
 package org.example.domain.exam.usecase;
 
-import jakarta.validation.Valid;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.exam.dto.request.UpdateExamDataRequestDto;
@@ -11,7 +10,6 @@ import org.example.domain.subject.model.Subject;
 import org.example.domain.subject.service.GetSubjectService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
 @Service
 @Transactional
@@ -21,7 +19,7 @@ public class UpdateExamDataUseCase {
     private final GetSubjectService getSubjectService;
     private final CommandExamDataService commandExamDataService;
 
-    public void execute(UUID examDataId, @Valid @RequestBody UpdateExamDataRequestDto request) {
+    public void execute(UUID examDataId, UpdateExamDataRequestDto request) {
         ExamData currentExamData = getExamDataService.getExamDataById(examDataId);
         Subject subject = getSubjectService.getSubjectById(request.subjectId());
 
