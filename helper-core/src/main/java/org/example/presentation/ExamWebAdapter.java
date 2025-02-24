@@ -12,6 +12,7 @@ import org.example.domain.exam.dto.response.StartExamResponseDto;
 import org.example.domain.exam.usecase.GetExamUseCase;
 import org.example.domain.exam.usecase.PostExamDataUseCase;
 import org.example.domain.exam.usecase.StartExamUseCase;
+import org.example.domain.exam.usecase.UpdateExamDataDetailUseCase;
 import org.example.domain.exam.usecase.UpdateExamDataUseCase;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class ExamWebAdapter {
     private final PostExamDataUseCase postExamDataUseCase;
     private final UpdateExamDataUseCase updateExamDataUseCase;
+    private final UpdateExamDataDetailUseCase updateExamDataDetailUseCase;
     private final StartExamUseCase startExamUseCase;
     private final GetExamUseCase getExamUseCase;
 
@@ -43,6 +45,13 @@ public class ExamWebAdapter {
     public void updateExamData(@PathVariable UUID exam_data_id, @Valid @RequestBody UpdateExamDataRequestDto request) {
         updateExamDataUseCase.execute(exam_data_id, request);
     }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @PatchMapping("/detail/{exam_data_id}")
+    public void updateExamDataDetail(@PathVariable UUID exam_data_id, @Valid @RequestBody UpdateExamDataRequestDto request) {
+        updateExamDataDetailUseCase.execute(exam_data_id, request);
+    }
+
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
