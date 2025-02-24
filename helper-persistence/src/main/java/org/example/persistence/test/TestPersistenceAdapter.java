@@ -1,10 +1,9 @@
 package org.example.persistence.test;
 
 import lombok.RequiredArgsConstructor;
-import org.example.domain.subject.model.Subject;
 import org.example.domain.test.model.Test;
 import org.example.domain.test.spi.QueryTestPort;
-import org.example.domain.test.spi.vo.TestListDataVO;
+import org.example.domain.test.spi.vo.TeacherTestListDataVO;
 import org.example.persistence.subject.mapper.SubjectMapper;
 import org.example.persistence.test.mapper.TestMapper;
 import org.example.persistence.test.repository.TestJpaRepository;
@@ -45,7 +44,7 @@ public class TestPersistenceAdapter implements QueryTestPort {
     }
 
     @Override
-    public List<TestListDataVO> getTestListDataBySubjectId(UUID subjectId) {
+    public List<TeacherTestListDataVO> getTestListDataBySubjectId(UUID subjectId) {
         return testJpaRepository.findTestListDataBySubjectId(subjectId);
     }
 }

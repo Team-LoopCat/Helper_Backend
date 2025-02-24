@@ -1,7 +1,7 @@
 package org.example.domain.test.spi;
 
 import org.example.domain.test.model.Test;
-import org.example.domain.test.spi.vo.TestListDataVO;
+import org.example.domain.test.spi.vo.TeacherTestListDataVO;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,5 +15,5 @@ public interface QueryTestPort {
 
     void deleteTest(Test test);
 
-    List<TestListDataVO> getTestListDataBySubjectId(UUID subjectId);
+    List<TeacherTestListDataVO> getTestListDataBySubjectId(UUID subjectId);
 }

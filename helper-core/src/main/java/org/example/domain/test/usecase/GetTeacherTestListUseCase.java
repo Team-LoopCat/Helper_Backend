@@ -7,7 +7,7 @@ import org.example.domain.teacher.model.Teacher;
 import org.example.domain.teacher.service.GetTeacherService;
 import org.example.domain.test.dto.response.GetTeacherTestListResponseDto;
 import org.example.domain.test.service.GetTestService;
-import org.example.domain.test.spi.vo.TestListDataVO;
+import org.example.domain.test.spi.vo.TeacherTestListDataVO;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,9 +26,9 @@ public class GetTeacherTestListUseCase {
         Teacher teacher = getTeacherService.getCurrentTeacher();
         List<Subject> subjects = getSubjectService.getSubjectsByTeacher(teacher.getTeacherId());
 
-        List<TestListDataVO> testListData = new ArrayList<>();
+        List<TeacherTestListDataVO> testListData = new ArrayList<>();
         for (Subject subject: subjects) {
-            List<TestListDataVO> testData = getTestService.getTestListDataBySubjectId(subject.getSubjectId());
+            List<TeacherTestListDataVO> testData = getTestService.getTestListDataBySubjectId(subject.getSubjectId());
             testListData.addAll(testData);
         }
 
