@@ -5,6 +5,7 @@ import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.exam.dto.request.ExamDataRequestDto;
 import org.example.domain.exam.dto.request.StartExamRequestDto;
+import org.example.domain.exam.dto.request.UpdateExamDataDetailRequestDto;
 import org.example.domain.exam.dto.request.UpdateExamDataRequestDto;
 import org.example.domain.exam.dto.response.GetExamListResponseDto;
 import org.example.domain.exam.dto.response.PostExamDataResponseDto;
@@ -48,7 +49,7 @@ public class ExamWebAdapter {
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @PatchMapping("/detail/{exam_data_id}")
-    public void updateExamDataDetail(@PathVariable UUID exam_data_id, @Valid @RequestBody UpdateExamDataRequestDto request) {
+    public void updateExamDataDetail(@PathVariable UUID exam_data_id, @Valid @RequestBody UpdateExamDataDetailRequestDto request) {
         updateExamDataDetailUseCase.execute(exam_data_id, request);
     }
 
