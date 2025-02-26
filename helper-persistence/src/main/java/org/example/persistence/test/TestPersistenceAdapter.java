@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.domain.test.model.Test;
 import org.example.domain.test.spi.QueryTestPort;
 import org.example.domain.test.spi.vo.TestListDataForStudentVO;
-import org.example.domain.test.spi.vo.TestListForTeacherDataVO;
+import org.example.domain.test.spi.vo.TestListDataForTeacherVO;
 import org.example.persistence.test.mapper.TestMapper;
 import org.example.persistence.test.repository.TestJpaRepository;
 import org.springframework.stereotype.Component;
@@ -43,7 +43,17 @@ public class TestPersistenceAdapter implements QueryTestPort {
     }
 
     @Override
-    public List<TestListForTeacherDataVO> getTestListDataForTeacherBySubjectId(UUID subjectId) {
+    public List<TestListDataForTeacherVO> getTestListDataForTeacherBySubjectId(UUID subjectId) {
         return testJpaRepository.findTestListDataForTeacherBySubjectId(subjectId);
+    }
+
+    @Override
+    public List<TestListDataForStudentVO> getTestDataListForStudentByGradeAndClassroom(String grade, String classroom) {
+        return testJpaRepository.findStudentTestListDataByGradeAndClassroom(grade, classroom);
+    }
+
+    @Override
+    public TestListDataForStudentVO getTestDataForStudentBySubjectId(UUID subjectId) {
+        return testJpaRepository.findTestDataForStudentBySubjectId(subjectId);
     }
 }

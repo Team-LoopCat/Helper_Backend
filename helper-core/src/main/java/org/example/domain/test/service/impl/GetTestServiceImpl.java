@@ -6,7 +6,7 @@ import org.example.domain.test.model.Test;
 import org.example.domain.test.service.GetTestService;
 import org.example.domain.test.spi.QueryTestPort;
 import org.example.domain.test.spi.vo.TestListDataForStudentVO;
-import org.example.domain.test.spi.vo.TestListForTeacherDataVO;
+import org.example.domain.test.spi.vo.TestListDataForTeacherVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +25,17 @@ public class GetTestServiceImpl implements GetTestService {
     }
 
     @Override
-    public List<TestListForTeacherDataVO> getTestListDataForTeacherBySubjectId(UUID subjectId) {
+    public List<TestListDataForTeacherVO> getTestListDataForTeacherBySubjectId(UUID subjectId) {
         return queryTestPort.getTestListDataForTeacherBySubjectId(subjectId);
+    }
+
+    @Override
+    public List<TestListDataForStudentVO> getTestDataListForStudentByGradeAndClassroom(String grade, String classroom) {
+        return queryTestPort.getTestDataListForStudentByGradeAndClassroom(grade, classroom);
+    }
+
+    @Override
+    public TestListDataForStudentVO getTestDataForStudentBySubjectId(UUID subjectId) {
+        return queryTestPort.getTestDataForStudentBySubjectId(subjectId);
     }
 }
