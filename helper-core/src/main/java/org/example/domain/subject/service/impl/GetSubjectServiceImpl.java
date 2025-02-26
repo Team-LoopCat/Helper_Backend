@@ -27,4 +27,9 @@ public class GetSubjectServiceImpl implements GetSubjectService {
                 () -> SubjectNotFoundException.EXCEPTION
         );
     }
+
+    @Override
+    public List<Subject> getSubjectsByTeacher(UUID teacherId) {
+        return querySubjectPort.getSubjectsByTeacher(teacherId);
+    }
 }

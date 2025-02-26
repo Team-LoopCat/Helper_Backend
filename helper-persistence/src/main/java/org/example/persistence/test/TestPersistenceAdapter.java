@@ -3,10 +3,13 @@ package org.example.persistence.test;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.test.model.Test;
 import org.example.domain.test.spi.QueryTestPort;
+import org.example.domain.test.spi.vo.TestListDataForStudentVO;
+import org.example.domain.test.spi.vo.TestListForTeacherDataVO;
 import org.example.persistence.test.mapper.TestMapper;
 import org.example.persistence.test.repository.TestJpaRepository;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -37,5 +40,10 @@ public class TestPersistenceAdapter implements QueryTestPort {
         testJpaRepository.delete(
                 testMapper.toEntity(test)
         );
+    }
+
+    @Override
+    public List<TestListForTeacherDataVO> getTestListDataForTeacherBySubjectId(UUID subjectId) {
+        return testJpaRepository.findTestListDataForTeacherBySubjectId(subjectId);
     }
 }

@@ -12,11 +12,11 @@ public enum TestErrorCode implements GlobalErrorCode {
 
     @Override
     public int getErrorStatus() {
-        return 0;
+        return errorStatus;
     }
 
     @Override
     public String getErrorMessage() {
-        return null;
+        return errorMessage;
     }
 }
