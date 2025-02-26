@@ -12,8 +12,4 @@ public interface GetTestService {
     Test getTestById(UUID testId);
 
     List<TestListForTeacherDataVO> getTestListDataForTeacherBySubjectId(UUID subjectId);
-
-    List<TestListDataForStudentVO> getTestDataListForStudentByGradeAndClassroom(String grade, String classroom);
-
-    TestListDataForStudentVO getTestDataForStudentBySubjectId(UUID subjectId);
 }

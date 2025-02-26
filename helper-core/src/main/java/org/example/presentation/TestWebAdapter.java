@@ -20,7 +20,6 @@ public class TestWebAdapter {
     private final UpdateTestUseCase updateTestUseCase;
     private final DeleteTestUseCase deleteTestUseCase;
     private final GetTestListForTeacherUseCase getTestListForTeacherUseCase;
-    private final GetTestListForStudentUseCase getTestListForStudentUseCase;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -44,11 +43,5 @@ public class TestWebAdapter {
     @GetMapping("/admin")
     public GetTeacherTestListResponseDto getTeacherTestList() {
         return getTestListForTeacherUseCase.execute();
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/student")
-    public GetTestListForStudentResponseDto getTestListForStudent() {
-        return getTestListForStudentUseCase.execute();
     }
 }
