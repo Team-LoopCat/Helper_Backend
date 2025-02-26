@@ -1,13 +1,13 @@
 package org.example.domain.test.dto.response;
 
-import org.example.domain.test.spi.vo.TestListForTeacherDataVO;
+import org.example.domain.test.spi.vo.TestListDataForTeacherVO;
 
 import java.util.List;
 
 public record GetTeacherTestListResponseDto(
-        List<TestListForTeacherDataVO> tests
+        List<TestListDataForTeacherVO> tests
 ) {
-    public GetTeacherTestListResponseDto from(List<TestListForTeacherDataVO> testData) {
+    public GetTeacherTestListResponseDto from(List<TestListDataForTeacherVO> testData) {
         return new GetTeacherTestListResponseDto(testData);
     }
 }
