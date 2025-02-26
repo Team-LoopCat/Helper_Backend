@@ -46,4 +46,14 @@ public class TestPersistenceAdapter implements QueryTestPort {
     public List<TestListForTeacherDataVO> getTestListDataForTeacherBySubjectId(UUID subjectId) {
         return testJpaRepository.findTestListDataForTeacherBySubjectId(subjectId);
     }
+
+    @Override
+    public List<TestListDataForStudentVO> getTestDataListForStudentByGradeAndClassroom(String grade, String classroom) {
+        return testJpaRepository.findStudentTestListDataByGradeAndClassroom(grade, classroom);
+    }
+
+    @Override
+    public TestListDataForStudentVO getTestDataForStudentBySubjectId(UUID subjectId) {
+        return testJpaRepository.findTestDataForStudentBySubjectId(subjectId);
+    }
 }
