@@ -28,4 +28,14 @@ public class GetTestServiceImpl implements GetTestService {
     public List<TestListForTeacherDataVO> getTestListDataForTeacherBySubjectId(UUID subjectId) {
         return queryTestPort.getTestListDataForTeacherBySubjectId(subjectId);
     }
+
+    @Override
+    public List<TestListDataForStudentVO> getTestDataListForStudentByGradeAndClassroom(String grade, String classroom) {
+        return queryTestPort.getTestDataListForStudentByGradeAndClassroom(grade, classroom);
+    }
+
+    @Override
+    public TestListDataForStudentVO getTestDataForStudentBySubjectId(UUID subjectId) {
+        return queryTestPort.getTestDataForStudentBySubjectId(subjectId);
+    }
 }
