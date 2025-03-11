@@ -4,9 +4,11 @@ import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.exam.dto.request.ExamDataRequestDto;
 import org.example.domain.exam.dto.response.PostExamDataResponseDto;
+import org.example.domain.exam.model.Exam;
 import org.example.domain.exam.model.ExamData;
 import org.example.domain.exam.service.CheckExamDataService;
 import org.example.domain.exam.service.CommandExamDataService;
+import org.example.domain.exam.service.GetExamService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -14,15 +16,18 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @RequiredArgsConstructor
 public class PostExamDataUseCase {
+    private final GetExamService getExamService;
     private final CheckExamDataService checkExamDataService;
     private final CommandExamDataService commandExamDataService;
 
     public PostExamDataResponseDto execute(ExamDataRequestDto examDataRequestDto, UUID examId) {
+        Exam exam = getExamService.getExamById(examId);
+
         checkExamDataService.checkDateAndPeriodHaveBeenDuplicated(examDataRequestDto.date(), examDataRequestDto.period());
 
         ExamData currentExamData = commandExamDataService.saveExamData(
                 ExamData.builder()
-                        .examId(examId)
+                        .examId(exam.getExamId())
                         .subjectId(examDataRequestDto.subjectId())
                         .date(examDataRequestDto.date())
                         .period(examDataRequestDto.period())

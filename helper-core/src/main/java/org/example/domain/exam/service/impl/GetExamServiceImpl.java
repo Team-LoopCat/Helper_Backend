@@ -1,6 +1,7 @@
 package org.example.domain.exam.service.impl;
 
 import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.exam.model.Exam;
 import org.example.domain.exam.service.GetExamService;
@@ -11,6 +12,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class GetExamServiceImpl implements GetExamService {
     private final QueryExamPort queryExamPort;
+
+    @Override
+    public Exam getExamById(UUID examId) {
+        return queryExamPort.getExamById();
+    }
 
     @Override
     public List<Exam> getExamList() {
