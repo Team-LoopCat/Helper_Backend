@@ -17,4 +17,6 @@ public interface QueryFilePort {
     List<FileDataVO> getAllFileByPostId(UUID postId);
 
     void deleteAllByTest(Test test);
+
+    List<FileDataVO> getAllFilesByTestId(UUID testId);
 }

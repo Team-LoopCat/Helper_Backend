@@ -3,6 +3,7 @@ package org.example.persistence.test;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.test.model.Test;
 import org.example.domain.test.spi.QueryTestPort;
+import org.example.domain.test.spi.vo.TestDetailVO;
 import org.example.domain.test.spi.vo.TestListDataForStudentVO;
 import org.example.domain.test.spi.vo.TestListDataForTeacherVO;
 import org.example.persistence.test.mapper.TestMapper;
@@ -55,5 +56,10 @@ public class TestPersistenceAdapter implements QueryTestPort {
     @Override
     public TestListDataForStudentVO getTestDataForStudentBySubjectId(UUID subjectId) {
         return testJpaRepository.findTestDataForStudentBySubjectId(subjectId);
+    }
+
+    @Override
+    public TestDetailVO getTestDetailById(UUID testId) {
+        return testJpaRepository.findTestDetailById(testId);
     }
 }

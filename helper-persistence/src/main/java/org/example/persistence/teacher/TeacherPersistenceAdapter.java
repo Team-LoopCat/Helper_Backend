@@ -1,5 +1,6 @@
 package org.example.persistence.teacher;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
@@ -29,5 +30,10 @@ public class TeacherPersistenceAdapter implements QueryTeacherPort {
         return teacherMapper.toDomain(
                 teacherJpaRepository.findByUserUserId(id)
         );
+    }
+
+    @Override
+    public List<String> queryTeacherBySubjectId(UUID subjectId) {
+        return teacherJpaRepository.getNamesBySubjectId(subjectId);
     }
 }

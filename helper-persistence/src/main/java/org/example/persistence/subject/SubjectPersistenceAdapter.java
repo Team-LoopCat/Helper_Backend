@@ -8,6 +8,7 @@ import org.example.domain.subject.spi.QuerySubjectPort;
 import org.example.domain.subject.spi.vo.SubjectAndAttendVO;
 import org.example.domain.subject.model.Subject;
 import org.example.domain.teacher.model.Teacher;
+import org.example.domain.test.model.Test;
 import org.example.persistence.subject.mapper.SubjectMapper;
 import org.example.persistence.subject.repository.SubjectJpaRepository;
 import org.springframework.stereotype.Component;
@@ -33,5 +34,10 @@ public class SubjectPersistenceAdapter implements QuerySubjectPort {
     @Override
     public List<Subject> getSubjectsByTeacher(UUID teacherId) {
         return subjectJpaRepository.findAllByTeacher(teacherId);
+    }
+
+    @Override
+    public Subject getSubjectByTestId(UUID testId) {
+        return subjectJpaRepository.findSubjectByTestId(testId);
     }
 }

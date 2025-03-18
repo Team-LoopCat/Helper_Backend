@@ -22,4 +22,10 @@ public interface FileJpaRepository extends CrudRepository<FileJpaEntity, UUID> {
             "FROM file f " +
             "WHERE f.post.postId = :postId")
     List<FileDataVO> findAllByPostId(@Param("postId") UUID postId);
+
+    @Query("SELECT " +
+            "new org.example.domain.file.spi.vo.FileDataVO(f.filename, f.url) " +
+            "FROM file f " +
+            "WHERE f.test.testId = :testId")
+    List<FileDataVO> getAllByTestId(@Param("testId") UUID testId);
 }
