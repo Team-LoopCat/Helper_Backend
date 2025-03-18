@@ -5,6 +5,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.domain.test.dto.request.CreateTestRequestDto;
 import org.example.domain.test.dto.request.UpdateTestRequestDto;
 import org.example.domain.test.dto.response.GetTeacherTestListResponseDto;
+import org.example.domain.test.dto.response.GetTestDetailResponseDto;
 import org.example.domain.test.dto.response.GetTestListForStudentResponseDto;
 import org.example.domain.test.usecase.*;
 import org.springframework.http.HttpStatus;
@@ -21,6 +22,7 @@ public class TestWebAdapter {
     private final DeleteTestUseCase deleteTestUseCase;
     private final GetTestListForTeacherUseCase getTestListForTeacherUseCase;
     private final GetTestListForStudentUseCase getTestListForStudentUseCase;
+    private final GetTestDetailUseCase getTestDetailUseCase;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
@@ -50,5 +52,11 @@ public class TestWebAdapter {
     @GetMapping("/student")
     public GetTestListForStudentResponseDto getTestListForStudent() {
         return getTestListForStudentUseCase.execute();
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/{testId}")
+    public GetTestDetailResponseDto getTestDetail(@PathVariable UUID testId) {
+        return getTestDetailUseCase.execute(testId);
     }
 }

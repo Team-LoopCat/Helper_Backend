@@ -32,4 +32,9 @@ public class GetSubjectServiceImpl implements GetSubjectService {
     public List<Subject> getSubjectsByTeacher(UUID teacherId) {
         return querySubjectPort.getSubjectsByTeacher(teacherId);
     }
+
+    @Override
+    public Subject getSubjectByTestId(UUID testId) {
+        return querySubjectPort.getSubjectByTestId(testId);
+    }
 }
