@@ -49,7 +49,6 @@ public class UpdateTestUseCase {
 
         commandTestService.saveTest(Test.builder()
                     .testId(testId)
-                    .subjectId(request.subjectId())
                     .title(request.title())
                     .content(request.content())
                     .percent(request.percent())

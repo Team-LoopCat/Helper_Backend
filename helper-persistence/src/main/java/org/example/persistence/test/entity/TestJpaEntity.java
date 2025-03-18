@@ -22,11 +22,6 @@ public class TestJpaEntity {
     @Column(nullable = false, columnDefinition = "BINARY(16)")
     private UUID testId;
 
-    @ManyToOne(optional = false, targetEntity = SubjectJpaEntity.class)
-    @JoinColumn(nullable = false, name = "subjectId", referencedColumnName = "subjectId")
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private SubjectJpaEntity subject;
-
     @Column(nullable = false, columnDefinition = "VARCHAR(50)")
     private String title;
 

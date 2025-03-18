@@ -27,7 +27,7 @@ public class DeleteTestUseCase {
     public void execute(UUID testId) {
         Teacher teacher = getTeacherService.getCurrentTeacher();
         Test test = getTestService.getTestById(testId);
-        Subject subject = getSubjectService.getSubjectById(test.getSubjectId());
+        Subject subject = getSubjectService.getSubjectByTestId(test.getTestId());
 
         checkTeachService.checkTeacherTeachesSubject(teacher, subject);
 

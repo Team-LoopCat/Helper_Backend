@@ -12,7 +12,6 @@ import org.springframework.stereotype.Component;
 @Component
 @RequiredArgsConstructor
 public class TestMapper implements GenericMapper<Test, TestJpaEntity> {
-    private final SubjectJpaRepository subjectJpaRepository;
 
     @Override
     public Optional<Test> toDomain(Optional<TestJpaEntity> entity) {
@@ -22,7 +21,6 @@ public class TestMapper implements GenericMapper<Test, TestJpaEntity> {
 
         return Optional.of(new Test(
                 testEntity.getTestId(),
-                testEntity.getSubject().getSubjectId(),
                 testEntity.getTitle(),
                 testEntity.getContent(),
                 testEntity.getPercent()
@@ -31,12 +29,8 @@ public class TestMapper implements GenericMapper<Test, TestJpaEntity> {
 
     @Override
     public TestJpaEntity toEntity(Test entity) {
-        SubjectJpaEntity subjectJpaEntity = subjectJpaRepository.findById
-                (entity.getSubjectId()).orElse(null);
-
         return new TestJpaEntity(
                 entity.getTestId(),
-                subjectJpaEntity,
                 entity.getTitle(),
                 entity.getContent(),
                 entity.getPercent()

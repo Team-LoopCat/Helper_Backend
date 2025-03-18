@@ -41,7 +41,6 @@ public class CreateTestUseCase {
 
         Test createdTest = commandTestService.saveTest(Test.builder()
                 .title(request.title())
-                .subjectId(request.subjectId())
                 .content(request.content())
                 .percent(request.percent())
                 .build()
