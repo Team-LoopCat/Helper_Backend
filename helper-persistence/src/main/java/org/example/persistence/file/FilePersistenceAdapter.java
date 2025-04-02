@@ -43,6 +43,11 @@ public class FilePersistenceAdapter implements QueryFilePort {
     }
 
     @Override
+    public List<FileDataVO> getAllFilesByTestId(UUID testId) {
+        return fileJpaRepository.getAllByTestId(testId);
+    }
+
+    @Override
     public List<FileDataVO> getAllFileByPostId(UUID postId) {
         return fileJpaRepository.findAllByPostId(postId);
     }

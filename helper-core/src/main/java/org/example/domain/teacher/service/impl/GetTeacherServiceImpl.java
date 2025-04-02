@@ -8,6 +8,9 @@ import org.example.domain.teacher.service.GetTeacherService;
 import org.example.domain.teacher.spi.QueryTeacherPort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class GetTeacherServiceImpl implements GetTeacherService {
@@ -27,5 +30,10 @@ public class GetTeacherServiceImpl implements GetTeacherService {
         return queryTeacherPort.queryTeacherByUserId(id).orElseThrow(
                 () -> TeacherNotFoundException.EXCEPTION
         );
+    }
+
+    @Override
+    public List<String> getTeacherNamesBySubjectId(UUID subjectId) {
+        return queryTeacherPort.queryTeacherBySubjectId(subjectId);
     }
 }

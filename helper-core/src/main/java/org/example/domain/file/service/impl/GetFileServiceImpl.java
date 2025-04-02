@@ -18,4 +18,9 @@ public class GetFileServiceImpl implements GetFileService {
     public List<FileDataVO> getAllFileByPostId(UUID postId) {
         return queryFilePort.getAllFileByPostId(postId);
     }
+
+    @Override
+    public List<FileDataVO> getAllFileByTestId(UUID testId) {
+        return queryFilePort.getAllFilesByTestId(testId);
+    }
 }

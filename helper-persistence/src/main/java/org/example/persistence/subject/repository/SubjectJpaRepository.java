@@ -34,4 +34,13 @@ public interface SubjectJpaRepository extends CrudRepository<SubjectJpaEntity, U
             "WHERE T.teacher_id = :teacherId"
             , nativeQuery = true)
     List<Subject> findAllByTeacher(@Param("teacherId") UUID teacherId);
+
+    @Query("SELECT " +
+            "new org.example.domain.subject.model.Subject(s.subjectId, s.name, s.optional) " +
+            "FROM test t INNER JOIN testInfo ti ON t.testId = ti.test.testId " +
+                "INNER JOIN attend a ON a.attendId = ti.attend.attendId " +
+                "INNER JOIN subject s ON s.subjectId = a.subject.subjectId " +
+            "WHERE t.testId = :testId " +
+            "GROUP BY s.subjectId, s.name, s.optional")
+    Subject findSubjectByTestId(@Param("testId") UUID testId);
 }

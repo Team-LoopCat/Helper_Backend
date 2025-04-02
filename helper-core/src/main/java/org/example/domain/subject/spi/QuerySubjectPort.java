@@ -7,6 +7,7 @@ import java.util.UUID;
 import org.example.domain.subject.model.Subject;
 import org.example.domain.subject.spi.vo.SubjectAndAttendVO;
 import org.example.domain.teacher.model.Teacher;
+import org.example.domain.test.model.Test;
 
 public interface QuerySubjectPort {
 
@@ -15,4 +16,6 @@ public interface QuerySubjectPort {
     Optional<Subject> getSubjectById(UUID subjectId);
 
     List<Subject> getSubjectsByTeacher(UUID teacherId);
+
+    Subject getSubjectByTestId(UUID testId);
 }

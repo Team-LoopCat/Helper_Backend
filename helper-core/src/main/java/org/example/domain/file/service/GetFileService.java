@@ -7,4 +7,6 @@ import java.util.UUID;
 
 public interface GetFileService {
     List<FileDataVO> getAllFileByPostId(UUID postId);
+
+    List<FileDataVO> getAllFileByTestId(UUID testId);
 }

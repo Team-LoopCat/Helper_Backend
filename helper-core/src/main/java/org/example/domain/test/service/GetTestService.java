@@ -1,6 +1,7 @@
 package org.example.domain.test.service;
 
 import org.example.domain.test.model.Test;
+import org.example.domain.test.spi.vo.TestDetailVO;
 import org.example.domain.test.spi.vo.TestListDataForStudentVO;
 import org.example.domain.test.spi.vo.TestListDataForTeacherVO;
 
@@ -16,4 +17,6 @@ public interface GetTestService {
     List<TestListDataForStudentVO> getTestDataListForStudentByGradeAndClassroom(String grade, String classroom);
 
     TestListDataForStudentVO getTestDataForStudentBySubjectId(UUID subjectId);
+
+    TestDetailVO getTestDetailById(UUID testId);
 }
