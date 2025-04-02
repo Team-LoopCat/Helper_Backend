@@ -7,6 +7,7 @@ import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.exam.model.ExamData;
 import org.example.domain.exam.spi.QueryExamDataPort;
+import org.example.domain.exam.spi.vo.SimpleExamDataVO;
 import org.example.persistence.exam.mapper.ExamDataMapper;
 import org.example.persistence.exam.repository.ExamDataJpaRepository;
 import org.springframework.stereotype.Component;
@@ -49,6 +50,11 @@ public class ExamDataPersistenceAdapter implements QueryExamDataPort {
         return examDataMapper.toDomain(
                 examDataJpaRepository.findById(examDataId)
         );
+    }
+
+    @Override
+    public List<SimpleExamDataVO> queryAllExamDataByExamDataId(UUID examDataId) {
+        return examDataJpaRepository.findAllSimpleExamDataByExamDataId(examDataId);
     }
 
     @Override

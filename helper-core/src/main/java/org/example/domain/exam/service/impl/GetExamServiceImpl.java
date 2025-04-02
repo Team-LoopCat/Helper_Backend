@@ -1,7 +1,9 @@
 package org.example.domain.exam.service.impl;
 
 import java.util.List;
+import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import org.example.domain.exam.exception.ExamNotFoundException;
 import org.example.domain.exam.model.Exam;
 import org.example.domain.exam.service.GetExamService;
 import org.example.domain.exam.spi.QueryExamPort;
@@ -11,6 +13,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class GetExamServiceImpl implements GetExamService {
     private final QueryExamPort queryExamPort;
+
+    @Override
+    public Exam getExamById(UUID examId) {
+        return queryExamPort.getExamById(examId).orElseThrow(
+                () -> ExamNotFoundException.EXCEPTION
+        );
+    }
 
     @Override
     public List<Exam> getExamList() {

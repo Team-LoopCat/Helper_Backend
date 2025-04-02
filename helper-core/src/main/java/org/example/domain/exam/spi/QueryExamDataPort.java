@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import org.example.domain.exam.model.ExamData;
+import org.example.domain.exam.spi.vo.SimpleExamDataVO;
 
 public interface QueryExamDataPort {
 
@@ -15,6 +16,8 @@ public interface QueryExamDataPort {
     Optional<ExamData> queryFirstExamDataOrderByDateDesc();
 
     Optional<ExamData> queryExamDataById(UUID examDataId);
+
+    List<SimpleExamDataVO> queryAllExamDataByExamDataId(UUID examDataId);
 
     Boolean existsExamDataByDateAndPeriod(LocalDate date, Integer period);
 }

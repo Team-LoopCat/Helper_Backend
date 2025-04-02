@@ -7,9 +7,11 @@ import org.example.domain.exam.dto.request.ExamDataRequestDto;
 import org.example.domain.exam.dto.request.StartExamRequestDto;
 import org.example.domain.exam.dto.request.UpdateExamDataDetailRequestDto;
 import org.example.domain.exam.dto.request.UpdateExamDataRequestDto;
+import org.example.domain.exam.dto.response.GetExamDataListRequestDto;
 import org.example.domain.exam.dto.response.GetExamListResponseDto;
 import org.example.domain.exam.dto.response.PostExamDataResponseDto;
 import org.example.domain.exam.dto.response.StartExamResponseDto;
+import org.example.domain.exam.usecase.GetAllExamDataUseCase;
 import org.example.domain.exam.usecase.GetExamUseCase;
 import org.example.domain.exam.usecase.PostExamDataUseCase;
 import org.example.domain.exam.usecase.StartExamUseCase;
@@ -32,6 +34,7 @@ public class ExamWebAdapter {
     private final PostExamDataUseCase postExamDataUseCase;
     private final UpdateExamDataUseCase updateExamDataUseCase;
     private final UpdateExamDataDetailUseCase updateExamDataDetailUseCase;
+    private final GetAllExamDataUseCase getAllExamDataUseCase;
     private final StartExamUseCase startExamUseCase;
     private final GetExamUseCase getExamUseCase;
 
@@ -53,6 +56,11 @@ public class ExamWebAdapter {
         updateExamDataDetailUseCase.execute(exam_data_id, request);
     }
 
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/{exam_id}")
+    public GetExamDataListRequestDto getExamDataList(@PathVariable("exam_id") UUID examId) {
+        return getAllExamDataUseCase.execute(examId);
+    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping

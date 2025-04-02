@@ -2,6 +2,7 @@ package org.example.persistence.exam;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.StreamSupport;
 import lombok.RequiredArgsConstructor;
 import org.example.domain.exam.model.Exam;
@@ -19,6 +20,13 @@ public class ExamPersistenceAdapter implements QueryExamPort {
     @Override
     public boolean existsExamByGrade(String grade) {
         return examJpaRepository.existsByGrade(grade);
+    }
+
+    @Override
+    public Optional<Exam> getExamById(UUID examId) {
+        return examMapper.toDomain(
+                examJpaRepository.findById(examId)
+        );
     }
 
     @Override
